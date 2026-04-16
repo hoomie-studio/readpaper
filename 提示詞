@@ -1,0 +1,277 @@
+我想要PY程式碼依據以下HTML風格，<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>論文海報：中國三大都市圈對複合乾旱與熱浪的反應差異性研究</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #e60012; /* 參考 Typography Nerd 的亮色點綴 */
+            --border-color: #eeeeee;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 側邊導航欄風格 */
+        aside {
+            width: var(--sidebar-width);
+            border-right: 1px solid var(--border-color);
+            padding: 40px;
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+            border-bottom: 4px solid var(--text-color);
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-bottom: 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .timestamp {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: auto;
+        }
+
+        /* 主內容區域 */
+        main {
+            margin-left: var(--sidebar-width);
+            padding: 80px 100px;
+            max-width: 1200px;
+        }
+
+        header {
+            margin-bottom: 80px;
+        }
+
+        .eng-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .core-statement {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-top: 40px;
+            padding-left: 30px;
+            border-left: 8px solid var(--text-color);
+            line-height: 1.4;
+        }
+
+        /* 網格佈局區塊 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px 80px;
+        }
+
+        section {
+            padding-top: 20px;
+            border-top: 1px solid var(--text-color);
+        }
+
+        h2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "●";
+            margin-right: 10px;
+            font-size: 0.6rem;
+            color: var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        ul.data-list {
+            list-style: none;
+        }
+
+        ul.data-list li {
+            padding: 15px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .highlight {
+            font-weight: 700;
+            background: linear-gradient(transparent 60%, #fff176 0%);
+        }
+
+        /* 針對驚人發現區塊的特殊樣式 */
+        .featured {
+            grid-column: span 2;
+            background-color: #f9f9f9;
+            padding: 40px;
+            border: none;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        footer {
+            margin-top: 100px;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            color: #777;
+        }
+
+        @media (max-width: 1024px) {
+            aside { width: 200px; padding: 20px; }
+            main { margin-left: 200px; padding: 40px; }
+            h1 { font-size: 2.5rem; }
+            .content-grid { grid-template-columns: 1fr; }
+            .featured { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <div class="logo">Typography<br>Science</div>
+        <nav>
+            <ul>
+                <li><a href="#motivation">研究動機</a></li>
+                <li><a href="#method">研究方法</a></li>
+                <li><a href="#results">關鍵發現</a></li>
+                <li><a href="#application">實際應用</a></li>
+            </ul>
+        </nav>
+        <div class="timestamp">
+            歸檔時間<br>2026-04-14 22:44:57
+        </div>
+    </aside>
+
+    <main>
+        <header>
+            <div class="eng-title">Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heatwaves</div>
+            <h1>中國三大都市圈對複合乾旱與熱浪的總原生產力反應差異性研究</h1>
+            <div class="core-statement">
+                南方雨水充足，高溫反而助長作物生長；<br>
+                北方嚴重缺水，光合作用因乾熱明顯衰退。
+            </div>
+        </header>
+
+        <div class="content-grid">
+            <section id="motivation">
+                <h2>Motivation / 研究動機</h2>
+                <h3>為何「複合乾旱與熱浪」不容忽視？</h3>
+                <p>全球氣候變遷使得「又乾又熱」的極端天氣越發頻繁。當氣溫飆升與土壤水分缺失同時發生，植物將面臨生存極限。</p>
+                <p>中國作為人口大國，理解不同地理區域對此類災害的反應，對於國家糧食安全與精準灌溉政策制定至關重要。</p>
+            </section>
+
+            <section id="method">
+                <h2>Methodology / 研究方法</h2>
+                <h3>以遙測衛星作為「太空之眼」</h3>
+                <p>研究團隊分析了京津冀（北方）、長三角（東部）與珠三角（南部）三大城市群數據。透過分析 2007 年與 2022 年的衛星圖像與氣象資料，對比植物在極端年份的生長狀況。</p>
+                <p><span class="highlight">技術核心：</span>利用空間數據監測 Gross Primary Productivity (GPP) 的動態變化。</p>
+            </section>
+
+            <section id="results" class="featured">
+                <h2>Key Findings / 驚人發現</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <div>
+                        <h3>南北反應的「兩極化」</h3>
+                        <ul class="data-list">
+                            <li><strong>北方（缺水區）：</strong> 光合作用降低約 <span class="highlight">1.13 標準差</span>，生長顯著受抑。</li>
+                            <li><strong>南方（多雨區）：</strong> 東部增加 0.32-1.79 標準差，南部增加 <span class="highlight">1.86-1.06 標準差</span>。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>機制差異：根系與水分</h3>
+                        <p>南方植物擁有豐富地下水支持，高溫能加速其新陳代謝；北方植物則因缺乏水源，在空氣乾燥時會因水分流失過快而陷入生長停滯。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="application">
+                <h2>Application / 實際應用</h2>
+                <h3>因地制宜的氣候對策</h3>
+                <p>本研究揭示了「一體適用」政策的局限性：</p>
+                <ul class="data-list">
+                    <li><strong>北方：</strong> 應聚焦於耐旱品種選育與灌溉系統升級。</li>
+                    <li><strong>南方：</strong> 可利用氣候優勢優化高效農業佈局。</li>
+                    <li><strong>宏觀：</strong> 為糧食價格預測提供更精確的空間分析模型。</li>
+                </ul>
+            </section>
+        </div>
+
+        <footer>
+            <p>© 2026 Urban Sustainability Lab. Designed with inspiration from Typography Nerd.</p>
+        </footer>
+    </main>
+
+</body>
+</html>
