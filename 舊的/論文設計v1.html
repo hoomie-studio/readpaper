@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster: Divergent Sensitivity of GPP</title>
+    <style>
+        /* 參考 Typography Nerd 風格：純粹、結構、字體優先 */
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #d9534f; /* 經典紅點綴 */
+            --bg-color: #fcfcfc;
+            --border-color: #e0e0e0;
+            --font-serif: "Times New Roman", "Songti TC", serif;
+            --font-sans: "Helvetica Neue", Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: #525659; /* 模擬 PDF 閱讀背景 */
+            margin: 0;
+            padding: 40px 0;
+            display: flex;
+            justify-content: center;
+            font-family: var(--font-sans);
+            color: var(--primary-color);
+        }
+
+        /* A4 海報容器 */
+        .poster {
+            background-color: var(--bg-color);
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 頁首：標題等級 */
+        header {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .archive-date {
+            font-family: var(--font-sans);
+            font-size: 10pt;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 28pt;
+            line-height: 1.1;
+            margin: 0 0 10px 0;
+            font-weight: 900;
+        }
+
+        .chinese-title {
+            font-size: 18pt;
+            color: #666;
+            font-weight: 300;
+            margin-top: 5px;
+        }
+
+        /* 核心摘要區塊 */
+        .core-box {
+            background: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent-color);
+            font-style: italic;
+            font-family: var(--font-serif);
+            font-size: 13pt;
+            line-height: 1.6;
+        }
+
+        /* 雙欄內容佈局 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            flex-grow: 1;
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 12pt;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        h3 {
+            font-size: 11pt;
+            font-weight: bold;
+            margin: 15px 0 8px 0;
+        }
+
+        p {
+            font-size: 10.5pt;
+            line-height: 1.6;
+            text-align: justify;
+            margin: 0 0 12px 0;
+            color: #333;
+        }
+
+        ul {
+            padding-left: 18px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            font-size: 10pt;
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* 底部註腳 */
+        footer {
+            margin-top: auto;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            font-size: 9pt;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 強調數據的樣式 */
+        .data-highlight {
+            font-family: var(--font-serif);
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+    <article class="poster">
+        <header>
+            <div class="archive-date">ARCHIVED // 2026-04-14 22:44:57</div>
+            <h1>Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heatwaves Across China's Three Major Urban Agglomerations</h1>
+            <div class="chinese-title">中國三大都市圈對複合乾旱與熱浪的總原生產力反應差異性研究</div>
+        </header>
+
+        <div class="core-box">
+            「這篇論文發現中國不同地區面對複合乾旱和熱浪時，對農作物光合作用的影響完全相反：北方因嚴重缺水導致生長停滯，南方則因水分充足伴隨高溫反而促進了產能。」
+        </div>
+
+        <main class="main-content">
+            <div class="column">
+                <section>
+                    <h2>研究動機 / Motivation</h2>
+                    <p>
+                        隨著全球氣候變遷，「複合乾旱與熱浪」發生的頻率顯著增加。本研究旨在理解中國不同氣候背景下的城市群，如何應對這種極端壓力，這對於國家的<strong>糧食安全</strong>與<strong>區域性灌溉策略</strong>具有關鍵指導意義。
+                    </p>
+                </section>
+
+                <section>
+                    <h2>研究方法 / Methodology</h2>
+                    <p>利用衛星遙測觀測數據，針對三大超大城市群進行跨區域分析：</p>
+                    <ul>
+                        <li><strong>京津冀（北方）：</strong> 半乾旱環境特徵。</li>
+                        <li><strong>長江三角洲（東部）：</strong> 水資源充沛背景。</li>
+                        <li><strong>珠江三角洲（南部）：</strong> 濕潤熱帶/亞熱帶環境。</li>
+                    </ul>
+                    <p>比較 2007 年與 2022 年之數據，分析極端氣候對 GPP（總原生產力）的具體衝擊。</p>
+                </div>
+
+            <div class="column">
+                <section>
+                    <h2>關鍵發現 / Results</h2>
+                    <h3>1. 南北反應的二元性</h3>
+                    <ul>
+                        <li><strong>北方：</strong> GPP 顯著降低約 <span class="data-highlight">1.13σ</span>。由於缺乏水分緩衝，熱浪直接加劇了植物生理壓力。</li>
+                        <li><strong>南方：</strong> GPP 增加 <span class="data-highlight">0.32σ ~ 1.86σ</span>。植物表現出驚人的耐熱增長。</li>
+                    </ul>
+
+                    <h3>2. 生理調節機制</h3>
+                    <p>
+                        <strong>南方植物</strong>擁有較深根系與充足地表水，高溫環境下光合作用效率隨溫升而加速。<strong>北方植物</strong>則因水汽壓差（VPD）過大，被迫關閉氣孔以防止脫水，導致生長受阻。
+                    </p>
+                </section>
+
+                <section>
+                    <h2>實際應用 / Implications</h2>
+                    <p>本研究建議政策制定者應採取「因地制宜」的調適方案：</p>
+                    <ul>
+                        <li><strong>北方地區：</strong> 應優先強化灌溉基礎設施並選育耐旱品種。</li>
+                        <li><strong>南方地區：</strong> 可探索「熱紅利」農業，優化高溫期間的耕作時程。</li>
+                        <li><strong>糧食市場：</strong> 提供更精準的農產波動預測基礎。</li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <span>© 2026 URBAN GOVERNANCE & CLIMATE RESEARCH</span>
+            <span>TYPOGRAPHY NERD STYLE / LAYOUT 01</span>
+        </footer>
+    </article>
+
+</body>
+</html>

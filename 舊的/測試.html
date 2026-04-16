@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>學術早報 - 建築物多邊形提取</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    .card { transition: all 0.3s ease; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15); }
+  </style>
+</head>
+<body class="bg-gray-100 py-12 px-4">
+  <div class="max-w-4xl mx-auto">
+
+    <!-- 標題 -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-bold text-gray-800 mb-2">🎯 學術早報</h1>
+      <p class="text-gray-500">歸檔時間：2026-04-14 02:21:33</p>
+    </div>
+
+    <!-- 主卡片 -->
+    <div class="card bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+      <!-- 頂部標題區 -->
+      <div class="bg-gradient-to-r from-indigo-600 to-blue-600 text-white px-10 py-8">
+        <h2 class="text-2xl font-semibold leading-tight">
+          Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction
+        </h2>
+        <p class="mt-3 text-blue-100 text-lg">
+          用雙分支神經網絡精準勾勒建築物輪廓的 AI 新工具
+        </p>
+      </div>
+
+      <div class="p-10 space-y-12">
+
+        <!-- 一句話核心 -->
+        <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-xl">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="text-3xl">💡</span>
+            <h3 class="text-xl font-bold text-amber-800">一句話核心</h3>
+          </div>
+          <p class="text-lg leading-relaxed text-gray-700">
+            提出 <strong>EA-DBFFN</strong> 雙分支 AI 架構，將「區域一致性」和「邊界精準度」分開處理，並透過互導機制讓兩者協同工作，在 CrowdAI 數據集上達到 <strong class="text-green-600">72.9%</strong> 的精準度，比競爭方法提升 2.3%，無效多邊形比率更降低 <strong>66.3%</strong>。
+          </p>
+        </div>
+
+        <!-- 研究動機 -->
+        <div>
+          <h3 class="text-2xl font-semibold text-gray-800 mb-5 flex items-center gap-3">
+            ❓ 為什麼要研究這個？
+          </h3>
+          <div class="prose prose-gray max-w-none text-gray-700">
+            <p>建築足跡（Building Footprints）是城市規劃、地理資訊系統（GIS）的基本單位。</p>
+            <p>傳統 Raster-based 方法雖然簡單，但無法精確描述建築物的幾何形狀；直接預測頂點又容易受植被遮擋或建築密集影響。</p>
+            <p class="font-medium">現實痛點：在快速城市化與災害管理的需求下，人工繪製建築輪廓極為耗時，急需高精度自動化解決方案。</p>
+          </div>
+        </div>
+
+        <!-- 研究方法 -->
+        <div>
+          <h3 class="text-2xl font-semibold text-gray-800 mb-5 flex items-center gap-3">
+            🔧 他們做了什麼？
+          </h3>
+          <div class="bg-slate-50 rounded-2xl p-8">
+            <p class="mb-6">研究團隊提出 <strong>EA-DBFFN（Edge-Attentive Dual-Branch Frame Field Network）</strong>，採用「雙眼同時看」的雙分支策略：</p>
+            
+            <div class="space-y-6">
+              <div class="flex gap-5">
+                <div class="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
+                <div>
+                  <strong>區域分支</strong>：專注判斷建築物的整體區域一致性，使用動態感受野與空間注意力機制。
+                </div>
+              </div>
+              <div class="flex gap-5">
+                <div class="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
+                <div>
+                  <strong>邊緣分支</strong>：專注精準勾勒建築物邊界，使用 Sobel 與 Laplacian 濾波器強化邊緣檢測。
+                </div>
+              </div>
+              <div class="flex gap-5">
+                <div class="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
+                <div>
+                  <strong>互導機制</strong>：讓兩個分支互相學習、共同優化，就像兩個專家互相指導。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 關鍵發現 -->
+        <div>
+          <h3 class="text-2xl font-semibold text-gray-800 mb-5 flex items-center gap-3">
+            📈 驚人發現與具體數據
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6">
+              <p class="text-emerald-700 font-medium">整體精準度</p>
+              <p class="text-4xl font-bold text-emerald-600 mt-2">72.9%</p>
+              <p class="text-sm text-emerald-600">提升 2.3%（AP75）</p>
+            </div>
+            <div class="bg-rose-50 border border-rose-200 rounded-2xl p-6">
+              <p class="text-rose-700 font-medium">無效多邊形比率</p>
+              <p class="text-4xl font-bold text-rose-600 mt-2">降低 66.3%</p>
+            </div>
+          </div>
+          <ul class="mt-8 space-y-4 text-gray-700">
+            <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✔</span> <strong>最大切線角度誤差</strong> 降低 6.4%</li>
+            <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✔</span> <strong>邊緣平滑度</strong> 提升 72.7%</li>
+            <li class="flex items-start gap-3"><span class="text-green-500 mt-1">✔</span> <strong>異常凸包比例</strong> 大幅下降</li>
+          </ul>
+        </div>
+
+        <!-- 實際意義 -->
+        <div>
+          <h3 class="text-2xl font-semibold text-gray-800 mb-5 flex items-center gap-3">
+            🌟 這對我有什麼意義？
+          </h3>
+          <div class="prose prose-gray max-w-none text-gray-700">
+            <p>這個方法能大幅減少人工繪製建築輪廓的工作量，特別適合：</p>
+            <ul class="list-disc pl-6 space-y-2 mt-4">
+              <li>自動化城市地圖繪製與更新</li>
+              <li>3D 城市建模（遊戲、虛擬現實、智慧城市）</li>
+              <li>災難應變與大規模地理資訊系統</li>
+              <li>處理植被遮擋、建築密集等複雜場景</li>
+            </ul>
+            <p class="mt-6 font-medium">EA-DBFFN 就像給城市建模裝上了一個「超級自動測量員」，讓高精度建築輪廓提取變得更快、更準、更實用。</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 底部資訊 -->
+      <div class="bg-gray-50 px-10 py-6 border-t flex justify-between items-center text-sm text-gray-500">
+        <div>
+          <strong>URL：</strong> 
+          <a href="https://www.mdpi.com/2072-4292/18/8/1159" target="_blank" class="text-blue-600 hover:underline">
+            https://www.mdpi.com/2072-4292/18/8/1159
+          </a>
+        </div>
+        <div>抓取時間：2026-04-14 01:53:58</div>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>
