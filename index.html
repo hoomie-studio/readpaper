@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&family=Inter:wght@400;700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-    :root { --bg: #f0f2f5; --card: #ffffff; --accent: #e60012; --highlight: #fff176; }
+    :root { --bg: #f4f7f6; --card: #ffffff; --accent: #e60012; --highlight: #fff176; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body, html { height: 100%; overflow: hidden; background: var(--bg); font-family: 'Inter', 'Noto Sans TC', sans-serif; }
     .swiper { width: 100%; height: 100%; }
@@ -11,9 +11,9 @@
     .poster-card {
         background: var(--card); width: 100%; max-width: 800px; height: 90vh;
         display: flex; flex-direction: column; padding: 40px;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.15); border-radius: 8px; border-top: 6px solid var(--accent);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.12); border-radius: 8px; border-top: 6px solid var(--accent);
     }
-    .meta-header { display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 25px; font-size: 0.8rem; font-weight: 800; color: #999; }
+    .meta-header { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 25px; font-size: 0.8rem; font-weight: 800; color: #bbb; }
     .scroll-content { flex: 1; overflow-y: auto; padding-right: 10px; }
     .scroll-content::-webkit-scrollbar { width: 4px; }
     .scroll-content::-webkit-scrollbar-thumb { background: #eee; }
@@ -28,7 +28,96 @@
 <body><div class="swiper"><div class="swiper-wrapper">
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
+                <div class="scroll-content">
+                    <header>
+                        <div class="eng-title">AdaProtoNet: 抗噪少樣本 ISAR 影像分類網絡與適應性鬆弛策略</div>
+                        <h1>AdaProtoNet: 抗噪少樣本 ISAR 影像分類網絡與適應性鬆弛策略</h1>
+                        <div class="core-statement"></div>
+                    </header>
+                    <main><p>2026-04-17 01:10:20</p>
+<h1>今日學術早報</h1>
+<ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1207</li>
+<li>抓取時間: 2026-04-17 00:45:08</li>
+</ul>
+<h1>這篇論文提出了一個新的 ISAR（逆合成孔徑雷達）影像分類框架，透過結合 ResNet10  backbone 與特殊的適應性損失函數，在資料稀少且影像有雜訊干擾的情況下，仍舊能保持高精度的分類表現。</h1>
+<h1><strong class="red">什麼是 ISAR 影像？</strong></h1>
+<p>ISAR（Inverse Synthetic Aperture Radar，逆合成孔徑雷達）是一種微波遙感技術，它能產生高解析度的兩維目標影像。你可以把它想像成雷達版的「相機」，不過不是用光線來成像，而是用電磁波。</p>
+<p><strong class="red">為什麼需要研究這個？</strong><br />
+現實世界中使用 ISAR 影像時，常常會遇到以下問題：<br />
+- <strong class="red">資料太少</strong>：能收集到有正確標籤的雷達影像非常有限，就像你只能拿到幾張考卷來練習考試<br />
+- <strong class="red">畫質不好</strong>：影像上有很多雜訊干擾，就像在電視上看到雪花畫面<br />
+- <strong class="red">背景雜亂</strong>：影像背景很複雜，干擾目標識別</p>
+<p>這些問題導致辨識率不理想。研究者需要開發能在这种「資料稀少且畫質不佳」的環境下仍能準確辨識目標的方法。</p>
+<h1>研究者開發了一個叫做「AdaProtoNet」的系統，我們來拆解他們怎麼做：</h1>
+<ol>
+<li><strong class="red">使用 ResNet10 作為基礎架構</strong></li>
+<li>
+<p>想像 ResNet10 是一個「特徵提取器」，它的工作是從雷達影像中找出重要資訊（就像是從一堆雜音中找出目標的聲音）</p>
+</li>
+<li>
+<p><strong class="red">採用「原型網絡」設計</strong></p>
+</li>
+<li>在每種類別（例如：不同類型的船隻）建立一個「典型代表」，稱為原型（prototype）</li>
+<li>
+<p>分類時，只將未知影像與這些原型比較，比較方法是計算它們之間的距離</p>
+</li>
+<li>
+<p><strong class="red">關鍵創新：自適應損失函數（AdaLoss）</strong></p>
+</li>
+<li>傳統方法是「大邊距策略」（large-margin enforcement），強制不同類別的樣本之間保持很大距離</li>
+<li>但這種方法在雜訊大的情況下效果不好</li>
+<li>
+<p>研究者設計了「適應性鬆弛」策略，可以根據情況調整寬鬆程度：</p>
+<ul>
+<li>當樣本很明確時，保持嚴格分類</li>
+<li>當樣本模糊或受雜訊干擾時，自動放鬆要求，避免錯誤分類</li>
+</ul>
+</li>
+<li>
+<p><strong class="red">建立大型測試數據集</strong></p>
+</li>
+<li>透過三維目標建模與模擬雷達成像，製作了一個大型數據集來驗證他們的系統</li>
+</ol>
+<p>簡單來說，他們做了一個會「看情況辦事」的智慧系統：資料清楚時嚴格分類，雜訊大時就稍微寬鬆一點，避免過度自信地做出錯誤判斷。</p>
+<h1>研究的主要發現包括：</h1>
+<ul>
+<li><strong class="red">準確度表現優異</strong>：AdaProtoNet 在整體準確率（OA）方面優於傳統的 ISAR 分類方法</li>
+<li><strong class="red">泛化能力更強</strong>：在資料有限的情況下，系統仍能保持不錯的表現，就像一個見多識廣的警察，即使只在幾個街區工作，也能識別各種嫌疑人</li>
+<li><strong class="red">適應性鬆弛有效</strong>：這種方法特別擅長處理那些難以明確判斷的雷達樣本，提供了比傳統硬性策略更好的替代方案</li>
+</ul>
+<h1>這個研究成果有非常多實際應用：</h1>
+<ul>
+<li>
+<p><strong class="red">海事交通管理</strong>：可以幫助港口的雷達系統更準確地辨識進入港口的船隻，即使天氣不好或夜間也能安全運作，避免船隻相撞事故。</p>
+</li>
+<li>
+<p><strong class="red">空中監控</strong>：在軍事或邊防應用中，能更可靠地辨識無人機或其他空中目標，即使影像受到干擾也能保持識別能力。</p>
+</li>
+<li>
+<p><strong class="red">災難監測</strong>：在颱風、洪水等災難情況下，雷達系統能穿透雲層和霧氣持續監控，幫助救援單位更快找到受困民眾或評估災情。</p>
+</li>
+<li>
+<p><strong class="red">開發中國家的機會</strong>：開源數據與方法讓開發中國家也能以較低成本部署類似系統，促進全球監測能力的平衡發展。</p>
+</li>
+<li>
+<p><strong class="red">擴展潛力</strong>：未來這個方法可以應用到其他作物（例如稻米、玉米等）的監測，或是不同地區的雷達系統，只要有雷達影像的地方都可能用到。</p>
+</li>
+<li>
+<p><strong class="red">低資源環境下的 AI 應用</strong>：這個研究證明了即使在資料很少、設備不算頂級的情況下，也能訓練出很棒的 AI 模型，對資源有限的地區特別有幫助。</p>
+</li>
+</ul>
+<hr />
+<p><em>生成時間：2026-04-17 00:45:08</em><br />
+<em>摘要大師 2.0 生成</em></p></main>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="poster-card">
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">AdaProtoNet: 抗噪少樣本 ISAR 影像分類網絡與適應性鬆弛策略</div>
@@ -111,13 +200,13 @@
 <hr />
 <p><em>生成時間：2026-04-17 00:45:08</em><br />
 <em>摘要大師 2.0 生成</em></p></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">文獻名稱</div>
@@ -157,13 +246,13 @@ Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heat
 <li><strong class="red">未來發展</strong>：這個方法可以用在其他作物、其他地區，幫助我們更好應對氣候變遷帶來的挑戰</li>
 </ul>
 <p>總結來說：這篇論文告訴我們，面對氣候變遷，不能一概而論，每個地區的優勢和挑戰都不同，要因地制宜地做規劃！</p></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">Segment-Based Spectral Characterisation of Municipal Solid Waste in African Landfills Using HISUI Hyperspectral Imagery</div>
@@ -214,13 +303,13 @@ Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heat
 <li><strong class="red">氣候變化對策</strong>：垃圾分解會產生甲烷（一種強效溫室氣體），如果能及早發現垃圾場並監控，有助於減緩氣候變化的影響</li>
 <li><strong class="red">促進公平</strong>：先進國家的技術經驗，能幫助資源較少的國家也能做好環境監測</li>
 </ul></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">A NIST-Traceable Lab-to-Sky Spectral and Radiometric Calibration for NASA's High-Altitude Airborne Hyperspectral Pushbroom Imager for Cloud and Aerosol Research and Development (PICARD)</div>
@@ -276,13 +365,13 @@ Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heat
 <li><strong class="red">開源數據共享：</strong> 所有測量數據都免費公開，讓全球科學家（包括開發中國家）都能使用這些高品質數據進行研究。</li>
 <li><strong class="red">未來任務基礎：</strong> 為未來可能發射的新型對地觀測衛星提供技術基礎，許多在地面或實驗室開發的校正方法都可以應用到太空任務中。</li>
 </ul></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">文獻名稱</div>
@@ -344,13 +433,13 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 </li>
 </ul>
 <p>這個模型就像是給山區裝了一個「地震預警系統」，但這個系統不是告訴你地震要發生了，而是告訴你如果發生地震，哪些地方的山坡最容易被震垮，讓相關單位可以提前做好準備。</p></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">論文摘要：Flood Susceptibility Mapping of the Kosi Megafan Using Ensemble Machine Learning and SAR Data</div>
@@ -374,13 +463,13 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 </ul>
 <h1>結合 SAR 數據和集成機器學習可提高洪水易感性製圖的準確性，特別適用於數據匱乏的災害敏感盆地。此研究支持建立該地區韌性和減輕洪水長期影響的努力，並強調需要更好的洪水規劃、風險減緩策略以及社區主導的早期預警系統。</h1>
 <h1>整合合成雷達數據和集成機器學習方法對於準確且可擴展的洪水易感性製圖至關重要，特別是在尼泊爾和印度邊界的 Kosi 盆地這樣複雜且數據匱乏的區域。</h1></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">文獻名稱</div>
@@ -429,13 +518,13 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <li><strong class="red">對工程人員</strong>：設計修補方案時，不用再鑽取大量樣品，用雷達資料就能估算厚度分布。</li>
 <li><strong class="red">對一般市民</strong>：道路保養得更及時，減少坑洞和事故風險，行車更安全。</li>
 </ul></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">Cloud-Native Earth Observation for Quantitative Vegetation Science: Architectures, Workflows, and Scientific Implications</div>
@@ -486,13 +575,13 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <p>就像從「手寫計算」進化為「使用計算機」一樣，這套方法讓地球科學研究進入新的時代！</p>
 <hr />
 <p><em>學術早報 12.5</em></p></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">1️⃣ 文獻名稱</div>
@@ -585,13 +674,13 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <p>希望這三篇學術論文能用白話文幫你釐清重點！如果有任何問題，隨時找我討論。</p>
 </blockquote>
 <p><strong class="red">2026-04-14 12:55</strong></p></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">論文 1：Self-Supervised Cascade Denoising Auto-Encoder for Accurate Spatial Positioning of Target by Fusing Uncalibrated Video and Low-Cost GNSS</div>
@@ -754,13 +843,13 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 - 都強調「效率與準確度的平衡」<br />
 - 都提供自動化解決方案，減少人工介入</p>
 <p>這些技術進步對我們日常生活和社會運作都有實質的影響。</p></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">文獻名稱</div>
@@ -860,13 +949,13 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 </ul>
 <p>總的來說，EA-DBFFN 就像是給城市建模加裝了一個「超級自動測量員」，能快速、精確地勾勒出所有建築物的形狀，對於智慧城市、城市規劃、災難管理等應用都是強而力的工具。</p>
 <hr /></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">論文 1: 緬甸山區輪耕土地利用與植被恢復評估</div>
@@ -937,13 +1026,13 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <p>這些研究突顯了<strong class="red">衛星遙感技術</strong>在應對全球環境挑戰中的關鍵角色，從生態管理到氣候變化應對，提供了寶貴的科學基礎。</p>
 <hr />
 <p><strong class="red">下一步行動</strong>: 執行歸檔合併操作</p></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">📄 論文 1：洪水風險圖繪製的新方法</div>
@@ -996,13 +1085,13 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 - 集成學習與深度學習模型表現優異<br />
 - 跨區域與跨環境的泛化性已驗證</p>
 <hr /></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">論文一：Evaluation of Land Use Patterns and Vegetation Recovery Status of Shifting Cultivation in Myanmar's Mountainous Regions Using Satellite Imagery and Field Surveys</div>
@@ -1124,13 +1213,13 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <hr />
 <p><em>生成時間：2026 年 4 月 13 日 23:15</em><br />
 <em>ResearchMaster 技能執行完成</em></p></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div>
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>POSTER ARCHIVE</div><div>2026/0417</div></div>
+                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0417</div></div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">論文 1: Cloud-Native Earth Observation for Quantitative Vegetation Science</div>
@@ -1160,7 +1249,7 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <h1>林冠空隙是理解森林干擾制度和再生過程的重要足跡，但需要運用多種指標沿著時間梯度來更深入地了解動態。本研究檢查了喀爾巴阡山脈三個保護森林的空隙數據，這些數據經過位置和森林類型分層，並在地時空尺度上進行了分析。檢查了多個特徵，包括空隙大小結構、空隙面積比例、空隙幾何形狀以及空隙幾何形狀和大小與空隙形成的關係。結果表明，空隙大小頻率具有重尾右偏分布，並且在大多數情況下在時間上保持相同的比例，即使空隙數量減少。空隙大小的概率分佈不是獨立的功率定律；它也遵循對數正規分布和指數分布。空隙計數和空隙百分比隨著時間減少，但隨著空隙大小的增加。空隙形狀複雜度大約為 2.0，但隨著空隙大小的增加而變得複雜。時空隙動態特徵為四種空隙類型：恢復或關閉的空隙、持續的空隙、擴大的空隙或新的開口，其平衡受干擾嚴重程度的影響。這些發現強調了跨時空尺度綜合空隙指標在闡述未經管理的森林的空隙動態方面的重要性。</h1>
 <hr />
 <p><strong class="red">後台歸檔任務已啟動，暫存檔將自動清理。</strong></p></main>
-                    <footer><div>Slide to view more</div><div>© Hoomie Studio</div></footer>
+                    <footer><div>Slide to View More</div><div>© Hoomie Studio</div></footer>
                 </div>
             </div>
         </div></div><div class="swiper-pagination"></div></div>
