@@ -7,23 +7,7 @@
         <title>Academic Poster Archive</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&family=Inter:wght@400;700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
-        <style>
-    :root { --bg: #f0f0f0; --card: #ffffff; --text: #1a1a1a; --accent: #e60012; --highlight: #fff176; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body, html { height: 100%; overflow: hidden; background: var(--bg); font-family: 'Inter', 'Noto Sans TC', sans-serif; }
-    .swiper { width: 100%; height: 100%; }
-    .swiper-slide { display: flex; justify-content: center; align-items: center; padding: 20px; }
-    .poster-card { background: var(--card); width: 100%; max-width: 800px; height: 90vh; display: flex; flex-direction: column; padding: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.2); border-radius: 4px; }
-    .meta-header { display: flex; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; font-size: 0.8rem; font-weight: 800; }
-    .scroll-content { flex: 1; overflow-y: auto; padding-right: 15px; }
-    .eng-title { font-size: 0.9rem; color: #888; border-left: 5px solid var(--accent); padding-left: 12px; margin-bottom: 15px; }
-    h1 { font-family: 'Noto Serif TC', serif; font-size: clamp(1.8rem, 6vw, 3rem); line-height: 1.2; font-weight: 900; margin-bottom: 30px; }
-    .core-statement { font-size: 1.3rem; background: #f8f8f8; padding: 25px; border-left: 8px solid #000; margin-bottom: 40px; line-height: 1.6; }
-    .red { color: var(--accent) !important; font-weight: 900; }
-    main h3 { background: var(--highlight); display: inline-block; padding: 0 8px; font-size: 1.6rem; margin: 30px 0 15px; }
-    main p, main li { font-size: 1.3rem; margin-bottom: 20px; line-height: 1.8; text-align: justify; }
-    footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 0.8rem; color: #bbb; }
-    </style>
+        <style>...（保持你原本的 style，不變）...</style>
     </head>
     <body>
         <div class="swiper">
@@ -36,35 +20,32 @@
                 </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">RESEARCH</div>
-                        <h1>未命名研究</h1>
-                        <div class="core-statement"></div>
+                        <div class="eng-title">## 文獻名稱  
+Classifying Desert Urban Landscapes with Multi-Spectral Analysis Using Landsat 8–9 Imagery</div>
+                        <h1>## 文獻中文名稱  
+運用 Landsat 8-9 影像，以多光譜分析對沙漠城鎮景觀進行分類
+- 論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1241
+- 抓取時間：2026-04-20 13:01:33</h1>
+                        <div class="core-statement">### 一句話核心  
+用衛星照片，開發兩種新指數（DULI 與 IISI）來分辨沙漠城市的人造建築與裸土，準確率達 85-90%，能自動忽略沙地與山地的干擾。</div>
                     </header>
-                    <main><p>2026-04-20 13:06:14</p>
-<h1>Classifying Desert Urban Landscapes with Multi-Spectral Analysis Using Landsat 8–9 Imagery</h1>
-<p>Classifying Desert Urban Landscapes with Multi-Spectral Analysis Using Landsat 8–9 Imagery</p>
-<p>運用 Landsat 8-9 影像，以多光譜分析對沙漠城鎮景觀進行分類<br />
-- 論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1241<br />
-- 抓取時間：2026-04-20 13:01:33</p>
-<p>用衛星照片，開發兩種新指數（DULI 與 IISI）來分辨沙漠城市的人造建築與裸土，準確率達 85-90%，能自動忽略沙地與山地的干擾。</p>
+                    <main><p>用衛星照片，開發兩種新指數（DULI 與 IISI）來分辨沙漠城市的人造建築與裸土，準確率達 85-90%，能自動忽略沙地與山地的干擾。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>在沙漠城市（如鳳凰、華雷斯城、利雅得），衛星影像中「人造地物」（道路、房子）與「裸土」（沙地、荒地）的光譜特徵非常相似，導致傳統分類方法經常混淆。這讓沙漠城市的環境監測變得很困難：<br />
-- 為什麼重要？沙漠城市快速擴張，需要精確掌握城市用地變化。<br />
-- 若分類錯誤，會影響基礎設施規劃、土地管理與環境評估。</p>
+為什麼重要？沙漠城市快速擴張，需要精確掌握城市用地變化。<br />
+若分類錯誤，會影響基礎設施規劃、土地管理與環境評估。</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>就像用過濾器篩選照片一樣，研究團隊利用 Landsat 8-9 衛星影像，設計兩種「光譜指數」（像是數學公式，能把特定地物放大）：<br />
 1. <strong class="red">DULI（沙漠城鎮景觀指數）</strong>：專長於抑制沙地、山區和山谷的干擾，聚焦於沙漠城市的人造地物。<br />
 2. <strong class="red">IISI（等高線不透水指數）</strong>：在乾燥氣候下精準分類建築物與道路，不需要額外資料。</p>
 <p>研究方法好比在沙灘上找沙雕：沙子和沙雕看起來很像，但用對方法就能分辨出來。</p>
 <h3>驚人發現與具體數據（關鍵結果）</h3>
-<ul>
-<li><strong class="red">準確率表現</strong>：</li>
-<li>鳳凰（Phoenix）：使用 DULI，整體準確率 85%</li>
-<li>華雷斯城（Ciudad Juárez）：使用 DULI，整體準確率 87%</li>
-<li>利雅得（Riyadh）：使用 IISI，整體準確率 90%</li>
-<li><strong class="red">抑制干擾能力</strong>：DULI 能有效降低沙地、山脈和峽谷的影響，讓分類更純粹。</li>
-<li><strong class="red">簡便性</strong>：兩種指數都能在沒有額外地圖或數據的情況下，精確分類沙漠地區的建築用地。</li>
-</ul>
+<p><strong class="red">準確率表現</strong>：<br />
+鳳凰（Phoenix）：使用 DULI，整體準確率 85%<br />
+華雷斯城（Ciudad Juárez）：使用 DULI，整體準確率 87%<br />
+利雅得（Riyadh）：使用 IISI，整體準確率 90%<br />
+<strong class="red">抑制干擾能力</strong>：DULI 能有效降低沙地、山脈和峽谷的影響，讓分類更純粹。<br />
+<strong class="red">簡便性</strong>：兩種指數都能在沒有額外地圖或數據的情況下，精確分類沙漠地區的建築用地。</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
 <ul>
 <li>沙漠城市規劃師能用快速且準確的方法監控城市擴張。</li>
@@ -89,35 +70,32 @@
                 </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">RESEARCH</div>
-                        <h1>未命名研究</h1>
-                        <div class="core-statement"></div>
+                        <div class="eng-title">## 文獻名稱  
+Classifying Desert Urban Landscapes with Multi-Spectral Analysis Using Landsat 8–9 Imagery</div>
+                        <h1>## 文獻中文名稱  
+運用 Landsat 8-9 影像，以多光譜分析對沙漠城鎮景觀進行分類
+- 論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1241
+- 抓取時間：2026-04-20 13:01:33</h1>
+                        <div class="core-statement">### 一句話核心  
+用衛星照片，開發兩種新指數（DULI 與 IISI）來分辨沙漠城市的人造建築與裸土，準確率達 85-90%，能自動忽略沙地與山地的干擾。</div>
                     </header>
-                    <main><p>2026-04-20 13:06:14</p>
-<h1>Classifying Desert Urban Landscapes with Multi-Spectral Analysis Using Landsat 8–9 Imagery</h1>
-<p>Classifying Desert Urban Landscapes with Multi-Spectral Analysis Using Landsat 8–9 Imagery</p>
-<p>運用 Landsat 8-9 影像，以多光譜分析對沙漠城鎮景觀進行分類<br />
-- 論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1241<br />
-- 抓取時間：2026-04-20 13:01:33</p>
-<p>用衛星照片，開發兩種新指數（DULI 與 IISI）來分辨沙漠城市的人造建築與裸土，準確率達 85-90%，能自動忽略沙地與山地的干擾。</p>
+                    <main><p>用衛星照片，開發兩種新指數（DULI 與 IISI）來分辨沙漠城市的人造建築與裸土，準確率達 85-90%，能自動忽略沙地與山地的干擾。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>在沙漠城市（如鳳凰、華雷斯城、利雅得），衛星影像中「人造地物」（道路、房子）與「裸土」（沙地、荒地）的光譜特徵非常相似，導致傳統分類方法經常混淆。這讓沙漠城市的環境監測變得很困難：<br />
-- 為什麼重要？沙漠城市快速擴張，需要精確掌握城市用地變化。<br />
-- 若分類錯誤，會影響基礎設施規劃、土地管理與環境評估。</p>
+為什麼重要？沙漠城市快速擴張，需要精確掌握城市用地變化。<br />
+若分類錯誤，會影響基礎設施規劃、土地管理與環境評估。</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>就像用過濾器篩選照片一樣，研究團隊利用 Landsat 8-9 衛星影像，設計兩種「光譜指數」（像是數學公式，能把特定地物放大）：<br />
 1. <strong class="red">DULI（沙漠城鎮景觀指數）</strong>：專長於抑制沙地、山區和山谷的干擾，聚焦於沙漠城市的人造地物。<br />
 2. <strong class="red">IISI（等高線不透水指數）</strong>：在乾燥氣候下精準分類建築物與道路，不需要額外資料。</p>
 <p>研究方法好比在沙灘上找沙雕：沙子和沙雕看起來很像，但用對方法就能分辨出來。</p>
 <h3>驚人發現與具體數據（關鍵結果）</h3>
-<ul>
-<li><strong class="red">準確率表現</strong>：</li>
-<li>鳳凰（Phoenix）：使用 DULI，整體準確率 85%</li>
-<li>華雷斯城（Ciudad Juárez）：使用 DULI，整體準確率 87%</li>
-<li>利雅得（Riyadh）：使用 IISI，整體準確率 90%</li>
-<li><strong class="red">抑制干擾能力</strong>：DULI 能有效降低沙地、山脈和峽谷的影響，讓分類更純粹。</li>
-<li><strong class="red">簡便性</strong>：兩種指數都能在沒有額外地圖或數據的情況下，精確分類沙漠地區的建築用地。</li>
-</ul>
+<p><strong class="red">準確率表現</strong>：<br />
+鳳凰（Phoenix）：使用 DULI，整體準確率 85%<br />
+華雷斯城（Ciudad Juárez）：使用 DULI，整體準確率 87%<br />
+利雅得（Riyadh）：使用 IISI，整體準確率 90%<br />
+<strong class="red">抑制干擾能力</strong>：DULI 能有效降低沙地、山脈和峽谷的影響，讓分類更純粹。<br />
+<strong class="red">簡便性</strong>：兩種指數都能在沒有額外地圖或數據的情況下，精確分類沙漠地區的建築用地。</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
 <ul>
 <li>沙漠城市規劃師能用快速且準確的方法監控城市擴張。</li>
@@ -142,47 +120,47 @@
                 </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">RESEARCH</div>
-                        <h1>未命名研究</h1>
-                        <div class="core-statement">這篇論文用一種改良版的深度學習模型，能更準確地從衛星微波影像中推測降雨量，特別是在大雨時表現更好。</div>
+                        <div class="eng-title">## 文獻名稱  
+A Multi-Task Deep Learning Approach for Precipitation Retrieval from Spaceborne Microwave Imagers</div>
+                        <h1>## 文獻中文名稱  
+利用載具微波成像儀的離機多任務深度學習方法精準推演降雨量
+- 論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1242
+- 抓取時間: 2026-04-20 12:14:05</h1>
+                        <div class="core-statement">### 一句話核心
+這篇論文用一種改良版的深度學習模型，能更準確地從衛星微波影像中推測降雨量，特別是在大雨時表現更好。</div>
                     </header>
-                    <main><p>2026-04-20 12:20:22<br />
-A Multi-Task Deep Learning Approach for Precipitation Retrieval from Spaceborne Microwave Imagers</p>
-<p>利用載具微波成像儀的離機多任務深度學習方法精準推演降雨量<br />
-- 論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1242<br />
-- 抓取時間: 2026-04-20 12:14:05</p>
-<p>這篇論文用一種改良版的深度學習模型，能更準確地從衛星微波影像中推測降雨量，特別是在大雨時表現更好。</p>
+                    <main><p>這篇論文用一種改良版的深度學習模型，能更準確地從衛星微波影像中推測降雨量，特別是在大雨時表現更好。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>太空衛星上的微波成像儀（想像成一個會發射微波波束的「太空天氣探測器」）很重要，因為它能覆蓋很廣的區域，而且對降雨非常敏感。但傳統方法有個缺點：下大雨時，推測出的降雨量經常會偏小，可能會低估達 10 毫米每小時甚至更多！這就像是你用一把尺子量身高，結果每次測到高个子都自動扣掉 5 公分。</p>
 <p>這項研究想解決的問題是：我們需要更準確的降雨預測，特別是在大雨時刻，因為：<br />
-- 精準的降雨資訊能幫助防洪防災<br />
-- 農業灌溉需要準確的降雨數據<br />
-- 水力發電和防洪系統需要可靠的降雨預警<br />
-- 全球氣候變化下，極端降雨事件越來越常見，需要更好的監測工具</p>
+精準的降雨資訊能幫助防洪防災<br />
+農業灌溉需要準確的降雨數據<br />
+水力發電和防洪系統需要可靠的降雨預警<br />
+全球氣候變化下，極端降雨事件越來越常見，需要更好的監測工具</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>研究團隊設計了一個新的深度學習模型，這個模型有點像「雙重任務的學生」：<br />
-- <strong class="red">主要任務</strong>：精準預測降雨量（就像猜分數）<br />
-- <strong class="red">輔助任務</strong>：判斷降雨類型（就像猜這是不是下雨天還是雪天）</p>
+<strong class="red">主要任務</strong>：精準預測降雨量（就像猜分數）<br />
+<strong class="red">輔助任務</strong>：判斷降雨類型（就像猜這是不是下雨天還是雪天）</p>
 <p>他們把這個模型分成兩部分來訓練：<br />
 1. 陸地部分：專門學習在陸地上預測降雨<br />
 2. 海洋部分：專門學習在海上預測降雨</p>
 <p>這就像是請兩個專業的氣象老師，一個專精於陸地天氣，一個專精於海洋天氣，然後讓他們共同合作。模型裡還有特殊的機制：<br />
-- <strong class="red">剩餘區塊</strong>：讓模型學習更深層次的天氣模式（就像讓學生從單純記答案變成理解原理）<br />
-- <strong class="red">注意力機制</strong>：讓模型知道該關注影像中的哪個部分（就像你聽講故事時會特別留意主角的聲音）</p>
+<strong class="red">剩餘區塊</strong>：讓模型學習更深層次的天氣模式（就像讓學生從單純記答案變成理解原理）<br />
+<strong class="red">注意力機制</strong>：讓模型知道該關注影像中的哪個部分（就像你聽講故事時會特別留意主角的聲音）</p>
 <h3>驚人發現與具體數據</h3>
 <p>這個新方法帶來了幾個亮眼的成績：<br />
-- <strong class="red">相關係數（PCC）</strong>：海洋區域提升了 9.7%，陸地區域提升了 13.7%。這代表預測值和實際降雨量的匹配度變高了<br />
-- <strong class="red">成功指數（CSI）</strong>：海洋區域提升了 10.7%，陸地區域提升了 10.8%。這代表當真的下雨時，模型能正確捕捉到降雨的比例變高了<br />
-- <strong class="red">與官方產品相比</strong>：在實際案例測試中，這個方法比現有的官方降雨預測產品表現更好，平均提升了 20.1% 的相關係數和 15.7% 的成功指數<br />
-- <strong class="red">實際表現</strong>：在海洋上預測時，相關係數達到 0.757（這表示有超過 75% 的預測能跟實際吻合），在陸地上達到 0.691</p>
+<strong class="red">相關係數（PCC）</strong>：海洋區域提升了 9.7%，陸地區域提升了 13.7%。這代表預測值和實際降雨量的匹配度變高了<br />
+<strong class="red">成功指數（CSI）</strong>：海洋區域提升了 10.7%，陸地區域提升了 10.8%。這代表當真的下雨時，模型能正確捕捉到降雨的比例變高了<br />
+<strong class="red">與官方產品相比</strong>：在實際案例測試中，這個方法比現有的官方降雨預測產品表現更好，平均提升了 20.1% 的相關係數和 15.7% 的成功指數<br />
+<strong class="red">實際表現</strong>：在海洋上預測時，相關係數達到 0.757（這表示有超過 75% 的預測能跟實際吻合），在陸地上達到 0.691</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
 <p>這個研究成果可以應用在多個領域：
 * 防洪系統：能更早、更準確地預測大雨，讓政府有時間啟動防洪機制
 * 農業部門：農民可以根據更準確的降雨預測調整灌溉和施肥計畫
 * 電力部門：水力發電公司能更準確預測來水量，穩定供電
 * 開發中國家：由於是開源模型，成本較低，開發中國家也能用得起
-* 未來擴展：這個方法可以套用到更多作物、更多地區，甚至是其他類型的衛星資料</p>
-<hr /></main>
+* 未來擴展：這個方法可以套用到更多作物、更多地區，甚至是其他類型的衛星資料<br />
+--</p></main>
                     <footer>
                         <div>Hoomie Studio / Academic Flip</div>
                         <div>Slide to Next →</div>
@@ -199,18 +177,17 @@ A Multi-Task Deep Learning Approach for Precipitation Retrieval from Spaceborne 
                 </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">RESEARCH</div>
-                        <h1>未命名研究</h1>
-                        <div class="core-statement">透過整合衛星資料與氣象數據，發現中國遷安採礦區的主導力量是採礦活動，它讓植物生長能力降低了 5.3 億公克碳每年，遠超過氣候變化的影響。</div>
+                        <div class="eng-title">## 文獻名稱 
+Impact of Climatic Variability and Mining Activities on Net Primary Productivity in the High-Intensity Open-Pit Mining Area</div>
+                        <h1>## 文獻中文名稱 
+氣候變異與開採活動對高強度露天採礦區淨主產量影響研究
+
+- 論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1204
+- 抓取時間: 2026-04-17 01:23:01</h1>
+                        <div class="core-statement">### 一句話核心
+透過整合衛星資料與氣象數據，發現中國遷安採礦區的主導力量是採礦活動，它讓植物生長能力降低了 5.3 億公克碳每年，遠超過氣候變化的影響。</div>
                     </header>
-                    <main><p>2026-04-17 01:28:57<br />
-Impact of Climatic Variability and Mining Activities on Net Primary Productivity in the High-Intensity Open-Pit Mining Area</p>
-<p>氣候變異與開採活動對高強度露天採礦區淨主產量影響研究</p>
-<ul>
-<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1204</li>
-<li>抓取時間: 2026-04-17 01:23:01</li>
-</ul>
-<p>透過整合衛星資料與氣象數據，發現中國遷安採礦區的主導力量是採礦活動，它讓植物生長能力降低了 5.3 億公克碳每年，遠超過氣候變化的影響。</p>
+                    <main><p>透過整合衛星資料與氣象數據，發現中國遷安採礦區的主導力量是採礦活動，它讓植物生長能力降低了 5.3 億公克碳每年，遠超過氣候變化的影響。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">淨主產量（NPP，Net Primary Productivity）</strong>是什麼？簡單說就是植物透過光合作用累積的有機碳量，代表植物長得好不好、生態系健康嗎的關鍵指標。</p>
 <p><strong class="red">開採活動</strong>（Mining Activities）：就是在地上挖礦，這會破壞土壤、改變地形、讓原本能長植物的地方變得不能長植物。</p>
@@ -222,9 +199,9 @@ Impact of Climatic Variability and Mining Activities on Net Primary Productivity
 <li><strong class="red">衛星看地表</strong>：用 Sentinel-2 衛星（像太空中的相機）定期拍下地表狀況</li>
 <li><strong class="red">氣象站看天氣</strong>：用 ERA-5 Land 重分析數據集（就像全球氣象大資料庫）來了解天氣變化</li>
 <li><strong class="red">AI 分類土地</strong>：用 Dynamic World V1（一種 AI 工具）來分類不同的土地類型</li>
-<li><strong class="red">精算工具</strong>：改進的 CASA 模型（一種計算植物生產力的方法）加上 Thornthwaite Memorial 演算法（一種估算蒸發量與蒸騰量的方法）來分別算出：</li>
-<li>實際的植物生產力（ANPP，Actual NPP）：植物真正長了多少</li>
-<li>理論上的最佳生產力（PNPP，Potential NPP）：如果天氣好能長多少</li>
+<li><strong class="red">精算工具</strong>：改進的 CASA 模型（一種計算植物生產力的方法）加上 Thornthwaite Memorial 演算法（一種估算蒸發量與蒸騰量的方法）來分別算出：<br />
+實際的植物生產力（ANPP，Actual NPP）：植物真正長了多少<br />
+理論上的最佳生產力（PNPP，Potential NPP）：如果天氣好能長多少</li>
 <li><strong class="red">隔離變量</strong>：用 RCI 指數（相對貢獻指數，Relative Contribution Index）來分辨是哪種因素影響了植物生長</li>
 </ol>
 <h3>驚人發現與具體數據與具體數據</h3>
@@ -237,13 +214,13 @@ Impact of Climatic Variability and Mining Activities on Net Primary Productivity
 <p><strong class="red">總共損失了多少</strong>：整個研究區域的植物生產力累積下降了 <strong class="red">5.3 × 10⁸ 公克碳/年</strong>（也就是 5.3 億公克碳每年，或 53,000 公斤碳每年）。這可不是小數字！</p>
 </li>
 <li>
-<p><strong class="red">哪裡最嚴重</strong>：損失最嚴重的地方集中在核心採礦區，包括：</p>
+<p><strong class="red">哪裡最嚴重</strong>：損失最嚴重的地方集中在核心採礦區，包括：<br />
+Malanzhuang（馬朗莊）<br />
+Caiyuan（蔡園）<br />
+Yangdianzi（楊店子）<br />
+Muchangkou（Muchangkou）<br />
+   這些地方的植物生產力下降特別嚴重。</p>
 </li>
-<li>Malanzhuang（馬朗莊）</li>
-<li>Caiyuan（蔡園）</li>
-<li>Yangdianzi（楊店子）</li>
-<li>Muchangkou（Muchangkou）<br />
-   這些地方的植物生產力下降特別嚴重。</li>
 </ol>
 <h3>這對我有什麼意義？（實際應用）</h3>
 <p>這個研究成果有這些實用價值：</p>
@@ -281,20 +258,20 @@ Impact of Climatic Variability and Mining Activities on Net Primary Productivity
                 </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heatwaves Across China's Three Major Urban Agglomerations</div>
-                        <h1>中國三大都市圈對複合乾旱與熱浪的總原生產力反應差異性研究</h1>
-                        <div class="core-statement">這篇論文發現中國不同地區（北、東、南）面對乾旱和熱浪時，對農作物光合作用的影響完全相反：北方嚴重缺水，作物生長明顯變差；南方雨水充足，作物反而因為高溫而长得更好。</div>
+                        <div class="eng-title">## 文獻名稱
+Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heatwaves Across China's Three Major Urban Agglomerations</div>
+                        <h1>## 文獻中文名稱
+中國三大都市圈對複合乾旱與熱浪的總原生產力反應差異性研究</h1>
+                        <div class="core-statement">### 一句話核心
+這篇論文發現中國不同地區（北、東、南）面對乾旱和熱浪時，對農作物光合作用的影響完全相反：北方嚴重缺水，作物生長明顯變差；南方雨水充足，作物反而因為高溫而长得更好。</div>
                     </header>
-                    <main><p>2026-04-14 22:44:57<br />
-Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heatwaves Across China's Three Major Urban Agglomerations</p>
-<p>中國三大都市圈對複合乾旱與熱浪的總原生產力反應差異性研究</p>
-<p>這篇論文發現中國不同地區（北、東、南）面對乾旱和熱浪時，對農作物光合作用的影響完全相反：北方嚴重缺水，作物生長明顯變差；南方雨水充足，作物反而因為高溫而长得更好。</p>
+                    <main><p>這篇論文發現中國不同地區（北、東、南）面對乾旱和熱浪時，對農作物光合作用的影響完全相反：北方嚴重缺水，作物生長明顯變差；南方雨水充足，作物反而因為高溫而长得更好。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>這篇文章在講什麼是「複合乾旱與熱浪」——就是同時發生又特別嚴重的「又乾又熱」的天氣。想像一下，天不但很熱，而且土壤也變乾了，這樣植物就更難活下去了。</p>
 <p>研究這個問題超重要，因為：<br />
-- 全球氣候變遷讓這種又乾又熱的天氣越來越常見<br />
-- 中國養活很多人，農業是國家大事，如果天氣不好，糧食收成會受影響<br />
-- 理解不同地區對這種極端天氣的不同反應，才能幫政府做好準備，知道哪裡需要特別灌溉、哪裡可能要種不同的作物</p>
+全球氣候變遷讓這種又乾又熱的天氣越來越常見<br />
+中國養活很多人，農業是國家大事，如果天氣不好，糧食收成會受影響<br />
+理解不同地區對這種極端天氣的不同反應，才能幫政府做好準備，知道哪裡需要特別灌溉、哪裡可能要種不同的作物</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>研究團隊用了「遙測衛星」這招。就想像你在太空看地球，用衛星拍的圖片可以知道各地森林和農田的生長狀況。他們分析了中國三個超大城市群的資料：</p>
 <ol>
@@ -307,20 +284,18 @@ Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heat
 <h3>驚人發現與具體數據（關鍵結果）</h3>
 <p>這裡有幾個超重要的發現：</p>
 <p><strong class="red">1. 南北反應完全不同！</strong><br />
-- <strong class="red">北方（缺水地區）</strong>：植物狀況變差了，光合作用降低了大約 1.13 個標準差（想像成績掉了 1 個標準差，大約是中等偏下的表現）<br />
-- <strong class="red">南方（水多地區）</strong>：植物居然狀況變好了！東部地區增加了 0.32 到 1.79 個標準差，南部地區增加了 1.86 到 1.06 個標準差（這表示植物長得更好！）</p>
+<strong class="red">北方（缺水地區）</strong>：植物狀況變差了，光合作用降低了大約 1.13 個標準差（想像成績掉了 1 個標準差，大約是中等偏下的表現）<br />
+<strong class="red">南方（水多地區）</strong>：植物居然狀況變好了！東部地區增加了 0.32 到 1.79 個標準差，南部地區增加了 1.86 到 1.06 個標準差（這表示植物長得更好！）</p>
 <p><strong class="red">2. 為什麼南方反而長得好？</strong><br />
 因為南方的植物本來就有很多水可以用。當天氣熱時，雖然空氣變乾燥了（水汽變少），但植物根部有足夠的水份，還可以把根部扎得更深去找水，所以植物反而能利用高溫加速生長，就像你在泳池玩太久會想游泳更快一樣。</p>
 <p><strong class="red">3. 北方的問題</strong><br />
 北方的植物沒有足夠的水，所以空氣變乾燥就很麻煩，植物乾得不行，成長速度變慢。這就像你跑操場跑操場時帶水壺但水快沒了，你會很累跑不快。</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<p>這個研究超有實用價值：</p>
-<ul>
-<li><strong class="red">農民和地方政府</strong>：可以根據各地區特性做不同規劃。北方要加強灌溉、種耐乾旱作物；南方可以利用氣候優勢發展高效農業</li>
-<li><strong class="red">糧食進口國</strong>：可以更好預測糧食價格波動，避免糧價突然大漲大落</li>
-<li><strong class="red">氣候變遷對策</strong>：這個研究顯示不同地區有不同的挑戰和機會，不能一概而論。每個地方要根據自己的氣候條件做不同的策略</li>
-<li><strong class="red">未來發展</strong>：這個方法可以用在其他作物、其他地區，幫助我們更好應對氣候變遷帶來的挑戰</li>
-</ul>
+<p>這個研究超有實用價值：<br />
+<strong class="red">農民和地方政府</strong>：可以根據各地區特性做不同規劃。北方要加強灌溉、種耐乾旱作物；南方可以利用氣候優勢發展高效農業<br />
+<strong class="red">糧食進口國</strong>：可以更好預測糧食價格波動，避免糧價突然大漲大落<br />
+<strong class="red">氣候變遷對策</strong>：這個研究顯示不同地區有不同的挑戰和機會，不能一概而論。每個地方要根據自己的氣候條件做不同的策略<br />
+<strong class="red">未來發展</strong>：這個方法可以用在其他作物、其他地區，幫助我們更好應對氣候變遷帶來的挑戰</p>
 <p>總結來說：這篇論文告訴我們，面對氣候變遷，不能一概而論，每個地區的優勢和挑戰都不同，要因地制宜地做規劃！</p></main>
                     <footer>
                         <div>Hoomie Studio / Academic Flip</div>
@@ -340,35 +315,34 @@ Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heat
                     <header>
                         <div class="eng-title">RESEARCH</div>
                         <h1>未命名研究</h1>
-                        <div class="core-statement">用衛星的光譜儀（HISUI）測量非洲垃圾填埋場的顏色特徵，找到能穩定辨識垃圾的「光譜指紋」，即使在不同地點也能用。</div>
+                        <div class="core-statement">### 一句話核心
+用衛星的光譜儀（HISUI）測量非洲垃圾填埋場的顏色特徵，找到能穩定辨識垃圾的「光譜指紋」，即使在不同地點也能用。</div>
                     </header>
-                    <main><p>2026-04-14 19:34:04</p>
-<h2>Segment-Based Spectral Characterisation of Municipal Solid Waste in African Landfills Using HISUI Hyperspectral Imagery</h2>
-<p>用衛星的光譜儀（HISUI）測量非洲垃圾填埋場的顏色特徵，找到能穩定辨識垃圾的「光譜指紋」，即使在不同地點也能用。</p>
+                    <main><p>用衛星的光譜儀（HISUI）測量非洲垃圾填埋場的顏色特徵，找到能穩定辨識垃圾的「光譜指紋」，即使在不同地點也能用。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">垃圾填埋場</strong>（Municipal Solid Waste Landfills）是城市垃圾最終堆放的地方，但非洲許多國家的垃圾處理基礎設施落後於快速的城市化發展，導致大量垃圾無序堆放。</p>
 <p><strong class="red">光譜影像</strong>（Hyperspectral Imagery）是一種能捕捉物體在很寬廣光譜範圍內（400-2500 納米）反射特性的技術，就像給物體做全身檢查一樣，不只是看到顏色，還能看到不同波長的光被吸收或反射的細節。</p>
 <p><strong class="red">研究痛點</strong>：<br />
-- 非洲許多垃圾場沒有系統的監控機制，無法知道垃圾堆在哪裡、量有多少<br />
-- 傳統的衛星影像（如 Landsat）只能看到大致的紅、綠、藍三原色，看不太出細微差別<br />
-- 需要找到一種方法，能自動從衛星影像中辨識出垃圾填埋場，而且要在不同的地點都有效</p>
+非洲許多垃圾場沒有系統的監控機制，無法知道垃圾堆在哪裡、量有多少<br />
+傳統的衛星影像（如 Landsat）只能看到大致的紅、綠、藍三原色，看不太出細微差別<br />
+需要找到一種方法，能自動從衛星影像中辨識出垃圾填埋場，而且要在不同的地點都有效</p>
 <p>這就像想訓練一隻狗聞垃圾的味道，但每隻狗的嗅覺不一樣、每個垃圾場環境不同，我們希望訓練出任何垃圾場都能用的「嗅覺方法」。</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>研究團隊做了以下工作：</p>
 <p><strong class="red">第一步：收集資料</strong><br />
-- 在非洲七個國家的八個垃圾場位置，用衛星上的<strong class="red">HISUI 光譜儀</strong>拍攝影像<br />
-- HISUI 像是個高畫質的彩色相機，能捕捉 400-2500 納米的波段，解析度每 20 公尺一個像素<br />
-- 一共分析了<strong class="red">109,275 個像素</strong>（也就是影像中的小格點）</p>
+在非洲七個國家的八個垃圾場位置，用衛星上的<strong class="red">HISUI 光譜儀</strong>拍攝影像<br />
+HISUI 像是個高畫質的彩色相機，能捕捉 400-2500 納米的波段，解析度每 20 公尺一個像素<br />
+一共分析了<strong class="red">109,275 個像素</strong>（也就是影像中的小格點）</p>
 <p><strong class="red">第二步：把影像切塊處理</strong><br />
-- 因為衛星影像有些地方太暗、訊號不好（像在霧裡拍照），他們先把這些模糊的地方遮住<br />
-- 剩下的好資料分成不同區塊，每個區塊單獨分析</p>
+因為衛星影像有些地方太暗、訊號不好（像在霧裡拍照），他們先把這些模糊的地方遮住<br />
+剩下的好資料分成不同區塊，每個區塊單獨分析</p>
 <p><strong class="red">第三步：找「光譜指紋」</strong><br />
-- <strong class="red">亮度分析法</strong>：看不同地點的垃圾場跟土壤、建築物的亮度差異<br />
-- <strong class="red">形狀比較法</strong>：用一種叫<strong class="red">Spectral Contrast Angle (SCA)</strong> 的指標，把不同地點的光譜形狀做標準化比較，就像把兩張圖片都調到同樣的亮度再比細節<br />
-- <strong class="red">導數光譜分析</strong>：看光譜曲線在不同波長的彎曲程度，像是看山脈的形狀一樣</p>
+<strong class="red">亮度分析法</strong>：看不同地點的垃圾場跟土壤、建築物的亮度差異<br />
+<strong class="red">形狀比較法</strong>：用一種叫<strong class="red">Spectral Contrast Angle (SCA)</strong> 的指標，把不同地點的光譜形狀做標準化比較，就像把兩張圖片都調到同樣的亮度再比細節<br />
+<strong class="red">導數光譜分析</strong>：看光譜曲線在不同波長的彎曲程度，像是看山脈的形狀一樣</p>
 <p><strong class="red">第四步：驗證結果</strong><br />
-- 測試在不同的垃圾場位置，找到的特徵是否都能穩定適用<br />
-- 發現有些方法在每個地點都表現不一，但有些特徵在多個地點都很一致</p>
+測試在不同的垃圾場位置，找到的特徵是否都能穩定適用<br />
+發現有些方法在每個地點都表現不一，但有些特徵在多個地點都很一致</p>
 <h3>驚人發現與具體數據</h3>
 <ol>
 <li>
@@ -385,14 +359,12 @@ Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heat
 </li>
 </ol>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li><strong class="red">非洲國家與地方政府</strong>：可以用低成本的衛星資料，快速找出哪裡有垃圾場、垃圾量大概多少，不用派太多人去現場檢查</li>
-<li><strong class="red">環境保護組織</strong>：可以追蹤垃圾場的擴張情況，監督政府有沒有好好處理垃圾</li>
-<li><strong class="red">開發中國家</strong>：不用花大錢建立自己的遙測系統，用開源的衛星資料就能做環境監測</li>
-<li><strong class="red">未來擴展</strong>：這個方法可以用在處理稻米、玉米等其他作物的衛星分析上，也能應用在其他地區</li>
-<li><strong class="red">氣候變化對策</strong>：垃圾分解會產生甲烷（一種強效溫室氣體），如果能及早發現垃圾場並監控，有助於減緩氣候變化的影響</li>
-<li><strong class="red">促進公平</strong>：先進國家的技術經驗，能幫助資源較少的國家也能做好環境監測</li>
-</ul></main>
+<p><strong class="red">非洲國家與地方政府</strong>：可以用低成本的衛星資料，快速找出哪裡有垃圾場、垃圾量大概多少，不用派太多人去現場檢查<br />
+<strong class="red">環境保護組織</strong>：可以追蹤垃圾場的擴張情況，監督政府有沒有好好處理垃圾<br />
+<strong class="red">開發中國家</strong>：不用花大錢建立自己的遙測系統，用開源的衛星資料就能做環境監測<br />
+<strong class="red">未來擴展</strong>：這個方法可以用在處理稻米、玉米等其他作物的衛星分析上，也能應用在其他地區<br />
+<strong class="red">氣候變化對策</strong>：垃圾分解會產生甲烷（一種強效溫室氣體），如果能及早發現垃圾場並監控，有助於減緩氣候變化的影響<br />
+<strong class="red">促進公平</strong>：先進國家的技術經驗，能幫助資源較少的國家也能做好環境監測</p></main>
                     <footer>
                         <div>Hoomie Studio / Academic Flip</div>
                         <div>Slide to Next →</div>
@@ -411,20 +383,15 @@ Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heat
                     <header>
                         <div class="eng-title">RESEARCH</div>
                         <h1>未命名研究</h1>
-                        <div class="core-statement">NASA 研發了一款搭載在高空飛機上的光譜儀（PICARD），並建立了一套完整的實驗室校正方法，讓這台儀器能在 20 公里高空飛行的同時，提供精確可靠的輻射測量數據。</div>
+                        <div class="core-statement">### 一句話核心
+NASA 研發了一款搭載在高空飛機上的光譜儀（PICARD），並建立了一套完整的實驗室校正方法，讓這台儀器能在 20 公里高空飛行的同時，提供精確可靠的輻射測量數據。</div>
                     </header>
-                    <main><p>2026-04-14 18:34:42</p>
-<h2>A NIST-Traceable Lab-to-Sky Spectral and Radiometric Calibration for NASA's High-Altitude Airborne Hyperspectral Pushbroom Imager for Cloud and Aerosol Research and Development (PICARD)</h2>
-<ul>
-<li>URL: https://www.mdpi.com/2072-4292/18/8/1168</li>
-<li>抓取時間: 2026-04-14 18:25:14<br />
-NASA 研發了一款搭載在高空飛機上的光譜儀（PICARD），並建立了一套完整的實驗室校正方法，讓這台儀器能在 20 公里高空飛行的同時，提供精確可靠的輻射測量數據。</li>
-</ul>
+                    <main><p>NASA 研發了一款搭載在高空飛機上的光譜儀（PICARD），並建立了一套完整的實驗室校正方法，讓這台儀器能在 20 公里高空飛行的同時，提供精確可靠的輻射測量數據。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">關鍵詞解釋：</strong><br />
-- <strong class="red">光譜儀（spectrometer）：</strong> 一種能把光拆分成不同顏色（波長）並測量每個顏色強度的儀器，就像用一個超級精準的棱鏡把白光拆成彩虹一樣。<br />
-- <strong class="red">大氣校正（atmospheric correction）：</strong> 我們從太空或飛機看地球時，光線要穿過大氣層，大氣中的氣雲、霧氣會吸收或散射部分光線，所以我們看到的不是地表真實的顏色和亮度，需要校正這些大氣干擾才能知道地表到底長什麼樣。<br />
-- <strong class="red">NASA ER-2 飛機：</strong> 一架能在 20 公里高空（約 65,000 英尺）飛行的科學研究飛機，比普通民航飛機飛得更高、更慢，適合攜帶科學儀器進行大氣研究。</p>
+<strong class="red">光譜儀（spectrometer）：</strong> 一種能把光拆分成不同顏色（波長）並測量每個顏色強度的儀器，就像用一個超級精準的棱鏡把白光拆成彩虹一樣。<br />
+<strong class="red">大氣校正（atmospheric correction）：</strong> 我們從太空或飛機看地球時，光線要穿過大氣層，大氣中的氣雲、霧氣會吸收或散射部分光線，所以我們看到的不是地表真實的顏色和亮度，需要校正這些大氣干擾才能知道地表到底長什麼樣。<br />
+<strong class="red">NASA ER-2 飛機：</strong> 一架能在 20 公里高空（約 65,000 英尺）飛行的科學研究飛機，比普通民航飛機飛得更高、更慢，適合攜帶科學儀器進行大氣研究。</p>
 <p>這項研究想解決的問題：<br />
 1. <strong class="red">如何讓高空飛機上的光譜儀測量數據精準可靠？</strong> 當飛機在高空飛行時，陽光照射到地表和雲層的光線強度差異很大，如果校正不好，測量數據就會有偏差。<br />
 2. <strong class="red">為什麼實驗室裡測得準，到了飛機上卻不准？</strong> 研究團隊發現，實驗室用白熆燈（發出紅外線較強的光）來校正儀器，但太陽光的光譜分布跟白熆燈完全不同，這導致實驗室校正的結果直接用在野外會出問題。<br />
@@ -460,11 +427,11 @@ NASA 研發了一款搭載在高空飛機上的光譜儀（PICARD），並建立
 </ol>
 <h3>這對我有什麼意義？（實際應用）</h3>
 <p>這套校正方法的意義：<br />
-- <strong class="red">氣候變化研究：</strong> 科學家可以更精準地從飛機上測量雲層和大氣中的微粒（如粉塵、火山灰、煙霧）濃度，幫助了解這些物質如何影響氣候變化。<br />
-- <strong class="red">大氣成分監測：</strong> 更準確地測量大氣中的氣體（如臭氧、水氣）含量，這些對保護我們免受紫外線傷害、維持溫室效應平衡至關重要。<br />
-- <strong class="red">新感測器測試：</strong> 在飛機上進行「虛擬衛星數據」測試，驗證新型感測器設計或數據解譯演算法，在真正發射衛星前就能發現問題。<br />
-- <strong class="red">開源數據共享：</strong> 所有測量數據都免費公開，讓全球科學家（包括開發中國家）都能使用這些高品質數據進行研究。<br />
-- <strong class="red">未來任務基礎：</strong> 為未來可能發射的新型對地觀測衛星提供技術基礎，許多在地面或實驗室開發的校正方法都可以應用到太空任務中。</p></main>
+<strong class="red">氣候變化研究：</strong> 科學家可以更精準地從飛機上測量雲層和大氣中的微粒（如粉塵、火山灰、煙霧）濃度，幫助了解這些物質如何影響氣候變化。<br />
+<strong class="red">大氣成分監測：</strong> 更準確地測量大氣中的氣體（如臭氧、水氣）含量，這些對保護我們免受紫外線傷害、維持溫室效應平衡至關重要。<br />
+<strong class="red">新感測器測試：</strong> 在飛機上進行「虛擬衛星數據」測試，驗證新型感測器設計或數據解譯演算法，在真正發射衛星前就能發現問題。<br />
+<strong class="red">開源數據共享：</strong> 所有測量數據都免費公開，讓全球科學家（包括開發中國家）都能使用這些高品質數據進行研究。<br />
+<strong class="red">未來任務基礎：</strong> 為未來可能發射的新型對地觀測衛星提供技術基礎，許多在地面或實驗室開發的校正方法都可以應用到太空任務中。</p></main>
                     <footer>
                         <div>Hoomie Studio / Academic Flip</div>
                         <div>Slide to Next →</div>
@@ -481,18 +448,17 @@ NASA 研發了一款搭載在高空飛機上的光譜儀（PICARD），並建立
                 </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides</div>
-                        <h1>用地形測量改進的地震動模型，用於預測地震誘發的山崩</h1>
-                        <div class="core-statement">這篇論文用機器學習方法，結合地震資料和地形測量數據，更準確預測山崩發生的風險區域。</div>
+                        <div class="eng-title">## 文獻名稱
+Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides</div>
+                        <h1>## 文獻中文名稱
+用地形測量改進的地震動模型，用於預測地震誘發的山崩
+
+- URL: https://www.mdpi.com/2072-4292/18/8/1169
+- 抓取時間: 2026-04-14 18:09:35</h1>
+                        <div class="core-statement">### 一句話核心
+這篇論文用機器學習方法，結合地震資料和地形測量數據，更準確預測山崩發生的風險區域。</div>
                     </header>
-                    <main><p>2026-04-14 18:18:12<br />
-Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides</p>
-<p>用地形測量改進的地震動模型，用於預測地震誘發的山崩</p>
-<ul>
-<li>URL: https://www.mdpi.com/2072-4292/18/8/1169</li>
-<li>抓取時間: 2026-04-14 18:09:35<br />
-這篇論文用機器學習方法，結合地震資料和地形測量數據，更準確預測山崩發生的風險區域。</li>
-</ul>
+                    <main><p>這篇論文用機器學習方法，結合地震資料和地形測量數據，更準確預測山崩發生的風險區域。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>在陡峭的山區，地震時最容易發生山崩，這類災害造成的損失很大。山崩是不是發生，取決於兩個因素：一是地震時的震動強度，二是當地的地質條件。然而，以往的地震動預測模型大多只考慮簡單的地層指標（例如：VS30，代表地表下 30 公尺的平均剪切波速度），卻忽略了複雜的地形地貌。在陡峭的山區，地形本身就會放大或減弱地震波，例如山脊、山谷、坡度的曲率等都會影響震動強度。因此，需要發展一種能考慮地形地貌影響的新模型，來更準確預測哪些地方容易發生山崩。</p>
 <h3>他們做了什麼？（研究方法）</h3>
@@ -568,21 +534,17 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <h1>學術早報摘要</h1>
 <h2>論文摘要：Flood Susceptibility Mapping of the Kosi Megafan Using Ensemble Machine Learning and SAR Data</h2>
 <h3>基本信息</h3>
-<ul>
-<li><strong class="red">發表日期：</strong> 13 April 2026</li>
-<li><strong class="red">期刊：</strong> Remote Sensing</li>
-<li><strong class="red">作者：</strong> Khaled Mahamud Khan, Bo Wang, Hemal Dey, Dhiraj Pradhananga, Laurence C. Smith</li>
-</ul>
+<p><strong class="red">發表日期：</strong> 13 April 2026<br />
+<strong class="red">期刊：</strong> Remote Sensing<br />
+<strong class="red">作者：</strong> Khaled Mahamud Khan, Bo Wang, Hemal Dey, Dhiraj Pradhananga, Laurence C. Smith</p>
 <h3>摘要</h3>
 <p>洪水和氣候變遷、快速城市化和土地利用變化等影響，每年導致數十億人生活受擾。本研究開發集成機器學習框架，對尼泊爾和印度的 Kosi Megafan 進行洪水易感性製圖。比較了多種 ML 模型和一維卷積神經網絡（1D-CNN），驗證結果，並評估暴露於高風險區的人口。</p>
 <p>使用 13 個洪水條件因子（FCFs）訓練了多種模型，包括隨機森林（RF）、極端梯度提升（XGBoost）、適應性增強（AdaBoost）、支援向量機（SVM）、1D-CNN 以及疊加集成模型。其中，疊加集成模型表現最佳（AUC = 0.76，準確率 = 0.70）。</p>
 <p>洪水易感性圖顯示，高風險區主要集中在 Megafan 的南部和西南部，與 Sentinel-1 導出的洪水清單一致。</p>
 <h3>主要發現</h3>
-<ul>
-<li>約 39% 的 Kosi Megafan 屬於高到極高洪水易感區</li>
-<li>關鍵驅動因子：高程、地理因素指數（GFI）、降水和 NDVI</li>
-<li>近 269 萬人口居住在高風險區</li>
-</ul>
+<p>約 39% 的 Kosi Megafan 屬於高到極高洪水易感區<br />
+關鍵驅動因子：高程、地理因素指數（GFI）、降水和 NDVI<br />
+近 269 萬人口居住在高風險區</p>
 <h3>研究意義</h3>
 <p>結合 SAR 數據和集成機器學習可提高洪水易感性製圖的準確性，特別適用於數據匱乏的災害敏感盆地。此研究支持建立該地區韌性和減輕洪水長期影響的努力，並強調需要更好的洪水規劃、風險減緩策略以及社區主導的早期預警系統。</p>
 <h3>結論</h3>
@@ -603,56 +565,50 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
                 </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Identifying Uniform Layer Thicknesses with GPR Data for PMS Use</div>
-                        <h1>**用雷達波（GPR）資料找出路面上各層厚度一致的路段，用於路面管理系統**</h1>
-                        <div class="core-statement">這篇論文發展了一種新方法，用雷達掃描資料自動把柏油路分成「厚度一致」的路段，讓交通部門能更有效率地安排保養工程。</div>
+                        <div class="eng-title">## 文獻名稱
+Identifying Uniform Layer Thicknesses with GPR Data for PMS Use</div>
+                        <h1>## 文獻中文名稱
+**用雷達波（GPR）資料找出路面上各層厚度一致的路段，用於路面管理系統**
+
+- URL: https://www.mdpi.com/2072-4292/18/8/1155
+- 抓取時間: 2026-04-14 14:17:01</h1>
+                        <div class="core-statement">### 一句話核心
+這篇論文發展了一種新方法，用雷達掃描資料自動把柏油路分成「厚度一致」的路段，讓交通部門能更有效率地安排保養工程。</div>
                     </header>
-                    <main><p>2026-04-14 14:31:03</p>
-<h1>今日論文摘要</h1>
-<p>Identifying Uniform Layer Thicknesses with GPR Data for PMS Use</p>
-<p><strong class="red">用雷達波（GPR）資料找出路面上各層厚度一致的路段，用於路面管理系統</strong></p>
-<ul>
-<li>URL: https://www.mdpi.com/2072-4292/18/8/1155</li>
-<li>抓取時間: 2026-04-14 14:17:01</li>
-</ul>
-<p>這篇論文發展了一種新方法，用雷達掃描資料自動把柏油路分成「厚度一致」的路段，讓交通部門能更有效率地安排保養工程。</p>
+                    <main><p>這篇論文發展了一種新方法，用雷達掃描資料自動把柏油路分成「厚度一致」的路段，讓交通部門能更有效率地安排保養工程。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>想像一下，你負責管理全州的公路。每條路上都有好多層：上層是柏油、中間有碎石層、底下還有更堅硬的結構層。每一層的厚度都不一樣，而且有些地方厚、有些地方薄，像皮膚上有斑點一樣。</p>
 <p>問題在於：<br />
-- <strong class="red">傳統做法太慢又太貴</strong>：要找出哪些路段厚度一致，過去只能用「鑽樣管」的方式挖開路面去量，這要封路、要交通管制，又耗錢耗時。<br />
-- <strong class="red">路面保養很重要</strong>：路太薄容易壞，太厚又浪費材料。要知道整個路網哪裡需要修、哪裡可以延後，就得知道路面厚度到底有多少變化。<br />
-- <strong class="red">現有的雷達（GPR）資料用不好</strong>：雖然雷達可以快速掃描出每點的厚度，但這些數據太細太密，交通部門處理不了這麼多點。需要把資料「歸類」成較大範圍、厚度一致的區塊，才能用於路面管理系統（PMS）。</p>
+<strong class="red">傳統做法太慢又太貴</strong>：要找出哪些路段厚度一致，過去只能用「鑽樣管」的方式挖開路面去量，這要封路、要交通管制，又耗錢耗時。<br />
+<strong class="red">路面保養很重要</strong>：路太薄容易壞，太厚又浪費材料。要知道整個路網哪裡需要修、哪裡可以延後，就得知道路面厚度到底有多少變化。<br />
+<strong class="red">現有的雷達（GPR）資料用不好</strong>：雖然雷達可以快速掃描出每點的厚度，但這些數據太細太密，交通部門處理不了這麼多點。需要把資料「歸類」成較大範圍、厚度一致的區塊，才能用於路面管理系統（PMS）。</p>
 <p>所以，研究人員想發展一種新方法，把雷達資料整理成適合管理系統使用的格式，同時保持足夠的準確度。</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>研究者開發了一個「分階段精進」的處理流程，像煮咖哩一樣：</p>
 <p><strong class="red">第一步：用雷達掃路面</strong><br />
-- 用裝在卡車上的地面穿透雷達（GPR）沿著公路掃過去<br />
-- 雷達發射電波，遇到不同材質的介面（比如柏油與碎石的交界）就會反射回來<br />
-- 電腦記錄下反射時間，就可以算出各層的厚度</p>
+用裝在卡車上的地面穿透雷達（GPR）沿著公路掃過去<br />
+雷達發射電波，遇到不同材質的介面（比如柏油與碎石的交界）就會反射回來<br />
+電腦記錄下反射時間，就可以算出各層的厚度</p>
 <p><strong class="red">第二步：把細碎的數據「分組」</strong><br />
-- 雷達每幾十公分就量一次，數據很多！<br />
-- 研究者用統計方法，把厚度變化很小的點「分在一起」，形成一個個區塊<br />
-- 就像把一袋混合的大米，用篩子篩出「差不多大小的米粒」放在一起</p>
+雷達每幾十公分就量一次，數據很多！<br />
+研究者用統計方法，把厚度變化很小的點「分在一起」，形成一個個區塊<br />
+就像把一袋混合的大米，用篩子篩出「差不多大小的米粒」放在一起</p>
 <p><strong class="red">第三步：用「邊界比較」的方法</strong><br />
-- 看區塊與區塊之間的厚度變化<br />
-- 如果兩個區塊厚度差很多，就說明了那是明顯的「交界」<br />
-- 如果厚度差不多，就把這兩個區塊合併成一個更大的區塊</p>
+看區塊與區塊之間的厚度變化<br />
+如果兩個區塊厚度差很多，就說明了那是明顯的「交界」<br />
+如果厚度差不多，就把這兩個區塊合併成一個更大的區塊</p>
 <p><strong class="red">第四步：精進與驗證</strong><br />
-- 一開始分得比較粗，然後不斷細化，看分得是否合理<br />
-- 用實際鑽取的路面樣品去比對，確認方法夠準確</p>
+一開始分得比較粗，然後不斷細化，看分得是否合理<br />
+用實際鑽取的路面樣品去比對，確認方法夠準確</p>
 <p>整個過程像不斷把「大塊麵疙瘩」攪拌後再切開，一次切一次，直到切到理想大小為止。</p>
 <h3>驚人發現與具體數據（關鍵結果）</h3>
-<ul>
-<li>這個新方法能成功辨識出厚度一致的路段，準確度足夠用於路面管理系統</li>
-<li>相比傳統一點一點量取的方法，能處理大範圍的路網數據，效率提升明顯</li>
-<li>透過統計分組，能把原本細碎龐雜的雷達資料，整理成交通部門能直接使用的格式</li>
-</ul>
+<p>這個新方法能成功辨識出厚度一致的路段，準確度足夠用於路面管理系統<br />
+相比傳統一點一點量取的方法，能處理大範圍的路網數據，效率提升明顯<br />
+透過統計分組，能把原本細碎龐雜的雷達資料，整理成交通部門能直接使用的格式</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li><strong class="red">對市政府/交通局</strong>：可以用這個方法快速分析整條路網的厚度狀況，知道哪些路段需要大修、哪些可以小修。節省封路和檢測的成本。</li>
-<li><strong class="red">對工程人員</strong>：設計修補方案時，不用再鑽取大量樣品，用雷達資料就能估算厚度分布。</li>
-<li><strong class="red">對一般市民</strong>：道路保養得更及時，減少坑洞和事故風險，行車更安全。</li>
-</ul></main>
+<p><strong class="red">對市政府/交通局</strong>：可以用這個方法快速分析整條路網的厚度狀況，知道哪些路段需要大修、哪些可以小修。節省封路和檢測的成本。<br />
+<strong class="red">對工程人員</strong>：設計修補方案時，不用再鑽取大量樣品，用雷達資料就能估算厚度分布。<br />
+<strong class="red">對一般市民</strong>：道路保養得更及時，減少坑洞和事故風險，行車更安全。</p></main>
                     <footer>
                         <div>Hoomie Studio / Academic Flip</div>
                         <div>Slide to Next →</div>
@@ -671,30 +627,22 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
                     <header>
                         <div class="eng-title">RESEARCH</div>
                         <h1>未命名研究</h1>
-                        <div class="core-statement">地球觀測數據量爆炸式成長，雲端計算讓研究者能在數據存放的伺服器上直接處理分析，不用下載海量資料，大幅提升植被研究的效率與重複性。</div>
+                        <div class="core-statement">### 一句話核心
+地球觀測數據量爆炸式成長，雲端計算讓研究者能在數據存放的伺服器上直接處理分析，不用下載海量資料，大幅提升植被研究的效率與重複性。</div>
                     </header>
-                    <main><p>2026-04-14 13:46:10</p>
-<h1>學術早報</h1>
-<h2>Cloud-Native Earth Observation for Quantitative Vegetation Science: Architectures, Workflows, and Scientific Implications</h2>
-<ul>
-<li><strong class="red">文獻名稱:</strong> Cloud-Native Earth Observation for Quantitative Vegetation Science: Architectures, Workflows, and Scientific Implications</li>
-<li><strong class="red">中文名稱:</strong> 為定量植被科學打造的雲端原生地球觀測：架構、工作流程與科學意涵</li>
-<li><strong class="red">URL:</strong> https://www.mdpi.com/2072-4292/18/8/1154</li>
-<li><strong class="red">抓取時間:</strong> 2026-04-14 13:37:32</li>
-</ul>
-<p>地球觀測數據量爆炸式成長，雲端計算讓研究者能在數據存放的伺服器上直接處理分析，不用下載海量資料，大幅提升植被研究的效率與重複性。</p>
+                    <main><p>地球觀測數據量爆炸式成長，雲端計算讓研究者能在數據存放的伺服器上直接處理分析，不用下載海量資料，大幅提升植被研究的效率與重複性。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>以前我們做植被研究時，必須把衛星拍攝的地球照片（remote sensing）全部下載到電腦上再慢慢處理。問題是：<br />
-- 衛星影像越來越清晰，檔案超級大<br />
-- 不同時間、不同衛星拍的資料都要整合<br />
-- 傳統的下載-處理方式已經跟不上時代了</p>
+衛星影像越來越清晰，檔案超級大<br />
+不同時間、不同衛星拍的資料都要整合<br />
+傳統的下載-處理方式已經跟不上時代了</p>
 <p>就像你想看 Netflix 電影，還得等錄影帶寄到一樣！現代地球觀測需要的是「雲端原生」的方法——直接到數據所在地處理，就像點流媒體一樣快速。</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>這篇文章是篇<strong class="red">回顧性研究</strong>（review paper），就像是一位導遊帶你參觀整個雲端地球觀測的「博物館」。他們：<br />
-- 整理分析了過去幾年來的各種雲端觀測架構<br />
-- 研究不同資料模型和計算方式<br />
-- 特別是 Machine Learning（機器學習）在雲端環境下的應用<br />
-- 比較了各種方法的優缺點</p>
+整理分析了過去幾年來的各種雲端觀測架構<br />
+研究不同資料模型和計算方式<br />
+特別是 Machine Learning（機器學習）在雲端環境下的應用<br />
+比較了各種方法的優缺點</p>
 <p>簡單來說，就是幫所有人整理一份「雲端觀測工具使用指南」。</p>
 <h3>驚人發現與具體數據</h3>
 <p>這篇論文是篇綜述，沒有特定的實驗數據，但提出了幾個重要觀點：<br />
@@ -703,16 +651,15 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 3. <strong class="red">可重複性大提升</strong>：标准化的雲端工作流程讓研究結果更容易被其他人驗證</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
 <p>如果你對以下領域感興趣，這套方法會很有幫助：<br />
-- <strong class="red">環境監測</strong>：追蹤森林覆蓋、作物生長狀況<br />
-- <strong class="red">氣候變遷研究</strong>：分析全球植生變化趨勢<br />
-- <strong class="red">農業精準管理</strong>：大規模監控農田狀況<br />
-- <strong class="red">災難應變</strong>：快速評估災害對植被的影響</p>
+<strong class="red">環境監測</strong>：追蹤森林覆蓋、作物生長狀況<br />
+<strong class="red">氣候變遷研究</strong>：分析全球植生變化趨勢<br />
+<strong class="red">農業精準管理</strong>：大規模監控農田狀況<br />
+<strong class="red">災難應變</strong>：快速評估災害對植被的影響</p>
 <p>對產業來說，這意味著：<br />
-- 可以用較低的成本處理大量衛星數據<br />
-- 研究成果更容易被驗證和重複<br />
-- 可以長期持續地監測某個地區的生態變化</p>
-<p>就像從「手寫計算」進化為「使用計算機」一樣，這套方法讓地球科學研究進入新的時代！</p>
-<hr />
+可以用較低的成本處理大量衛星數據<br />
+研究成果更容易被驗證和重複<br />
+可以長期持續地監測某個地區的生態變化</p>
+<h2>就像從「手寫計算」進化為「使用計算機」一樣，這套方法讓地球科學研究進入新的時代！</h2>
 <p><em>學術早報 12.5</em></p></main>
                     <footer>
                         <div>Hoomie Studio / Academic Flip</div>
@@ -731,15 +678,12 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">RESEARCH</div>
-                        <h1>使用集成機器學習與合成孔徑雷達數據對科西超大扇區洪水易感性繪圖</h1>
-                        <div class="core-statement">結合雷達與集成機器學習，發現科西河谷約 39% 地區易受洪水侵襲，約 269 萬人口居住在高風險區。</div>
+                        <h1>### 文獻中文名稱
+使用集成機器學習與合成孔徑雷達數據對科西超大扇區洪水易感性繪圖</h1>
+                        <div class="core-statement">### 一句話核心
+結合雷達與集成機器學習，發現科西河谷約 39% 地區易受洪水侵襲，約 269 萬人口居住在高風險區。</div>
                     </header>
-                    <main><p>2026-04-14 13:03:13</p>
-<h1>📋 學術早報 - 2026-04-14</h1>
-<h2>1️⃣ 文獻名稱</h2>
-<p><strong class="red">Flood Susceptibility Mapping of the Kosi Megafan Using Ensemble Machine Learning and SAR Data</strong></p>
-<h1>使用集成機器學習與合成孔徑雷達數據對科西超大扇區洪水易感性繪圖</h1>
-<p>結合雷達與集成機器學習，發現科西河谷約 39% 地區易受洪水侵襲，約 269 萬人口居住在高風險區。</p>
+                    <main><p>結合雷達與集成機器學習，發現科西河谷約 39% 地區易受洪水侵襲，約 269 萬人口居住在高風險區。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>洪水（flood）就像大自然的「大洗澡」，每年影響全球數億人，加上氣候變遷、都市化讓情況更糟。科西河（Kosi River）流經尼泊爾與印度，地形複雜、氣候多變，加上人口密集，一旦洪水洶湧而來，就會造成大災難。過去 1954 年到 2014 年間，僅尼泊爾就有 6500 人因洪水喪生、350 萬人生計受創。2008 年 8 月，堤防因為維護不善被冲破，洪水改道肆虐。研究團隊想回答：<strong class="red">到底哪些地方最容易淹水？多少人在危險區？我們該怎麼防護？</strong></p>
 <h3>他們做了什麼？（研究方法）</h3>
@@ -748,23 +692,21 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 2. 整理過去 1992-2022 年的洪水紀錄，建立「洪水事件清單」，總共找出 13 個可能導致洪水的因素（FCFs），最後留下 8 個最有用的（比如海拔、降雨量、植被變化等）。<br />
 3. 訓練多個機器學習模型（像是 Random Forest、XGBoost、SVM 等）來預測洪水，最後還用「疊加集成模型」把各個模型的優點綜合起來，就像請多位醫生一起会诊。</p>
 <h3>驚人發現與具體數據（關鍵結果）</h3>
-<ul>
-<li>最終模型表現亮眼：<strong class="red">AUC = 0.76</strong>（類似考試得分，越高越准）、<strong class="red">準確率 70%</strong>。</li>
-<li>科西河谷中，約 <strong class="red">39%</strong> 的土地屬於「高到非常高洪水風險區」。</li>
-<li>高風險區主要由這些因素驅動：<strong class="red">海拔（elevation）</strong>、<strong class="red">地表腐蝕指數（GFI）</strong>、<strong class="red">降雨量（precipitation）</strong>、<strong class="red">植被指數（NDVI）</strong>。</li>
-<li>這些預測結果與雷達資料及過去紀錄高度吻合，說明方法可靠。</li>
-</ul>
+<p>最終模型表現亮眼：<strong class="red">AUC = 0.76</strong>（類似考試得分，越高越准）、<strong class="red">準確率 70%</strong>。<br />
+科西河谷中，約 <strong class="red">39%</strong> 的土地屬於「高到非常高洪水風險區」。<br />
+高風險區主要由這些因素驅動：<strong class="red">海拔（elevation）</strong>、<strong class="red">地表腐蝕指數（GFI）</strong>、<strong class="red">降雨量（precipitation）</strong>、<strong class="red">植被指數（NDVI）</strong>。<br />
+這些預測結果與雷達資料及過去紀錄高度吻合，說明方法可靠。</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li>政府與救災單位可以用這套方法規劃防洪堤、疏散路線、早期預警系統。</li>
-<li>當地居民、社區組織可以藉此了解自己的風險，減少財產損失。</li>
-<li>對於像尼泊爾這樣缺乏資料的地區，這是一種低成本又有效的風險評估工具，也能幫助建立社區防災能力。</li>
-<li>氣候變遷加劇洪災，這套方法未來可擴展到其他洪水頻發地區。</li>
-</ul>
-<hr />
+<p>政府與救災單位可以用這套方法規劃防洪堤、疏散路線、早期預警系統。<br />
+當地居民、社區組織可以藉此了解自己的風險，減少財產損失。<br />
+對於像尼泊爾這樣缺乏資料的地區，這是一種低成本又有效的風險評估工具，也能幫助建立社區防災能力。<br />
+氣候變遷加劇洪災，這套方法未來可擴展到其他洪水頻發地區。<br />
+--</p>
 <h2>2️⃣ 文獻名稱</h2>
 <p><strong class="red">A Framework for Accurate Annual Regional Crop Yield Prediction</strong></p>
-<h1>準確預測年度區域作物產量的框架</h1>
+<h3>文獻中文名稱</h3>
+<p>準確預測年度區域作物產量的框架</p>
+<h3>一句話核心</h3>
 <p>使用開源資料與 LSTM 神經網路，能準確預測小麥產量，發現生長期（4-6 月）的植被指數（EVI）與產量高度相關。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>氣候變遷加上地緣政治不穩，讓食物安全變得越來越艱難。糧食生產與分配必須穩定，尤其小麥（winter barley）這類主食。然而自 1990 年代起，全球小麥產量開始停滯，部分原因是肥料政策、水資源匱乏、高溫熱浪等。為了確保糧食安全，決策者需要：<strong class="red">準確預測未來產量，才能提前安排種子、肥料、灌溉與運輸</strong>。但過去的方法需要大量地面測量（ground truth），成本太高。研究團隊想問：<strong class="red">能不能只用開源資料、不用下田測量，就準確預測產量？</strong></p>
@@ -775,23 +717,21 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 3. 用歷史產量資料、氣象資料（溫度、日照時數等），丟進三種模型：<strong class="red">1D 卷積神經網路（CNN）、長短期記憶網路（LSTM）、CNN-LSTM 混合模型</strong>，最後 LSTM 表現最好。<br />
 4. 分析找出關鍵：4-6 月的 <strong class="red">EVI 越高越好</strong>，但 <strong class="red">NDMI（植物含水率）過高反而降低產量</strong>，就像作物「喝水喝太多」反而長不好。</p>
 <h3>驚人發現與具體數據（關鍵結果）</h3>
-<ul>
-<li>LSTM 模型表現最穩，<strong class="red">RMSE = 0.406 kg/公頃</strong>（預測誤差極小）、<strong class="red">MAE = 10.495 kg/公頃</strong>。</li>
-<li><strong class="red">EVI（4-6 月）與產量高度正相關</strong>：作物長得好，產量就高。</li>
-<li>但 <strong class="red">NDMI（含水率）在 4-6 月過高，會降低產量</strong>：像是作物「喝水喝太多」反而長不好。</li>
-<li>溫度、日照時數適度也有助於增产。</li>
-</ul>
+<p>LSTM 模型表現最穩，<strong class="red">RMSE = 0.406 kg/公頃</strong>（預測誤差極小）、<strong class="red">MAE = 10.495 kg/公頃</strong>。<br />
+<strong class="red">EVI（4-6 月）與產量高度正相關</strong>：作物長得好，產量就高。<br />
+但 <strong class="red">NDMI（含水率）在 4-6 月過高，會降低產量</strong>：像是作物「喝水喝太多」反而長不好。<br />
+溫度、日照時數適度也有助於增产。</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li>農民與政府可以提前調整種子、肥料、灌溉計畫，避免氣候異常導致豐收變歉收。</li>
-<li>糧食進口國能更精準評估進口需求，避免糧價波動。</li>
-<li>開源資料讓開發中國家也能低成本應用，促進全球糧食公平。</li>
-<li>未來可擴展到其他作物（稻米、玉米等），甚至不同地區。</li>
-</ul>
-<hr />
+<p>農民與政府可以提前調整種子、肥料、灌溉計畫，避免氣候異常導致豐收變歉收。<br />
+糧食進口國能更精準評估進口需求，避免糧價波動。<br />
+開源資料讓開發中國家也能低成本應用，促進全球糧食公平。<br />
+未來可擴展到其他作物（稻米、玉米等），甚至不同地區。<br />
+--</p>
 <h2>3️⃣ 文獻名稱</h2>
 <p><strong class="red">Segment-Based Spectral Characterisation of Municipal Solid Waste in African Landfills Using HISUI Hyperspectral Imagery</strong></p>
-<h1>使用 HISUI 高解析度光譜影像對非洲垃圾填埋場進行分段式光譜特徵分析</h1>
+<h3>文獻中文名稱</h3>
+<p>使用 HISUI 高解析度光譜影像對非洲垃圾填埋場進行分段式光譜特徵分析</p>
+<h3>一句話核心</h3>
 <p>透過太空光譜儀（HISUI）分析非洲 8 個國家的 7 個垃圾場，發現垃圾在「短波紅外線」波段（1538-1750 nm）有獨特光譜指紋，可自動化識別。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>非洲都市化快速，但垃圾處理基礎建設追不上。垃圾場（landfill）經常沒有監測，導致污染地下水、土壤，甚至引發疾病。過去想用衛星監測垃圾，但光譜特徵在不同垃圾場變化太大，難以通用。研究團隊想問：<strong class="red">有沒有辦法找到一種「光譜指紋」，不管在非洲哪裡，都能識別垃圾填埋場？</strong></p>
@@ -800,32 +740,29 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 1. 使用日本發射的 <strong class="red">HISUI 衛星</strong>（太空光譜儀，400-2500 nm 波段，20 公尺解析度），拍攝非洲 8 個國家的 7 個垃圾場。<br />
 2. 先篩掉訊號太差的區域（像是有雲遮天），剩下 109,275 個像素。<br />
 3. 把垃圾場表面分成不同區塊（segments），分析：<br />
-   - <strong class="red">亮度（brightness）</strong>：垃圾場與土壤亮度不同，但不同地點變化大。<br />
-   - <strong class="red">光譜形狀（shape）</strong>：用 <strong class="red">光譜對照角（SCA）</strong> 比較光譜曲線，發現垃圾在 <strong class="red">短波紅外線（SWIR）</strong> 波段（1538-1750 nm、2075-2474 nm）有穩定特徵。<br />
-   - <strong class="red">導數分析</strong>：在約 1700 nm、2200-2300 nm 附近發現穩定極值，顯示「光譜曲線形狀」是穩定指紋。<br />
+<strong class="red">亮度（brightness）</strong>：垃圾場與土壤亮度不同，但不同地點變化大。<br />
+<strong class="red">光譜形狀（shape）</strong>：用 <strong class="red">光譜對照角（SCA）</strong> 比較光譜曲線，發現垃圾在 <strong class="red">短波紅外線（SWIR）</strong> 波段（1538-1750 nm、2075-2474 nm）有穩定特徵。<br />
+<strong class="red">導數分析</strong>：在約 1700 nm、2200-2300 nm 附近發現穩定極值，顯示「光譜曲線形狀」是穩定指紋。<br />
 4. 對比垃圾、土壤、都市地區，發現 <strong class="red">光譜形狀</strong> 在短波紅外線波段分離度最高。</p>
 <h3>驚人發現與具體數據（關鍵結果）</h3>
-<ul>
-<li><strong class="red">亮度方法</strong> 在不同垃圾場表現不一致，不適合通用。</li>
-<li><strong class="red">光譜形狀（形狀基指標）</strong> 在短波紅外線波段表現最佳，尤其 <strong class="red">1538-1750 nm、2075-2474 nm</strong>。</li>
-<li><strong class="red">導數分析</strong> 發現 1700 nm、2200-2300 nm 附近有穩定極值，顯示垃圾光譜形狀一致。</li>
-<li>研究團隊建立了 <strong class="red">非洲第一個多垃圾場光譜庫</strong>，提供物理解釋基礎。</li>
-</ul>
+<p><strong class="red">亮度方法</strong> 在不同垃圾場表現不一致，不適合通用。<br />
+<strong class="red">光譜形狀（形狀基指標）</strong> 在短波紅外線波段表現最佳，尤其 <strong class="red">1538-1750 nm、2075-2474 nm</strong>。<br />
+<strong class="red">導數分析</strong> 發現 1700 nm、2200-2300 nm 附近有穩定極值，顯示垃圾光譜形狀一致。<br />
+研究團隊建立了 <strong class="red">非洲第一個多垃圾場光譜庫</strong>，提供物理解釋基礎。</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li>環保單位可用此方法快速篩選垃圾場，避免污染擴散。</li>
-<li>開發垃圾檢測演算法，不需每個垃圾場都花大量時間測量。</li>
-<li>非洲國家可低成本監控垃圾場，改善環境與居民健康。</li>
-<li>未來可擴展到其他地區，建立全球垃圾監測網。</li>
-</ul>
-<hr />
+<p>環保單位可用此方法快速篩選垃圾場，避免污染擴散。<br />
+開發垃圾檢測演算法，不需每個垃圾場都花大量時間測量。<br />
+非洲國家可低成本監控垃圾場，改善環境與居民健康。<br />
+未來可擴展到其他地區，建立全球垃圾監測網。<br />
+--</p>
 <h2>📌 今日重點回顧</h2>
 <ol>
 <li><strong class="red">洪水預測</strong>：雷達 + 機器學習，科西河谷 39% 地區屬高風險。</li>
 <li><strong class="red">作物產量</strong>：EVI 指數與產量高度相關，LSTM 模型準確預測小麥產量。</li>
-<li><strong class="red">垃圾監測</strong>：非洲垃圾場光譜指紋已建立，可自動化識別。</li>
+<li>
+<h2><strong class="red">垃圾監測</strong>：非洲垃圾場光譜指紋已建立，可自動化識別。</h2>
+</li>
 </ol>
-<hr />
 <blockquote>
 <p>希望這三篇學術論文能用白話文幫你釐清重點！如果有任何問題，隨時找我討論。</p>
 </blockquote>
@@ -848,62 +785,54 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
                     <header>
                         <div class="eng-title">RESEARCH</div>
                         <h1>未命名研究</h1>
-                        <div class="core-statement">用影片和廉價 GPS 定位物體位置時，先分別把兩邊的雜訊清理乾淨再合併，可以把定位誤差從 7.86 公尺降到 0.98 公尺。</div>
+                        <div class="core-statement">### 一句話核心
+用影片和廉價 GPS 定位物體位置時，先分別把兩邊的雜訊清理乾淨再合併，可以把定位誤差從 7.86 公尺降到 0.98 公尺。</div>
                     </header>
-                    <main><p>2026-04-14 10:04:41</p>
-<h1>【學術早報 12.5】2026-04-14</h1>
-<h2>論文 1：Self-Supervised Cascade Denoising Auto-Encoder for Accurate Spatial Positioning of Target by Fusing Uncalibrated Video and Low-Cost GNSS</h2>
-<h3>自我監督聯立降噪編碼器：用未校正影片與低成本的 GNSS 融合實現精確目標空間定位</h3>
-<p>用影片和廉價 GPS 定位物體位置時，先分別把兩邊的雜訊清理乾淨再合併，可以把定位誤差從 7.86 公尺降到 0.98 公尺。</p>
+                    <main><p>用影片和廉價 GPS 定位物體位置時，先分別把兩邊的雜訊清理乾淨再合併，可以把定位誤差從 7.86 公尺降到 0.98 公尺。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>想像一下你在用攝影機監控無人機，或者用低價的導航設備（GNSS）來定位車輛。這兩種方式都有缺點：<br />
-- <strong class="red">攝影機定位</strong>：需要仔細校正攝影機角度，很麻煩，而且如果畫面裡有物體擋住或是自動辨識出錯，位置就會偏掉<br />
-- <strong class="red">GNSS 定位</strong>：便宜的 GNSS 模組（就像手機用的那種）會有很大誤差，特別是在城市裡，信號被建築物擋住或反射（稱為多徑效應），誤差可能達到 6 公尺</p>
+<strong class="red">攝影機定位</strong>：需要仔細校正攝影機角度，很麻煩，而且如果畫面裡有物體擋住或是自動辨識出錯，位置就會偏掉<br />
+<strong class="red">GNSS 定位</strong>：便宜的 GNSS 模組（就像手機用的那種）會有很大誤差，特別是在城市裡，信號被建築物擋住或反射（稱為多徑效應），誤差可能達到 6 公尺</p>
 <p>這兩種方式互補，但直接合併起來卻有問題，因為它們的雜訊大小不同，很難直接用現有的方法整合。研究者就是想解決這個問題。</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>研究者設計了一個「三層過濾系統」：</p>
 <ol>
-<li><strong class="red">第一層：分別清潔各自來源的雜訊</strong></li>
-<li>對影片辨識出的物體框框：用「雙重無監督學習」的方式，把連續幾張影片中的辨識結果互相校正</li>
 <li>
-<p>對 GNSS 位置數據：用一種名為「交互式多模型－無窮卡爾曼濾波」(IMM-UKF) 的方法，根據物體運動模式（直線、加速、轉彎）自動選擇最適合的濾波方式</p>
+<p><strong class="red">第一層：分別清潔各自來源的雜訊</strong><br />
+對影片辨識出的物體框框：用「雙重無監督學習」的方式，把連續幾張影片中的辨識結果互相校正<br />
+對 GNSS 位置數據：用一種名為「交互式多模型－無窮卡爾曼濾波」(IMM-UKF) 的方法，根據物體運動模式（直線、加速、轉彎）自動選擇最適合的濾波方式</p>
 </li>
 <li>
-<p><strong class="red">第二層：用自監督的自動編碼器融合</strong></p>
-</li>
-<li>就像教一個學生同時聽兩門課然後交一篇綜合報告，這個編碼器同時處理清潔後的影片資訊和 GNSS 資訊</li>
-<li>
-<p>關鍵特色：它不需要人工標註資料，而是用「自我監督」的方式學習，也就是讓系統自己判斷什麼是正確的</p>
+<p><strong class="red">第二層：用自監督的自動編碼器融合</strong><br />
+就像教一個學生同時聽兩門課然後交一篇綜合報告，這個編碼器同時處理清潔後的影片資訊和 GNSS 資訊<br />
+關鍵特色：它不需要人工標註資料，而是用「自我監督」的方式學習，也就是讓系統自己判斷什麼是正確的</p>
 </li>
 <li>
-<p><strong class="red">第三層：輸出精確位置</strong></p>
+<p><strong class="red">第三層：輸出精確位置</strong><br />
+最後結合兩種來源的資訊，給出物體的精確空間位置</p>
 </li>
-<li>最後結合兩種來源的資訊，給出物體的精確空間位置</li>
 </ol>
 <h3>驚人發現與具體數據（關鍵結果）</h3>
-<ul>
-<li><strong class="red">定位誤差大幅降低</strong>：平均定位誤差從原本的 7.86 公尺（只靠便宜 GNSS）降到 0.98 公尺（兩種方式結合），改善了 <strong class="red">56.79%</strong></li>
-<li><strong class="red">哪種雜訊比較麻煩？</strong>：清理 GNSS 的雜訊比清理影片雜訊重要很多！如果只清理 GNSS，誤差可降 85.71%，但如果只清理影片，誤差只降 25.51%。這很合理，因為便宜 GNSS 本身的誤差就大得多。</li>
-<li><strong class="red">用多少歷史資料？</strong>：用最近 3 張影片（時間序列長度）效果最好。用太少會漏掉運動資訊，用太多（9 張）反而因為歷史雜訊累積而變差。</li>
-<li><strong class="red">影片誤差影響不大？</strong>：即使影片辨識誤差很大（模擬物體被擋住的情況），只要有好的 GNSS 數據作為參考，整體效果仍不會差太多。</li>
-</ul>
+<p><strong class="red">定位誤差大幅降低</strong>：平均定位誤差從原本的 7.86 公尺（只靠便宜 GNSS）降到 0.98 公尺（兩種方式結合），改善了 <strong class="red">56.79%</strong><br />
+<strong class="red">哪種雜訊比較麻煩？</strong>：清理 GNSS 的雜訊比清理影片雜訊重要很多！如果只清理 GNSS，誤差可降 85.71%，但如果只清理影片，誤差只降 25.51%。這很合理，因為便宜 GNSS 本身的誤差就大得多。<br />
+<strong class="red">用多少歷史資料？</strong>：用最近 3 張影片（時間序列長度）效果最好。用太少會漏掉運動資訊，用太多（9 張）反而因為歷史雜訊累積而變差。<br />
+<strong class="red">影片誤差影響不大？</strong>：即使影片辨識誤差很大（模擬物體被擋住的情況），只要有好的 GNSS 數據作為參考，整體效果仍不會差太多。</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li><strong class="red">省錢省時</strong>：不需要花錢買校正設備，也不需要花時間校正攝影機</li>
-<li><strong class="red">便宜設備也能用</strong>：用手機等級的 GNSS 就能搭配攝影機做精確定位</li>
-<li><strong class="red">適用於各種場景</strong>：無論是在機場跑道、停車場，或是城市街道，都能穩定工作</li>
-<li><strong class="red">資料不一定要完美標註</strong>：特別適合那些很難拿到精確位置標記的地方（像是太空或特殊場所）</li>
-</ul>
-<hr />
+<p><strong class="red">省錢省時</strong>：不需要花錢買校正設備，也不需要花時間校正攝影機<br />
+<strong class="red">便宜設備也能用</strong>：用手機等級的 GNSS 就能搭配攝影機做精確定位<br />
+<strong class="red">適用於各種場景</strong>：無論是在機場跑道、停車場，或是城市街道，都能穩定工作<br />
+<strong class="red">資料不一定要完美標註</strong>：特別適合那些很難拿到精確位置標記的地方（像是太空或特殊場所）<br />
+--</p>
 <h2>論文 2：Investigating the Spatiotemporal Variations in Glacier Elevation Changes over the Southeastern Tibetan Plateau Using Multisource Satellite Data</h2>
 <h3>用多衛星資料調查西藏東南部高原冰川厚度的時間與空間變化</h3>
+<h3>一句話核心</h3>
 <p>科學家整合了多顆衛星資料，發現西藏東南部高原的冰川過去 23 年間平均每年縮減 0.71 公尺，而且 2011-2022 年間融化速度比之前加快了 31.4%！</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>青藏高原被稱為「世界屋頂」和「第三極」，上面的冰川就像天然的水塔，為下游數億人口提供淡水和灌溉用水。</p>
 <p>但這些冰川正在快速融化！研究顯示：<br />
-- 西藏東南部（SETP）的冰川數量最多，融化最嚴重<br />
-- 要預測未來的水資源，必須了解冰川到底怎麼融化的<br />
-- 然而，過去的研究只能針對小區域進行詳細分析，無法全面掌握整體變化模式</p>
+西藏東南部（SETP）的冰川數量最多，融化最嚴重<br />
+要預測未來的水資源，必須了解冰川到底怎麼融化的<br />
+然而，過去的研究只能針對小區域進行詳細分析，無法全面掌握整體變化模式</p>
 <p>這就像你想了解整個學校學生的成績表現，卻只能個別訪問幾個班級——你需要更全面的地圖！</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>研究者整合了四種不同的衛星資料，像是拼湊一張完整的地圖：</p>
@@ -915,26 +844,23 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 </ol>
 <p>研究者將西藏東南部劃分成許多 0.5°×0.5° 的小格（就像把蛋糕切成小塊），然後計算每個格子的冰川厚度變化。</p>
 <h3>驚人發現與具體數據（關鍵結果）</h3>
-<ul>
-<li><strong class="red">整體融化速度</strong>：2000-2022 年間，西藏東南部的冰川平均每年變薄 <strong class="red">0.710±0.046 公尺</strong>（約等於一層半的牆壁）</li>
-<li><strong class="red">加速融化</strong>：2011-2022 年間的融化速度，比 2000-2011 年間快了 <strong class="red">31.4%</strong></li>
-<li><strong class="red">空間分佈</strong>：</li>
-<li>大於 4 平方公里的冰川中：</li>
-<li>12.6% 的冰川<strong class="red">輕微增厚</strong>（可能是局部降雪增多）</li>
-<li>56.5% 的冰川<strong class="red">輕微變薄</strong></li>
-<li>30.9% 的冰川<strong class="red">快速變薄</strong>（這是最讓人擔心的部分）</li>
-<li><strong class="red">極端情況</strong>：觀察到的最大變薄速度達 <strong class="red">每年 -1.68 公尺</strong>！這意味著某些地區的冰層每年縮減超過一層樓的高度。</li>
-</ul>
+<p><strong class="red">整體融化速度</strong>：2000-2022 年間，西藏東南部的冰川平均每年變薄 <strong class="red">0.710±0.046 公尺</strong>（約等於一層半的牆壁）<br />
+<strong class="red">加速融化</strong>：2011-2022 年間的融化速度，比 2000-2011 年間快了 <strong class="red">31.4%</strong><br />
+<strong class="red">空間分佈</strong>：<br />
+大於 4 平方公里的冰川中：<br />
+12.6% 的冰川<strong class="red">輕微增厚</strong>（可能是局部降雪增多）<br />
+56.5% 的冰川<strong class="red">輕微變薄</strong><br />
+30.9% 的冰川<strong class="red">快速變薄</strong>（這是最讓人擔心的部分）<br />
+<strong class="red">極端情況</strong>：觀察到的最大變薄速度達 <strong class="red">每年 -1.68 公尺</strong>！這意味著某些地區的冰層每年縮減超過一層樓的高度。</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li><strong class="red">水資源預警</strong>：幫助政府和農業部門預測未來的水供應狀況</li>
-<li><strong class="red">氣候變化監測</strong>：了解全球暖化對高海拔地區的影響程度</li>
-<li><strong class="red">政策制定</strong>：為上游國家的水資源管理提供科學依據</li>
-<li><strong class="red">環境保護</strong>：幫助制定更有效的冰川保護策略</li>
-</ul>
-<hr />
+<p><strong class="red">水資源預警</strong>：幫助政府和農業部門預測未來的水供應狀況<br />
+<strong class="red">氣候變化監測</strong>：了解全球暖化對高海拔地區的影響程度<br />
+<strong class="red">政策制定</strong>：為上游國家的水資源管理提供科學依據<br />
+<strong class="red">環境保護</strong>：幫助制定更有效的冰川保護策略<br />
+--</p>
 <h2>論文 3：Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction</h2>
 <h3>邊緣注視雙分支框場網路：高精準度的建築物多邊形提取</h3>
+<h3>一句話核心</h3>
 <p>新的建築輪廓提取方法同時專注「內部區域一致性和邊緣精準度」，在複雜的都市環境中也能準確勾勒出建築物的輪廓，準確度比現有的方法高出 2.3%！</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>在城市規劃、土地管理、災害救援等應用中，我們需要知道哪裡有建築物、建築物長什麼樣子。</p>
@@ -947,67 +873,49 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <p>研究者設計了一個「雙分支協作系統」，有點像讓兩個專才互相切磋：</p>
 <p><strong class="red">雙任務解碼器（Dual-Task Decoder）設計：</strong></p>
 <ol>
-<li><strong class="red">區域分支（Mask Branch） - 負責保持整體形狀</strong></li>
-<li>使用「動態感受野」模組：可以根據建築大小自動調整視野範圍</li>
-<li>使用「空間注意機制」：專注於建築物的關鍵特徵，忽略背景雜訊</li>
 <li>
-<p>目標：確保預測出的建築物區域與實際相符</p>
+<p><strong class="red">區域分支（Mask Branch） - 負責保持整體形狀</strong><br />
+使用「動態感受野」模組：可以根據建築大小自動調整視野範圍<br />
+使用「空間注意機制」：專注於建築物的關鍵特徵，忽略背景雜訊<br />
+目標：確保預測出的建築物區域與實際相符</p>
 </li>
 <li>
-<p><strong class="red">邊緣分支（Edge Branch） - 負責精準勾勒邊緣</strong></p>
-</li>
-<li>使用固定的 Sobel 和 Laplacian 濾波器：這兩種經典邊緣檢測技術，一個對水平邊緣敏感，一個對垂直邊緣和細節敏感</li>
-<li>
-<p>目標：精準定位建築物的輪廓線</p>
+<p><strong class="red">邊緣分支（Edge Branch） - 負責精準勾勒邊緣</strong><br />
+使用固定的 Sobel 和 Laplacian 濾波器：這兩種經典邊緣檢測技術，一個對水平邊緣敏感，一個對垂直邊緣和細節敏感<br />
+目標：精準定位建築物的輪廓線</p>
 </li>
 <li>
-<p><strong class="red">雙任務互相指導模組（Dual-Task Mutual Guidance Module）</strong></p>
+<p><strong class="red">雙任務互相指導模組（Dual-Task Mutual Guidance Module）</strong><br />
+這是關鍵設計！讓兩個分支互相學習對方的優點<br />
+就像兩個朋友互相提點，一起進步</p>
 </li>
-<li>這是關鍵設計！讓兩個分支互相學習對方的優點</li>
-<li>就像兩個朋友互相提點，一起進步</li>
 </ol>
 <p><strong class="red">關鍵特色：</strong><br />
-- <strong class="red">固定濾波器</strong>：不使用需要訓練的濾波器，避免過度擬合<br />
-- <strong class="red">多尺度適應</strong>：能處理大棟和小的建築物<br />
-- <strong class="red">減少訓練不穩定</strong>：不像對抗性訓練（GAN）那麼複雜</p>
+<strong class="red">固定濾波器</strong>：不使用需要訓練的濾波器，避免過度擬合<br />
+<strong class="red">多尺度適應</strong>：能處理大棟和小的建築物<br />
+<strong class="red">減少訓練不穩定</strong>：不像對抗性訓練（GAN）那麼複雜</p>
 <h3>驚人發現與具體數據（關鍵結果）</h3>
-<ul>
-<li><strong class="red">整體準確度</strong>：在 CrowdAI 資料集上，平均精準度（AP75）達 <strong class="red">72.9%</strong>，比現有的方法高出 <strong class="red">2.3%</strong></li>
-<li><strong class="red">多邊形品質指標</strong>（幾何形狀的正確性）：</li>
-<li><strong class="red">最大切線角度誤差（MTA）</strong>：從 31.9 降到 <strong class="red">30.8</strong>，降低 6.4%<ul>
-<li>這代表預測的邊緣方向更接近實際建築物邊緣</li>
-</ul>
-</li>
-<li><strong class="red">無效多邊形比例（Invalid Polygon Ratio）</strong>：從 7.27‰ 降到 <strong class="red">6.55‰</strong>，降低 <strong class="red">66.3%</strong><ul>
-<li>也就是說，預測出的錯誤形狀大幅減少！</li>
-</ul>
-</li>
-<li><strong class="red">邊緣平滑度（Edge Smoothness）</strong>：從 149.7 降到 <strong class="red">133.1</strong>，改善 <strong class="red">72.7%</strong><ul>
-<li>邊緣更順滑、更自然</li>
-</ul>
-</li>
-<li>
-<p><strong class="red">異常凸包比例</strong>：從 3.45‰ 降到 <strong class="red">2.06‰</strong></p>
-<ul>
-<li>建築物的內凹問題大幅減少</li>
-</ul>
-</li>
-<li>
-<p><strong class="red">效率</strong>：在保持高準確度的同時，推論速度也很快，適合實際應用</p>
-</li>
-</ul>
+<p><strong class="red">整體準確度</strong>：在 CrowdAI 資料集上，平均精準度（AP75）達 <strong class="red">72.9%</strong>，比現有的方法高出 <strong class="red">2.3%</strong><br />
+<strong class="red">多邊形品質指標</strong>（幾何形狀的正確性）：<br />
+<strong class="red">最大切線角度誤差（MTA）</strong>：從 31.9 降到 <strong class="red">30.8</strong>，降低 6.4%<br />
+這代表預測的邊緣方向更接近實際建築物邊緣<br />
+<strong class="red">無效多邊形比例（Invalid Polygon Ratio）</strong>：從 7.27‰ 降到 <strong class="red">6.55‰</strong>，降低 <strong class="red">66.3%</strong><br />
+也就是說，預測出的錯誤形狀大幅減少！<br />
+<strong class="red">邊緣平滑度（Edge Smoothness）</strong>：從 149.7 降到 <strong class="red">133.1</strong>，改善 <strong class="red">72.7%</strong><br />
+邊緣更順滑、更自然<br />
+<strong class="red">異常凸包比例</strong>：從 3.45‰ 降到 <strong class="red">2.06‰</strong><br />
+建築物的內凹問題大幅減少<br />
+<strong class="red">效率</strong>：在保持高準確度的同時，推論速度也很快，適合實際應用</p>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li><strong class="red">都市規劃</strong>：能自動生成高品質的建築物輪廓，用於地圖製作</li>
-<li><strong class="red">災害管理</strong>：在地震或颱風後快速重建受災地區的城市地圖</li>
-<li><strong class="red">土地管理</strong>：精確界定土地範圍，減少糾紛</li>
-<li><strong class="red">減少人工校正</strong>：傳統方法需要人工修正，這個方法自動生成高品質輪廓</li>
-</ul>
+<p><strong class="red">都市規劃</strong>：能自動生成高品質的建築物輪廓，用於地圖製作<br />
+<strong class="red">災害管理</strong>：在地震或颱風後快速重建受災地區的城市地圖<br />
+<strong class="red">土地管理</strong>：精確界定土地範圍，減少糾紛<br />
+<strong class="red">減少人工校正</strong>：傳統方法需要人工修正，這個方法自動生成高品質輪廓</p>
 <p><strong class="red">特別適合</strong>：<br />
-- 建築物密集的城市區域<br />
-- 有植被遮擋的衛星影像<br />
-- 需要高幾何精度的應用（如 cadastral mapping）</p>
-<hr />
+建築物密集的城市區域<br />
+有植被遮擋的衛星影像<br />
+需要高幾何精度的應用（如 cadastral mapping）<br />
+--</p>
 <h2>總結</h2>
 <p>今天這三篇論文涵蓋了三個不同的應用領域：</p>
 <ol>
@@ -1016,9 +924,9 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <li><strong class="red">都市資訊系統</strong>：自動生成高品質建築物輪廓，用於都市規劃和災害管理</li>
 </ol>
 <p><strong class="red">共通點</strong>：<br />
-- 都嘗試解決「不完美數據」的問題<br />
-- 都強調「效率與準確度的平衡」<br />
-- 都提供自動化解決方案，減少人工介入</p>
+都嘗試解決「不完美數據」的問題<br />
+都強調「效率與準確度的平衡」<br />
+都提供自動化解決方案，減少人工介入</p>
 <p>這些技術進步對我們日常生活和社會運作都有實質的影響。</p></main>
                     <footer>
                         <div>Hoomie Studio / Academic Flip</div>
@@ -1036,18 +944,20 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
                 </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">### Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction</div>
-                        <h1>未命名研究</h1>
-                        <div class="core-statement">提出一個叫**EA-DBFFN**的雙分支 AI 架構，將「區域一致性」和「邊界精準度」分開處理，用互導機制讓兩者協同工作，在 CrowdAI 數據集上達到 72.9% 的精準度，比競爭方法好 2.3%，且 Invalid Polygon Ratio（無效多邊形比率）降低 66.3%。</div>
+                        <div class="eng-title">## 文獻名稱
+### Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction
+#### 用雙分支神經網絡精準勾勒建築物輪廓的 AI 新工具
+- **URL**: https://www.mdpi.com/2072-4292/18/8/1159
+- **抓取時間**: 2026-04-14 01:53:58</div>
+                        <h1>## 文獻名稱
+### Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction
+#### 用雙分支神經網絡精準勾勒建築物輪廓的 AI 新工具
+- **URL**: https://www.mdpi.com/2072-4292/18/8/1159
+- **抓取時間**: 2026-04-14 01:53:58</h1>
+                        <div class="core-statement">### 一句話核心
+提出一個叫**EA-DBFFN**的雙分支 AI 架構，將「區域一致性」和「邊界精準度」分開處理，用互導機制讓兩者協同工作，在 CrowdAI 數據集上達到 72.9% 的精準度，比競爭方法好 2.3%，且 Invalid Polygon Ratio（無效多邊形比率）降低 66.3%。</div>
                     </header>
-                    <main><p>2026-04-14 02:21:33</p>
-<h3>Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction</h3>
-<h4>用雙分支神經網絡精準勾勒建築物輪廓的 AI 新工具</h4>
-<ul>
-<li><strong class="red">URL</strong>: https://www.mdpi.com/2072-4292/18/8/1159</li>
-<li><strong class="red">抓取時間</strong>: 2026-04-14 01:53:58</li>
-</ul>
-<p>提出一個叫<strong class="red">EA-DBFFN</strong>的雙分支 AI 架構，將「區域一致性」和「邊界精準度」分開處理，用互導機制讓兩者協同工作，在 CrowdAI 數據集上達到 72.9% 的精準度，比競爭方法好 2.3%，且 Invalid Polygon Ratio（無效多邊形比率）降低 66.3%。</p>
+                    <main><p>提出一個叫<strong class="red">EA-DBFFN</strong>的雙分支 AI 架構，將「區域一致性」和「邊界精準度」分開處理，用互導機制讓兩者協同工作，在 CrowdAI 數據集上達到 72.9% 的精準度，比競爭方法好 2.3%，且 Invalid Polygon Ratio（無效多邊形比率）降低 66.3%。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">名詞小百科</strong>：</p>
 <ol>
@@ -1062,83 +972,72 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 </li>
 </ol>
 <p><strong class="red">現實痛點</strong>：<br />
-- <strong class="red">城市規劃需求</strong>：要管理城市發展、基礎建設，必須精確知道每個建築的位置和範圍。<br />
-- <strong class="red">現有方法限制</strong>：<br />
-  - 傳統方法（先分割再後處理）：預測出來的建築物形狀和實際有落差，特別是在複雜城市景觀中。<br />
-  - 現有方法容易產生不完整的建築結構、扭曲的形狀。<br />
-  - 計算成本高：處理大面積影像時耗時又耗資源。<br />
-- <strong class="red">自動化需求</strong>：人工繪製建築物輪廓非常耗時，迫切需要自動化的解決方案。</p>
+<strong class="red">城市規劃需求</strong>：要管理城市發展、基礎建設，必須精確知道每個建築的位置和範圍。<br />
+<strong class="red">現有方法限制</strong>：<br />
+傳統方法（先分割再後處理）：預測出來的建築物形狀和實際有落差，特別是在複雜城市景觀中。<br />
+現有方法容易產生不完整的建築結構、扭曲的形狀。<br />
+計算成本高：處理大面積影像時耗時又耗資源。<br />
+<strong class="red">自動化需求</strong>：人工繪製建築物輪廓非常耗時，迫切需要自動化的解決方案。</p>
 <p>想像一下，如果你要管理一個城市的所有建築物，卻無法精確知道它們的範圍，就像在沒有地圖的城市裡迷路一樣。</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>研究團隊創造了一個稱為<strong class="red">EA-DBFFN（Edge-Attentive Dual-Branch Frame Field Network）</strong>的新架構，這是一個「雙眼同時看」的策略：</p>
 <ol>
-<li><strong class="red">雙分支架構（Dual-Branch Architecture）</strong>：</li>
-<li>一個分支專注於<strong class="red">區域一致性</strong>（判斷某個區域是不是建築物）</li>
-<li>另一個分支專注於<strong class="red">邊界精準度</strong>（勾勒建築物的精確邊界）</li>
 <li>
-<p>就像有兩個人合作：一個人負責判斷「這裡有建築」，另一個負責畫出「建築的邊界」</p>
+<p><strong class="red">雙分支架構（Dual-Branch Architecture）</strong>：<br />
+一個分支專注於<strong class="red">區域一致性</strong>（判斷某個區域是不是建築物）<br />
+另一個分支專注於<strong class="red">邊界精準度</strong>（勾勒建築物的精確邊界）<br />
+就像有兩個人合作：一個人負責判斷「這裡有建築」，另一個負責畫出「建築的邊界」</p>
 </li>
 <li>
-<p><strong class="red">雙任務解碼器（Dual-Task Decoder）</strong>：</p>
-</li>
-<li>這個解碼器能同時處理兩個任務，並在兩者之間共享資訊。</li>
-<li>
-<p>想像這是兩個廚師共用一個廚房的經驗：主廚負責判斷食材（建築區域），副廚負責處理細節（邊界），他們不斷交流，讓整道料理更完美。</p>
+<p><strong class="red">雙任務解碼器（Dual-Task Decoder）</strong>：<br />
+這個解碼器能同時處理兩個任務，並在兩者之間共享資訊。<br />
+想像這是兩個廚師共用一個廚房的經驗：主廚負責判斷食材（建築區域），副廚負責處理細節（邊界），他們不斷交流，讓整道料理更完美。</p>
 </li>
 <li>
-<p><strong class="red">邊緣增強與動態感受野</strong>：</p>
-</li>
-<li>使用固定的 Sobel 和 Laplacian 過濾器來強化邊界檢測（就像用尺子來畫直線）。</li>
-<li>結合空間注意力機制，讓模型「注意」到結構細節。</li>
-<li>
-<p>這就像畫畫時先用直尺畫出外框，再仔細修飾細節。</p>
+<p><strong class="red">邊緣增強與動態感受野</strong>：<br />
+使用固定的 Sobel 和 Laplacian 過濾器來強化邊界檢測（就像用尺子來畫直線）。<br />
+結合空間注意力機制，讓模型「注意」到結構細節。<br />
+這就像畫畫時先用直尺畫出外框，再仔細修飾細節。</p>
 </li>
 <li>
-<p><strong class="red">互導機制（Mutual Guidance）</strong>：</p>
+<p><strong class="red">互導機制（Mutual Guidance）</strong>：<br />
+讓「掩膜分支」（判斷區域）和「邊緣分支」（勾勒邊界）互相學習。<br />
+這像是兩個學生一起複習：你教我一題數學題，我教你一個語言點，大家一起進步。</p>
 </li>
-<li>讓「掩膜分支」（判斷區域）和「邊緣分支」（勾勒邊界）互相學習。</li>
-<li>這像是兩個學生一起複習：你教我一題數學題，我教你一個語言點，大家一起進步。</li>
 </ol>
 <p>簡單說，他們的系統就像一個超強的數位測量工具，能自動從衛星或航空照片中精準地勾勒出所有建築物的形狀。</p>
 <h3>驚人發現與具體數據（關鍵結果）</h3>
 <ol>
-<li><strong class="red">區域指標表現卓越：AP75 = 72.9%</strong></li>
-<li>在 CrowdAI 數據集上，他們的 EA-DBFFN 達到 72.9% 的 AP75（平均精準率，要求邊界誤差在 75% 內才算正確）。</li>
 <li>
-<p><strong class="red">白話解釋</strong>：這表示在 75% 的預測中，建築物的邊界與實際位置的誤差非常小（在允許的範圍內）。比競爭方法好 2.3%，就像原本跑 100 公尺要 12 秒，現在只要 11.7 秒。</p>
+<p><strong class="red">區域指標表現卓越：AP75 = 72.9%</strong><br />
+在 CrowdAI 數據集上，他們的 EA-DBFFN 達到 72.9% 的 AP75（平均精準率，要求邊界誤差在 75% 內才算正確）。<br />
+<strong class="red">白話解釋</strong>：這表示在 75% 的預測中，建築物的邊界與實際位置的誤差非常小（在允許的範圍內）。比競爭方法好 2.3%，就像原本跑 100 公尺要 12 秒，現在只要 11.7 秒。</p>
 </li>
 <li>
-<p><strong class="red">幾何品質大幅提升</strong>：</p>
-</li>
-<li><strong class="red">Max Tangent Angle 誤差降低 6.4%</strong>：建築物的邊界更平直，不會有奇怪的彎曲。</li>
-<li><strong class="red">Invalid Polygon Ratio 降低 66.3%</strong>：無效的（錯誤的）多邊形大幅減少，從 100 個錯誤變成只有 33.7 個。</li>
-<li><strong class="red">Edge Smoothness 提升 72.7%</strong>：邊緣更加平滑、自然。</li>
-<li>
-<p><strong class="red">白話解釋</strong>：這就像原本用毛筆畫出來的建築物輪廓毛糙不平、有很多小錯誤，現在像用直尺和圓規畫出的一样精確、平滑。</p>
+<p><strong class="red">幾何品質大幅提升</strong>：<br />
+<strong class="red">Max Tangent Angle 誤差降低 6.4%</strong>：建築物的邊界更平直，不會有奇怪的彎曲。<br />
+<strong class="red">Invalid Polygon Ratio 降低 66.3%</strong>：無效的（錯誤的）多邊形大幅減少，從 100 個錯誤變成只有 33.7 個。<br />
+<strong class="red">Edge Smoothness 提升 72.7%</strong>：邊緣更加平滑、自然。<br />
+<strong class="red">白話解釋</strong>：這就像原本用毛筆畫出來的建築物輪廓毛糙不平、有很多小錯誤，現在像用直尺和圓規畫出的一样精確、平滑。</p>
 </li>
 <li>
-<p><strong class="red">計算效率保持高效</strong>：</p>
-</li>
-<li>在提升精度的同時，推理速度（處理新影像的速度）沒有下降。</li>
-<li>
-<p><strong class="red">白話解釋</strong>：這就像你學會了更快的解題技巧，解題時間沒有變長，反而更快得到正確答案。</p>
+<p><strong class="red">計算效率保持高效</strong>：<br />
+在提升精度的同時，推理速度（處理新影像的速度）沒有下降。<br />
+<strong class="red">白話解釋</strong>：這就像你學會了更快的解題技巧，解題時間沒有變長，反而更快得到正確答案。</p>
 </li>
 <li>
-<p><strong class="red">大規模地理空間分析適用</strong>：</p>
+<p><strong class="red">大規模地理空間分析適用</strong>：<br />
+這個架構能產生高品質的矢量化建築足跡，適合大規模的城市分析。<br />
+<strong class="red">白話解釋</strong>：無論你要分析一個街區還是整個城市，這個工具都能應付。</p>
 </li>
-<li>這個架構能產生高品質的矢量化建築足跡，適合大規模的城市分析。</li>
-<li><strong class="red">白話解釋</strong>：無論你要分析一個街區還是整個城市，這個工具都能應付。</li>
 </ol>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li><strong class="red">自動化城市地圖繪製</strong>：大幅減少人工繪製地圖的工作量，讓城市規劃人員可以專注於更重要的任務。</li>
-<li><strong class="red">3D 城市建模</strong>：精確的建築輪廓是建立三維城市模型的重要基礎，對於遊戲開發、虛擬現實、城市設計等應用至關重要。</li>
-<li><strong class="red">大規模地理資訊系統</strong>：可以快速生成城市級別的建築圖層，適用於災難應變、資源管理等大規模分析。</li>
-<li><strong class="red">處理挑戰性場景</strong>：有效解決遙感影像中的植被遮擋、邊界模糊等問題，讓系統在複雜環境下仍保持高精度。</li>
-<li><strong class="red">降低成本與時間</strong>：相比傳統方法，這個系統能大幅減少計算資源和時間成本，讓更多機構負擔得起高精度的城市建模服務。</li>
-</ul>
-<p>總的來說，EA-DBFFN 就像是給城市建模加裝了一個「超級自動測量員」，能快速、精確地勾勒出所有建築物的形狀，對於智慧城市、城市規劃、災難管理等應用都是強而力的工具。</p>
-<hr /></main>
+<p><strong class="red">自動化城市地圖繪製</strong>：大幅減少人工繪製地圖的工作量，讓城市規劃人員可以專注於更重要的任務。<br />
+<strong class="red">3D 城市建模</strong>：精確的建築輪廓是建立三維城市模型的重要基礎，對於遊戲開發、虛擬現實、城市設計等應用至關重要。<br />
+<strong class="red">大規模地理資訊系統</strong>：可以快速生成城市級別的建築圖層，適用於災難應變、資源管理等大規模分析。<br />
+<strong class="red">處理挑戰性場景</strong>：有效解決遙感影像中的植被遮擋、邊界模糊等問題，讓系統在複雜環境下仍保持高精度。<br />
+<strong class="red">降低成本與時間</strong>：相比傳統方法，這個系統能大幅減少計算資源和時間成本，讓更多機構負擔得起高精度的城市建模服務。</p>
+<h2>總的來說，EA-DBFFN 就像是給城市建模加裝了一個「超級自動測量員」，能快速、精確地勾勒出所有建築物的形狀，對於智慧城市、城市規劃、災難管理等應用都是強而力的工具。</h2></main>
                     <footer>
                         <div>Hoomie Studio / Academic Flip</div>
                         <div>Slide to Next →</div>
@@ -1163,60 +1062,51 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <h1>學術早報 12.5 - 論文摘要彙總</h1>
 <p><strong class="red">日期</strong>: 2026-04-14 01:40<br />
 <strong class="red">來源</strong>: Remote Sensing (MDPI)<br />
-<strong class="red">文章數量</strong>: 3 篇</p>
-<hr />
+<strong class="red">文章數量</strong>: 3 篇<br />
+--</p>
 <h2>論文 1: 緬甸山區輪耕土地利用與植被恢復評估</h2>
 <p><strong class="red">標題</strong>: Evaluation of Land Use Patterns and Vegetation Recovery Status of Shifting Cultivation in Myanmar's Mountainous Regions Using Satellite Imagery and Field Surveys<br />
 <strong class="red">作者</strong>: Mio, K. 等 (Shinshu University, Japan)<br />
 <strong class="red">DOI</strong>: https://doi.org/10.3390/rs18081164<br />
 <strong class="red">發表</strong>: 13 April 2026</p>
 <h3>核心發現</h3>
-<ul>
-<li><strong class="red">研究方法</strong>: 整合野外調查與 2019-2025 年間的 Sentinel-2 多時相影像，使用 NDVI 差異辨識耕作區，並應用貝氏分層非線性模型量化植被恢復軌跡</li>
-<li><strong class="red">耕作週期</strong>: 確認當地維持系統性的 <strong class="red">8 年輪替週期</strong></li>
-<li><strong class="red">土地利用變化</strong>: 總耕作面積從 <strong class="red">0.93% 擴大到 3.13%</strong>，且轉向更陡峭的地形，顯示土地利用壓力與土壤退化風險增加</li>
-<li><strong class="red">植被恢復</strong>: 樹冠綠色度 (NDVI) 在 <strong class="red">24-36 個月內恢復</strong>，顯示生態系統具有韌性</li>
-<li><strong class="red">關鍵結論</strong>: 單一技術手段不足，必須結合野外調查與高解析度遙測監測，才能確保熱帶山區生態系統的長期可持續性</li>
-</ul>
+<p><strong class="red">研究方法</strong>: 整合野外調查與 2019-2025 年間的 Sentinel-2 多時相影像，使用 NDVI 差異辨識耕作區，並應用貝氏分層非線性模型量化植被恢復軌跡<br />
+<strong class="red">耕作週期</strong>: 確認當地維持系統性的 <strong class="red">8 年輪替週期</strong><br />
+<strong class="red">土地利用變化</strong>: 總耕作面積從 <strong class="red">0.93% 擴大到 3.13%</strong>，且轉向更陡峭的地形，顯示土地利用壓力與土壤退化風險增加<br />
+<strong class="red">植被恢復</strong>: 樹冠綠色度 (NDVI) 在 <strong class="red">24-36 個月內恢復</strong>，顯示生態系統具有韌性<br />
+<strong class="red">關鍵結論</strong>: 單一技術手段不足，必須結合野外調查與高解析度遙測監測，才能確保熱帶山區生態系統的長期可持續性</p>
 <h3>研究意義</h3>
-<p>此研究為開發中國家山區的傳統農業系統提供重要的監測工具。儘管植被具有恢復能力，但耕作區域向陡峭地形擴張的趨勢值得關注，提示需要更積極的土地管理政策。</p>
-<hr />
+<h2>此研究為開發中國家山區的傳統農業系統提供重要的監測工具。儘管植被具有恢復能力，但耕作區域向陡峭地形擴張的趨勢值得關注，提示需要更積極的土地管理政策。</h2>
 <h2>論文 2: 東北中國寒潮渦對暴風線微物理特性的調制</h2>
 <p><strong class="red">標題</strong>: Microphysical Characteristics of a Squall Line Modulated by the Northeast China Cold Vortex Using Polarimetric Radar and Disdrometer Observations<br />
 <strong class="red">作者</strong>: Liu, L. 等 (China Meteorological Administration)<br />
 <strong class="red">DOI</strong>: https://doi.org/10.3390/rs18081163<br />
 <strong class="red">發表</strong>: 13 April 2026</p>
 <h3>核心發現</h3>
-<ul>
-<li><strong class="red">研究事件</strong>: 2023 年 7 月 6 日發生在遼寧省、受東北中國寒潮渦 (NCCV) 影響的暴風線</li>
-<li><strong class="red">降雨滴譜 (DSD) 特性</strong>: NCCV 暴風線呈現<strong class="red">大陸型</strong> DSD，與中國其他重大降水系統相比，具有<strong class="red">較少但較大的雨滴</strong></li>
-<li><strong class="red">垂直結構特徵</strong>:</li>
-<li><strong class="red">對流區</strong>: 融化層上方觀察到顯著的 ZDR/KDP 柱，顯示強烈的上翻運動驅動雪霰/冰雹的凝凍生長</li>
-<li><strong class="red">層狀降水區</strong>: 主要由冰晶和聚集体組成，通過凝華和聚集過程形成</li>
-<li><strong class="red">與梅雨對照</strong>: 梅雨鋒面對流在 NCCV 影響下呈現海洋型與大陸型之間的過渡型 DSD 圖式，雨滴較小且密度較高</li>
-<li><strong class="red">環境調節機制</strong>: 乾燥且不穩定的環境有利於深對流和活躍的冰相過程；相對潮濕穩定的梅雨環境則支持以暖雨過程為主層的對流</li>
-</ul>
+<p><strong class="red">研究事件</strong>: 2023 年 7 月 6 日發生在遼寧省、受東北中國寒潮渦 (NCCV) 影響的暴風線<br />
+<strong class="red">降雨滴譜 (DSD) 特性</strong>: NCCV 暴風線呈現<strong class="red">大陸型</strong> DSD，與中國其他重大降水系統相比，具有<strong class="red">較少但較大的雨滴</strong><br />
+<strong class="red">垂直結構特徵</strong>:<br />
+<strong class="red">對流區</strong>: 融化層上方觀察到顯著的 ZDR/KDP 柱，顯示強烈的上翻運動驅動雪霰/冰雹的凝凍生長<br />
+<strong class="red">層狀降水區</strong>: 主要由冰晶和聚集体組成，通過凝華和聚集過程形成<br />
+<strong class="red">與梅雨對照</strong>: 梅雨鋒面對流在 NCCV 影響下呈現海洋型與大陸型之間的過渡型 DSD 圖式，雨滴較小且密度較高<br />
+<strong class="red">環境調節機制</strong>: 乾燥且不穩定的環境有利於深對流和活躍的冰相過程；相對潮濕穩定的梅雨環境則支持以暖雨過程為主層的對流</p>
 <h3>研究意義</h3>
-<p>此研究揭示了環境條件如何調節降水的微物理過程，為改進數值模型中的微物理參數化方案提供了重要的觀測約束，有助於提升對中國地區強對流降水事件的預報能力。</p>
-<hr />
+<h2>此研究揭示了環境條件如何調節降水的微物理過程，為改進數值模型中的微物理參數化方案提供了重要的觀測約束，有助於提升對中國地區強對流降水事件的預報能力。</h2>
 <h2>論文 3: AIRS 甲烷衛星測量驗證與時間漂移校正</h2>
 <p><strong class="red">標題</strong>: Validation of Long-Term Methane (CH4) Satellite Measurements from the AIRS Spectrometer and Correction of Their Temporal Drift<br />
 <strong class="red">作者</strong>: Rakitin, V. 等 (Russian Academy of Sciences)<br />
 <strong class="red">DOI</strong>: https://doi.org/10.3390/rs18081162<br />
 <strong class="red">發表</strong>: 13 April 2026</p>
 <h3>核心發現</h3>
-<ul>
-<li><strong class="red">研究對象</strong>: 比較 2003-2022 年間的 AIRS 版本 6 和版本 7 甲烷數據，與 NDACC (18 個站點) 和 TCCON (11 個站點) 的地面觀測數據</li>
-<li><strong class="red">時間漂移確認</strong>: 發現 AIRS 衛星儀器的測量與地面觀測數據之間存在<strong class="red">統計顯著且單向的漂移</strong></li>
-<li>AIRS v6 漂移率: <strong class="red">1.64 × 10¹⁴ molecules/cm²/天</strong> 或 <strong class="red">7.62 × 10⁻⁶ ppm/天</strong></li>
-<li>AIRS v7 漂移率: <strong class="red">7.20 × 10⁻⁶ ppm/天</strong></li>
-<li><strong class="red">關鍵問題</strong>: 使用巴計公式將地面觀測數據調整至海平面會導致顯誤差（尤其在高原），建議應使用站點直測氣壓進行校正</li>
-<li><strong class="red">校正方法</strong>: 提出一種基於數據驅動的<strong class="red">新型校正方法</strong>，顯著改善 AIRS v6 和 v7 甲烷數據與 NDACC 數據的一致性</li>
-<li><strong class="red">驗證結果</strong>: 校正後，衛星與地面觀測數據的甲烷趨勢估計值接近，且在站點與站點的趨勢估計一致性顯著提升</li>
-</ul>
+<p><strong class="red">研究對象</strong>: 比較 2003-2022 年間的 AIRS 版本 6 和版本 7 甲烷數據，與 NDACC (18 個站點) 和 TCCON (11 個站點) 的地面觀測數據<br />
+<strong class="red">時間漂移確認</strong>: 發現 AIRS 衛星儀器的測量與地面觀測數據之間存在<strong class="red">統計顯著且單向的漂移</strong><br />
+AIRS v6 漂移率: <strong class="red">1.64 × 10¹⁴ molecules/cm²/天</strong> 或 <strong class="red">7.62 × 10⁻⁶ ppm/天</strong><br />
+AIRS v7 漂移率: <strong class="red">7.20 × 10⁻⁶ ppm/天</strong><br />
+<strong class="red">關鍵問題</strong>: 使用巴計公式將地面觀測數據調整至海平面會導致顯誤差（尤其在高原），建議應使用站點直測氣壓進行校正<br />
+<strong class="red">校正方法</strong>: 提出一種基於數據驅動的<strong class="red">新型校正方法</strong>，顯著改善 AIRS v6 和 v7 甲烷數據與 NDACC 數據的一致性<br />
+<strong class="red">驗證結果</strong>: 校正後，衛星與地面觀測數據的甲烷趨勢估計值接近，且在站點與站點的趨勢估計一致性顯著提升</p>
 <h3>研究意義</h3>
-<p>此方法為提高長時序衛星數據的準確性和氣候/空氣品質 projections 提供重要工具。同樣的校正方法可應用於其他長時序衛星觀測數據（如大氣成分、地表參數、氣候與氣象參數、輻射特徵等），前提是具備必要的高精度地面觀測數據系列。</p>
-<hr />
+<h2>此方法為提高長時序衛星數據的準確性和氣候/空氣品質 projections 提供重要工具。同樣的校正方法可應用於其他長時序衛星觀測數據（如大氣成分、地表參數、氣候與氣象參數、輻射特徵等），前提是具備必要的高精度地面觀測數據系列。</h2>
 <h2>總體評論</h2>
 <p>三篇論文均發表於 2026 年 4 月 13 日的 Remote Sensing 期刊，涵蓋了遙感在<strong class="red">土地監測</strong>、<strong class="red">天氣預報</strong>、<strong class="red">氣候變化</strong>三大領域的應用：</p>
 <ol>
@@ -1224,8 +1114,7 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <li><strong class="red">天氣預報</strong>: 揭示極端降水事件的微物理機制，提升預報準確性</li>
 <li><strong class="red">氣候監測</strong>: 解決長時序衛星數據質量問題，確保氣候趨勢估計的可靠性</li>
 </ol>
-<p>這些研究突顯了<strong class="red">衛星遙感技術</strong>在應對全球環境挑戰中的關鍵角色，從生態管理到氣候變化應對，提供了寶貴的科學基礎。</p>
-<hr />
+<h2>這些研究突顯了<strong class="red">衛星遙感技術</strong>在應對全球環境挑戰中的關鍵角色，從生態管理到氣候變化應對，提供了寶貴的科學基礎。</h2>
 <p><strong class="red">下一步行動</strong>: 執行歸檔合併操作</p></main>
                     <footer>
                         <div>Hoomie Studio / Academic Flip</div>
@@ -1247,56 +1136,45 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
                         <h1>未命名研究</h1>
                         <div class="core-statement"></div>
                     </header>
-                    <main><p>2026-04-14 00:05:32</p>
-<h1>今日學術早報摘要</h1>
-<p><strong class="red">執行時間</strong>: 2026-04-13 15:43 UTC</p>
-<hr />
-<h2>📄 論文 1：洪水風險圖繪製的新方法</h2>
-<p><strong class="red">標題</strong>: Flood Susceptibility Mapping of the Kosi Megafan Using Ensemble Machine Learning and SAR Data<br />
-<strong class="red">連結</strong>: https://www.mdpi.com/2072-4292/18/8/1158</p>
-<p><strong class="red">🎯 一句話核心</strong>: 研究結合 Sentinel-1 雷達資料與集成機器學習模型，精準繪製尼泊爾與印度邊境 Kosi 河扇形地區的洪水風險圖。</p>
-<p><strong class="red">🔍 研究原因</strong>: 全球每年洪水影響數億人，而 Kosi 扇形地區地形複雜、資料匱乏，傳統水文模型難以模擬；此外，以往 ML 模型研究常缺乏可解釋性且未與歷史洪水資料驗證。</p>
+                    <main><p><strong class="red">🔍 研究原因</strong>: 全球每年洪水影響數億人，而 Kosi 扇形地區地形複雜、資料匱乏，傳統水文模型難以模擬；此外，以往 ML 模型研究常缺乏可解釋性且未與歷史洪水資料驗證。</p>
 <p><strong class="red">💡 驚人發現</strong>: <br />
-- 堆疊集成模型性能最佳，AUC=0.76，準確率 70%，F1 分數 0.70<br />
-- Kosi 扇形約 39% 區域屬於高至高洪水風險區，近 269 萬人居住於此<br />
-- 關鍵驅動因素為：海拔、地貌洪水指數(GFI)、降雨量與 NDVI<br />
-- 雷達資料能有效穿透雲層，解決雨季光學衛星資料不足的問題</p>
-<p><strong class="red">📌 對我的意義</strong>: 此方法論可應用於其他資料匱乏的流域；提醒我們整合多源資料與集成模型能提升災害預測準確性，對防災規劃至關重要。</p>
-<hr />
+堆疊集成模型性能最佳，AUC=0.76，準確率 70%，F1 分數 0.70<br />
+Kosi 扇形約 39% 區域屬於高至高洪水風險區，近 269 萬人居住於此<br />
+關鍵驅動因素為：海拔、地貌洪水指數(GFI)、降雨量與 NDVI<br />
+雷達資料能有效穿透雲層，解決雨季光學衛星資料不足的問題</p>
+<h2><strong class="red">📌 對我的意義</strong>: 此方法論可應用於其他資料匱乏的流域；提醒我們整合多源資料與集成模型能提升災害預測準確性，對防災規劃至關重要。</h2>
 <h2>📄 論文 2：精準預測作物產量的開源框架</h2>
 <p><strong class="red">標題</strong>: A Framework for Accurate Annual Regional Crop Yield Prediction<br />
 <strong class="red">連結</strong>: https://www.mdpi.com/2072-4292/18/8/1157</p>
 <p><strong class="red">🎯 一句話核心</strong>: 研究開發無需地面實測的無監督分類框架，利用開源資料精準預測英國諾福克地區的冬小麥產量。</p>
 <p><strong class="red">🔍 研究原因</strong>: 氣候與地緣政治導致糧食安全挑戰加重，傳統預測方法需地面實測且混合多種作物類型導致不準確。</p>
 <p><strong class="red">💡 驚人發現</strong>: <br />
-- LSTM 模型表現最佳，MAE=10.495 kg/公頃，遠優於 CNN 與 CNN-LSTM<br />
-- 4-6 月的葉綠指數(EVI)是最重要特徵，與產量正相關<br />
-- 4-6 月過高的土壤濕度指數(NDMI)會降低產量<br />
-- 無監督分類準確率達 77%，無需額外調查</p>
-<p><strong class="red">📌 對我的意義</strong>: 此框架可用於全球不同地區，提醒我們生長初期(11-12 月)溫度與日照對產量影響重大；雨季過濕與乾旱期日照過多都會損害產量。</p>
-<hr />
+LSTM 模型表現最佳，MAE=10.495 kg/公頃，遠優於 CNN 與 CNN-LSTM<br />
+4-6 月的葉綠指數(EVI)是最重要特徵，與產量正相關<br />
+4-6 月過高的土壤濕度指數(NDMI)會降低產量<br />
+無監督分類準確率達 77%，無需額外調查</p>
+<h2><strong class="red">📌 對我的意義</strong>: 此框架可用於全球不同地區，提醒我們生長初期(11-12 月)溫度與日照對產量影響重大；雨季過濕與乾旱期日照過多都會損害產量。</h2>
 <h2>📄 論文 3：非洲垃圾場的太空光譜指紋</h2>
 <p><strong class="red">標題</strong>: Segment-Based Spectral Characterisation of Municipal Solid Waste in African Landfills Using HISUI Hyperspectral Imagery<br />
 <strong class="red">連結</strong>: https://www.mdpi.com/2072-4292/18/8/1156</p>
 <p><strong class="red">🎯 一句話核心</strong>: 研究利用 HISUI 高解析度光譜影像，在非洲 7 國的 8 座垃圾場建立光譜特徵庫，證明暴露垃圾具有穩定的短波紅外(SWIR)光譜指紋。</p>
 <p><strong class="red">🔍 研究原因</strong>: 非洲快速都市化導致垃圾基礎建設落後且缺乏常規監測；現有方法需開發新的分類演算法，而本研究希望驗證太空光譜影像能否直接揭露垃圾場面的穩定光譜特徵。</p>
 <p><strong class="red">💡 驚人發現</strong>: <br />
-- 1538-1750 nm 與 2075-2474 nm 波段的 SWIR 區域可清晰區分垃圾與土壤/城鎮類<br />
-- 約 1700 nm 與 2200-2300 nm 附近存在穩定的光譜極值點<br />
-- 亮度分析在跨場地時差異大，但形狀基元度量具有一致可分性<br />
-- 這是非洲垃圾場光譜特徵的第一個多場地光譜庫</p>
-<p><strong class="red">📌 對我的意義</strong>: 此物理基礎光譜庫可開發通用垃圾檢測框架，對發展中國家環境監測與垃圾管理提供重要技術支援；證明即使在異質環境中，垃圾表面仍具有可重複的光譜指紋。</p>
-<hr />
+1538-1750 nm 與 2075-2474 nm 波段的 SWIR 區域可清晰區分垃圾與土壤/城鎮類<br />
+約 1700 nm 與 2200-2300 nm 附近存在穩定的光譜極值點<br />
+亮度分析在跨場地時差異大，但形狀基元度量具有一致可分性<br />
+這是非洲垃圾場光譜特徵的第一個多場地光譜庫</p>
+<h2><strong class="red">📌 對我的意義</strong>: 此物理基礎光譜庫可開發通用垃圾檢測框架，對發展中國家環境監測與垃圾管理提供重要技術支援；證明即使在異質環境中，垃圾表面仍具有可重複的光譜指紋。</h2>
 <h2>📊 總結</h2>
 <p>今天共處理 <strong class="red">3 篇</strong> 頂尖期刊論文，涵蓋：<br />
-- 🌊 <strong class="red">防災技術</strong>: 洪水風險預測（集成功能學習 + 雷達資料）<br />
-- 🌾 <strong class="red">糧食安全</strong>: 作物產量精準預測（開源資料 + LSTM）<br />
-- 🗑️ <strong class="red">環境監測</strong>: 非洲垃圾場光譜特徵（太空光譜遙測）</p>
+🌊 <strong class="red">防災技術</strong>: 洪水風險預測（集成功能學習 + 雷達資料）<br />
+🌾 <strong class="red">糧食安全</strong>: 作物產量精準預測（開源資料 + LSTM）<br />
+🗑️ <strong class="red">環境監測</strong>: 非洲垃圾場光譜特徵（太空光譜遙測）</p>
 <p><strong class="red">關鍵共通點</strong>: <br />
-- 開放資料即可達成高準確預測<br />
-- 集成學習與深度學習模型表現優異<br />
-- 跨區域與跨環境的泛化性已驗證</p>
-<hr /></main>
+開放資料即可達成高準確預測<br />
+集成學習與深度學習模型表現優異<br />
+跨區域與跨環境的泛化性已驗證<br />
+--</p></main>
                     <footer>
                         <div>Hoomie Studio / Academic Flip</div>
                         <div>Slide to Next →</div>
@@ -1315,24 +1193,21 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
                     <header>
                         <div class="eng-title">RESEARCH</div>
                         <h1>未命名研究</h1>
-                        <div class="core-statement">這研究用衛星照片跟地面調查，發現緬甸山區傳統輪歇農耕的休耕期確實有 8 年，植被也能恢復，但農耕地越來越多且往更陡峭的山坡移動，長期下來會導致土壤退化，需要小心維護。</div>
+                        <div class="core-statement">### 一句話核心
+這研究用衛星照片跟地面調查，發現緬甸山區傳統輪歇農耕的休耕期確實有 8 年，植被也能恢復，但農耕地越來越多且往更陡峭的山坡移動，長期下來會導致土壤退化，需要小心維護。</div>
                     </header>
-                    <main><p>2026-04-13 23:30:46</p>
-<h1>學術早報 12.5 - 摘要大匯總</h1>
-<hr />
-<h2>論文一：Evaluation of Land Use Patterns and Vegetation Recovery Status of Shifting Cultivation in Myanmar's Mountainous Regions Using Satellite Imagery and Field Surveys</h2>
-<p>這研究用衛星照片跟地面調查，發現緬甸山區傳統輪歇農耕的休耕期確實有 8 年，植被也能恢復，但農耕地越來越多且往更陡峭的山坡移動，長期下來會導致土壤退化，需要小心維護。</p>
+                    <main><p>這研究用衛星照片跟地面調查，發現緬甸山區傳統輪歇農耕的休耕期確實有 8 年，植被也能恢復，但農耕地越來越多且往更陡峭的山坡移動，長期下來會導致土壤退化，需要小心維護。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">輪歇農耕（shifting cultivation）</strong> 是一種很古老的耕作方式，農民先在一片土地上種植幾年，等土壤變肥力不足後就停止耕作，讓大自然重新長出植物恢復地力，過一段時間再去另一塊地繼續種植。這種方式在過去能跟大自然保持平衡，但現在因為人越來越多、生活變得更複雜，傳統的平衡被打破了。</p>
 <p>研究這個很重要，因為我們想知道：<br />
-- 農民是不是還照著傳統方式做？<br />
-- 停下來後，植被多久能長回來？<br />
-- 有沒有在破壞更多土地？</p>
+農民是不是還照著傳統方式做？<br />
+停下來後，植被多久能長回來？<br />
+有沒有在破壞更多土地？</p>
 <p>這些資訊能幫助我們保護山林，避免過度開發導致生態惡化。</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>想像你拿兩組照片來比：<br />
-- 一組是<strong class="red">2019 到 2025 年</strong>的衛星照片<br />
-- 另一組是到現場去走訪調查的紀錄</p>
+一組是<strong class="red">2019 到 2025 年</strong>的衛星照片<br />
+另一組是到現場去走訪調查的紀錄</p>
 <p>研究人員用衛星照片找出哪裡在耕種（用一個指標叫 NDVI，簡單說就是看植物的綠色程度），再用超級電腦算出休耕需要多久植被能長回來。</p>
 <h3>驚人發現與具體數據（關鍵結果）</h3>
 <ol>
@@ -1342,21 +1217,20 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <li><strong class="red">潛在風險</strong>：雖然植物能長回來，但往陡峭地方擴展可能意味著土壤已經退化了</li>
 </ol>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li><strong class="red">對政策制定者</strong>：可以設計保護計畫，限制往陡坡開墾</li>
-<li><strong class="red">對農民</strong>：鼓勵延長休耕時間、減少總耕地面積</li>
-<li><strong class="red">對環保團體</strong>：有具體數據支持山地生態保護</li>
-<li><strong class="red">對科學研究</strong>：證明衛星監控 + 地面調查是有效的方法</li>
-</ul>
-<hr />
+<p><strong class="red">對政策制定者</strong>：可以設計保護計畫，限制往陡坡開墾<br />
+<strong class="red">對農民</strong>：鼓勵延長休耕時間、減少總耕地面積<br />
+<strong class="red">對環保團體</strong>：有具體數據支持山地生態保護<br />
+<strong class="red">對科學研究</strong>：證明衛星監控 + 地面調查是有效的方法<br />
+--</p>
 <h2>論文二：Microphysical Characteristics of a Squall Line Modulated by the Northeast China Cold Vortex Using Polarimetric Radar and Disdrometer Observations</h2>
+<h3>一句話核心</h3>
 <p>中國東北的暴雨常受冷渦影響，這研究用雷達跟降雨計發現，這種冷渦帶來的暴雨中雨滴較大但較稀疏，跟梅雨區的雨滴不同，而且雷達能看到暴雨內部複雜的冰晶生長過程。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">氣旋（cold vortex）</strong> 是一種大範圍的低壓系統，會帶來強降雨。中國東北的暴雨很常見，但為什麼有時雨特別大？裡面的雨滴是什麼形狀、大小？這些細節過去了解不夠清楚。</p>
 <p>研究這個很有用，因為：<br />
-- 能<strong class="red">改進天氣預報</strong>，讓大家知道暴雨何時會來<br />
-- 能讓科學家理解暴雨形成的<strong class="red">物理機制</strong><br />
-- 能幫助防災，特別是洪水跟山泥傾瀉</p>
+能<strong class="red">改進天氣預報</strong>，讓大家知道暴雨何時會來<br />
+能讓科學家理解暴雨形成的<strong class="red">物理機制</strong><br />
+能幫助防災，特別是洪水跟山泥傾瀉</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>想像你是一個偵探，要用工具來調查一宗懸案：<br />
 1. <strong class="red">用雷達（polarimetric radar）</strong>：這種雷達不像普通雷達只能看到哪裡有雨，還能看到雨滴的形狀、大小、是冰還是水的三相狀態<br />
@@ -1371,21 +1245,20 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <li><strong class="red">與梅雨的差異</strong>：梅雨的雨滴較小且密集，兩者明顯不同</li>
 </ol>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li><strong class="red">對氣象部門</strong>：改進預報模型，特別是暴雨預警系統</li>
-<li><strong class="red">對防災人員</strong>：更了解暴雨形成的機制，能提早發出警報</li>
-<li><strong class="red">對科學研究</strong>：理解中國不同地區的降雨形成過程</li>
-<li><strong class="red">對航空運輸</strong>：了解降水微物理特性有助於預測雷暴、霧等天氣現象</li>
-</ul>
-<hr />
+<p><strong class="red">對氣象部門</strong>：改進預報模型，特別是暴雨預警系統<br />
+<strong class="red">對防災人員</strong>：更了解暴雨形成的機制，能提早發出警報<br />
+<strong class="red">對科學研究</strong>：理解中國不同地區的降雨形成過程<br />
+<strong class="red">對航空運輸</strong>：了解降水微物理特性有助於預測雷暴、霧等天氣現象<br />
+--</p>
 <h2>論文三：Validation of Long-Term Methane (CH4) Satellite Measurements from the AIRS Spectrometer and Correction of Their Temporal Drift</h2>
+<h3>一句話核心</h3>
 <p>這研究發現氣象衛星測量甲烷濃度時有逐漸偏離的趨勢（每年約偏離 7.6 萬 ppm），作者提出一種新方法來修正，讓衛星資料跟地面觀測站更吻合，能更準確計算甲烷排放趨勢。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">甲烷（CH4）</strong> 是第二重要的溫室氣體（僅次於二氧化碳），但每顆分子的溫室效應是二氧化碳的<strong class="red">28-32 倍</strong>。了解甲烷的排放量非常重要，因為它能加速全球暖化。</p>
 <p>問題是：<br />
-- 衛星測量甲烷時，<strong class="red">長期使用下來會有系統性偏離</strong>（drift）<br />
-- 如果不修正，會誤判甲烷排放量的趨勢<br />
-- 影響氣候變化預測的準確性</p>
+衛星測量甲烷時，<strong class="red">長期使用下來會有系統性偏離</strong>（drift）<br />
+如果不修正，會誤判甲烷排放量的趨勢<br />
+影響氣候變化預測的準確性</p>
 <h3>他們做了什麼？（研究方法）</h3>
 <p>想像你在校正一輛一直開很久的車子，發現儀表板顯示的里程數越來越不准：<br />
 1. <strong class="red">拿衛星資料跟地面觀測站比</strong>：用 18 個 NDACC 觀測站跟 11 個 TCCON 觀測站，時間跨度<strong class="red">2003 到 2022 年</strong><br />
@@ -1400,13 +1273,11 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <li><strong class="red">地面觀測站的重要性</strong>：沒有高精度地面觀測站，就無法驗證和修正衛星資料</li>
 </ol>
 <h3>這對我有什麼意義？（實際應用）</h3>
-<ul>
-<li><strong class="red">對氣候變化研究</strong>：更準確的衛星資料能幫助評估溫室氣體排放</li>
-<li><strong class="red">對政策制定者</strong>：更了解甲烷排放趨勢，能設計有效的減排政策</li>
-<li><strong class="red">對產業界</strong>：油氣業、農業等甲烷主要來源，能更準確評估排放量</li>
-<li><strong class="red">對科學界</strong>：這種修正方法也能用在其他衛星觀測資料（如大氣組成、氣候參數等）</li>
-</ul>
-<hr />
+<p><strong class="red">對氣候變化研究</strong>：更準確的衛星資料能幫助評估溫室氣體排放<br />
+<strong class="red">對政策制定者</strong>：更了解甲烷排放趨勢，能設計有效的減排政策<br />
+<strong class="red">對產業界</strong>：油氣業、農業等甲烷主要來源，能更準確評估排放量<br />
+<strong class="red">對科學界</strong>：這種修正方法也能用在其他衛星觀測資料（如大氣組成、氣候參數等）<br />
+--</p>
 <h2>總結</h2>
 <p>這一期學術早報共整理了 3 篇論文，涵蓋以下領域：</p>
 <table>
@@ -1438,8 +1309,8 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <p><strong class="red">建議行動</strong>：<br />
 1. 繼續關注環境科學領域的衛星應用<br />
 2. 研究大氣科學對防災的實際應用價值<br />
-3. 氣候科學的衛星資料修正方法值得推廣到更多衛星系統</p>
-<hr />
+3. 氣候科學的衛星資料修正方法值得推廣到更多衛星系統<br />
+--</p>
 <p><em>生成時間：2026 年 4 月 13 日 23:15</em><br />
 <em>ResearchMaster 技能執行完成</em></p></main>
                     <footer>
@@ -1470,8 +1341,7 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <strong class="red">Authors:</strong> Verrelst, J.; Clerck, E.D.; Verma, B.; Mishra, K., Caballero, G.<br />
 <strong class="red">Affiliation:</strong> Image Processing Laboratory (IPL), University of Valencia, Spain</p>
 <h3>摘要</h3>
-<p>隨著衛星地球觀測 (EO) 數據的體積、時間密度和多樣性大幅增加，定量植被遙感發生了根本性的轉變。密集的跨感測器時間序列和計算密集型模型使得傳統的下載和處理流程變得越來越不切實際。云原生計算（在數據附近訪問、存儲和計算數據並執行分析）因此成為可擴展和可重複的植被 EO 分析的關鍵範式。本文提供了關於云原生 EO 用於定量植被研究的科學綜合。我們檢視了塑造植被分析實施、擴展和科學解釋的架構原則、數據模型和計算模式。我們特別關注機器學習作為系統組件，包括模型生命週期管理、領域漂移和分佈式環境中的評估完整性。我們分析了云原生數據抽象如何影響演算法假設、驗證設計和長期產品一致性，突出了分析複雜性、計算成本、延遲和科學穩健性之間的權衡。我們提供了新興成像光譜任務的前瞻性視角，以及在大陸到全球尺度上可重複、可擴展和不確定性意識的植被分析日益增長的系統級需求。我們還概述了云原生 EO 基礎設施如何驅動基於持續監控、系統再處理和 AI 驅動建模的新科學範式。</p>
-<hr />
+<h2>隨著衛星地球觀測 (EO) 數據的體積、時間密度和多樣性大幅增加，定量植被遙感發生了根本性的轉變。密集的跨感測器時間序列和計算密集型模型使得傳統的下載和處理流程變得越來越不切實際。云原生計算（在數據附近訪問、存儲和計算數據並執行分析）因此成為可擴展和可重複的植被 EO 分析的關鍵範式。本文提供了關於云原生 EO 用於定量植被研究的科學綜合。我們檢視了塑造植被分析實施、擴展和科學解釋的架構原則、數據模型和計算模式。我們特別關注機器學習作為系統組件，包括模型生命週期管理、領域漂移和分佈式環境中的評估完整性。我們分析了云原生數據抽象如何影響演算法假設、驗證設計和長期產品一致性，突出了分析複雜性、計算成本、延遲和科學穩健性之間的權衡。我們提供了新興成像光譜任務的前瞻性視角，以及在大陸到全球尺度上可重複、可擴展和不確定性意識的植被分析日益增長的系統級需求。我們還概述了云原生 EO 基礎設施如何驅動基於持續監控、系統再處理和 AI 驅動建模的新科學範式。</h2>
 <h2>論文 2: A Review on Bathymetric Inversion Research Based on Deep Learning Models and Remote Sensing Images</h2>
 <p><strong class="red">URL:</strong> https://www.mdpi.com/2072-4292/18/5/720<br />
 <strong class="red">Published:</strong> 27 February 2026<br />
@@ -1479,17 +1349,16 @@ Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides
 <h3>摘要</h3>
 <p>高精度淺水深度反演對於海洋資源開發、生態保護和國防安全至關重要。傳統的聲納探測、LiDAR 和實證模型因成本高、效率低或對水質依賴而受到限制，難以滿足人們對淺水深度的不斷增長的需求。隨著遙感資訊、計算機科學和人工智慧理論與技術的快速發展，基於遙感影像和深度學習模型的深度反演已成為研究熱點。本研究搜尋了 Web of Science 和 Google Scholar 數據庫，時間範圍從 2021 年 1 月到 2025 年 9 月。總共收錄了 309 項相關研究，經過篩選和質量控制，最終選取了 132 項核心研究作為回顧對象。這些研究根據深度學習模型（包括 CNN、U-Net、MLP 和 RNN）進行了分類，分析了不同深度學習模型在深度反演中的特點以及它們的數據源選擇、反演精度和局限性。此外，還結合了最新的研究成果討論了未來的發展趨勢。</p>
 <p><strong class="red">主要發現：</strong><br />
-- 深度學習顯著改善了淺水深度反演，但性能受到水體清晰度、底部類型、感測器特性等強烈約束<br />
-- 主要瓶頸是現場深度標籤有限以及跨地區、感測器和濁度的領域漂移<br />
-- 未來進展可能依賴於標準化基準數據集以及採用自監督學習和物理信息約束以提高穩健性和可移植性</p>
-<hr />
+深度學習顯著改善了淺水深度反演，但性能受到水體清晰度、底部類型、感測器特性等強烈約束<br />
+主要瓶頸是現場深度標籤有限以及跨地區、感測器和濁度的領域漂移<br />
+未來進展可能依賴於標準化基準數據集以及採用自監督學習和物理信息約束以提高穩健性和可移植性<br />
+--</p>
 <h2>論文 3: Multi-Temporal Canopy Gaps Assessment Using Airborne Laser Scanning Data</h2>
 <p><strong class="red">URL:</strong> https://www.mdpi.com/2072-4292/18/7/1045<br />
 <strong class="red">Published:</strong> 31 March 2026<br />
 <strong class="red">Authors:</strong> University of Agriculture in Krakow, Poland 等</p>
 <h3>摘要</h3>
-<p>林冠空隙是理解森林干擾制度和再生過程的重要足跡，但需要運用多種指標沿著時間梯度來更深入地了解動態。本研究檢查了喀爾巴阡山脈三個保護森林的空隙數據，這些數據經過位置和森林類型分層，並在地時空尺度上進行了分析。檢查了多個特徵，包括空隙大小結構、空隙面積比例、空隙幾何形狀以及空隙幾何形狀和大小與空隙形成的關係。結果表明，空隙大小頻率具有重尾右偏分布，並且在大多數情況下在時間上保持相同的比例，即使空隙數量減少。空隙大小的概率分佈不是獨立的功率定律；它也遵循對數正規分布和指數分布。空隙計數和空隙百分比隨著時間減少，但隨著空隙大小的增加。空隙形狀複雜度大約為 2.0，但隨著空隙大小的增加而變得複雜。時空隙動態特徵為四種空隙類型：恢復或關閉的空隙、持續的空隙、擴大的空隙或新的開口，其平衡受干擾嚴重程度的影響。這些發現強調了跨時空尺度綜合空隙指標在闡述未經管理的森林的空隙動態方面的重要性。</p>
-<hr />
+<h2>林冠空隙是理解森林干擾制度和再生過程的重要足跡，但需要運用多種指標沿著時間梯度來更深入地了解動態。本研究檢查了喀爾巴阡山脈三個保護森林的空隙數據，這些數據經過位置和森林類型分層，並在地時空尺度上進行了分析。檢查了多個特徵，包括空隙大小結構、空隙面積比例、空隙幾何形狀以及空隙幾何形狀和大小與空隙形成的關係。結果表明，空隙大小頻率具有重尾右偏分布，並且在大多數情況下在時間上保持相同的比例，即使空隙數量減少。空隙大小的概率分佈不是獨立的功率定律；它也遵循對數正規分布和指數分布。空隙計數和空隙百分比隨著時間減少，但隨著空隙大小的增加。空隙形狀複雜度大約為 2.0，但隨著空隙大小的增加而變得複雜。時空隙動態特徵為四種空隙類型：恢復或關閉的空隙、持續的空隙、擴大的空隙或新的開口，其平衡受干擾嚴重程度的影響。這些發現強調了跨時空尺度綜合空隙指標在闡述未經管理的森林的空隙動態方面的重要性。</h2>
 <p><strong class="red">後台歸檔任務已啟動，暫存檔將自動清理。</strong></p></main>
                     <footer>
                         <div>Hoomie Studio / Academic Flip</div>
