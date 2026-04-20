@@ -4,11 +4,10 @@ import sys
 import argparse
 import markdown
 import subprocess
-import webbrowser
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 
-# 強制控制台輸出為 UTF-8，解決 Windows 編碼報錯問題
+# 強制控制台輸出為 UTF-8，解決 Windows 環境下可能的編碼報錯
 if sys.platform.startswith('win'):
     import io
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -37,7 +36,7 @@ def get_read_history():
         return set(re.findall(r'https://www.mdpi.com/\d+-\d+/\d+/\d+/\d+', content))
 
 # ==========================================
-# 自動化發布：Git Push
+# 自動化發布：Git Push (解決 master/main 分支衝突)
 # ==========================================
 def git_push_auto():
     try:
@@ -45,21 +44,32 @@ def git_push_auto():
         if not os.path.exists(".git"):
             subprocess.run(["git", "init"], check=True)
 
+        # 檢查遠端倉庫設定
         remote_check = subprocess.run(["git", "remote"], capture_output=True, text=True)
         if "origin" not in remote_check.stdout:
             subprocess.run(["git", "remote", "add", "origin", GITHUB_REMOTE_URL], check=True)
         
+        # 強制將分支重新命名為 main 以符合現代 GitHub 規範
         subprocess.run(["git", "branch", "-M", "main"], check=True)
+        
+        # 檢查檔案變動狀態
+        status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
+        if not status.stdout.strip():
+            print("[Git] No changes to commit.")
+            return
+
         subprocess.run(["git", "add", "."], check=True)
-        
         commit_msg = f"Auto-Update: {datetime.now().strftime('%m-%d %H:%M')}"
-        subprocess.run(["git", "commit", "-m", commit_msg], capture_output=True)
+        subprocess.run(["git", "commit", "-m", commit_msg], check=True)
         
+        print("[Git] Pushing to origin main...")
         result = subprocess.run(["git", "push", "-u", "origin", "main"], capture_output=True, text=True)
-        if result.returncode != 0:
-            subprocess.run(["git", "push", "origin", "master"], check=True)
+        
+        if result.returncode == 0:
+            print("[Git] Push Success!")
+        else:
+            print(f"[Git Error] Push failed: {result.stderr}")
             
-        print("[Git] Push Success!")
     except Exception as e:
         print(f"[Git Error] Sync failed: {str(e)}")
 
@@ -108,7 +118,7 @@ def mode_collect():
             browser.close()
 
 # ==========================================
-# 模式 2：渲染 (Render) - 整合 Yale 橫向滑動風格
+# 模式 2：渲染 (Render) - Humankind 藝術風格
 # ==========================================
 def mode_render():
     if not os.path.exists(SUMMARY_FILE):
@@ -118,112 +128,132 @@ def mode_render():
     with open(SUMMARY_FILE, "r", encoding="utf-8") as f:
         full_content = f.read()
 
-    # 以歸檔時間分割內容
+    # 依歸檔時間分割內容
     entries = re.split(r"# 歸檔時間[:：]?\s*\d{4}-\d{2}-\d{2}.*?\n", full_content)
     entries = [e.strip() for e in entries if e.strip()]
-    
     if not entries: return
-
-    # 第一篇從最新的文章開始 (反轉列表)
-    entries.reverse()
+    entries.reverse() # 最新的排前面
     
     all_slides_html = ""
     for entry in entries:
-        # 解析標題
+        # 提取標題與核心內容
         eng_match = re.search(r"(?:#+)\s*文獻名稱\s*\n(.*?)\n", entry)
         chi_match = re.search(r"(?:#+)\s*文獻中文名稱\s*\n(.*?)\n", entry)
         core_match = re.search(r"(?:#+)\s*一句話核心\s*\n(.*?)\n", entry)
         
-        eng_title = eng_match.group(1).strip() if eng_match else "Yale Research Archive"
+        eng_title = eng_match.group(1).strip() if eng_match else "RESEARCH PAPER"
         chi_title = chi_match.group(1).strip() if chi_match else "未命名研究"
         core_statement = core_match.group(1).strip() if core_match else ""
 
-        # 清理正文 Markdown
+        # 清除已提取的標題，轉換剩餘內容為 HTML
         md_body = re.sub(r"(?:#+)\s*文獻(中文)?名稱.*?\n(.*?)\n", "", entry)
         md_body = re.sub(r"(?:#+)\s*一句話核心.*?\n(.*?)\n", "", md_body)
-        
-        # 轉換內容並修正序號清單問題
         content_html = markdown.markdown(md_body, extensions=['extra', 'nl2br', 'sane_lists'])
 
         all_slides_html += f"""
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ {datetime.now().strftime('%m/%d')} ]</div>
+                        <h1 class="hk-main-title">{chi_title}</h1>
+                        <p class="hk-eng-subtitle">{eng_title}</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>{core_statement}</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            {content_html}
+                        </div>
+                    </div>
                 </div>
-                
-                <header>
-                    <div class="eng-meta">{eng_title}</div>
-                    <h1>{chi_title.replace('：', ':<br>')}</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>{core_statement}
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
                 </div>
-
-                <div class="article-columns">
-                    {content_html}
-                </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
             </div>
         </div>"""
 
-    # 耶魯風格與 Swiper 整合之 CSS
     style = """
     :root {
-        --yale-blue: #00356b;
-        --accent-red: #e60012;
-        --highlight: #fff176;
-        --text-main: #222222;
-        --bg-shade: #f4f4f4;
+        --hk-bg: #f8f8f8; --hk-black: #0a0a0a; --hk-red: #ff3b30; --hk-gray: #e0e0e0;
+        --serif: 'Noto Serif TC', serif; --sans: 'Noto Sans TC', sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body, html { height: 100%; overflow: hidden; background: #1a1a1a; font-family: 'Noto Sans TC', sans-serif; }
+    body, html { height: 100%; overflow: hidden; background: var(--hk-bg); color: var(--hk-black); font-family: var(--sans); }
     
     .swiper { width: 100%; height: 100vh; }
-    .swiper-slide { display: flex; justify-content: center; align-items: center; padding: 20px; }
+    .swiper-slide { background: var(--hk-bg); }
 
-    .poster-inner {
-        background: #fff;
-        width: 100%;
-        max-width: 1300px;
-        height: 92vh;
-        padding: 50px 60px;
-        border-top: 12px solid var(--yale-blue);
-        box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-        position: relative;
-        overflow-y: auto; /* 內部內容過長可滾動 */
+    .hk-container {
+        width: 100%; height: 100%; padding: 60px;
+        display: flex; flex-direction: column; justify-content: space-between;
+        position: relative; overflow: hidden;
     }
-    .yale-top-bar {
-        display: flex; justify-content: space-between; border-bottom: 1px solid #eee;
-        padding-bottom: 15px; margin-bottom: 40px; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;
+
+    .hk-background-text {
+        position: absolute; top: -10%; right: -5%;
+        font-size: 25vw; font-weight: 900; color: rgba(0,0,0,0.03);
+        z-index: 0; pointer-events: none;
     }
-    .yale-brand { color: var(--yale-blue); }
-    header h1 { font-family: 'Noto Serif TC', serif; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.2; color: var(--yale-blue); margin-bottom: 30px; letter-spacing: -1px; }
-    .eng-meta { font-size: 1rem; color: #888; margin-bottom: 10px; font-weight: 300; }
-    .core-box { font-size: 1.3rem; background: var(--bg-shade); padding: 30px; border-left: 8px solid var(--yale-blue); margin-bottom: 50px; line-height: 1.6; }
+
+    .hk-grid {
+        display: grid; grid-template-columns: 1.2fr 1fr;
+        gap: 80px; z-index: 1; height: 75vh;
+    }
+
+    .hk-tag { font-weight: 700; letter-spacing: 5px; margin-bottom: 40px; font-size: 0.9rem; }
+
+    .hk-main-title {
+        font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 5rem);
+        line-height: 1.1; font-weight: 900; letter-spacing: -2px;
+        margin-bottom: 20px;
+    }
+
+    .hk-eng-subtitle {
+        font-size: 1rem; color: #888; text-transform: uppercase;
+        letter-spacing: 2px; margin-bottom: 60px; max-width: 80%;
+    }
+
+    .hk-core-statement { display: flex; gap: 20px; align-items: flex-start; }
+    .hk-label { 
+        background: var(--hk-black); color: #fff; padding: 4px 10px;
+        font-size: 0.7rem; font-weight: 900; transform: rotate(-90deg) translateX(-10px);
+    }
+    .hk-core-statement p { font-size: 1.5rem; font-family: var(--serif); line-height: 1.4; font-weight: 700; }
+
+    .hk-content-scroll { 
+        height: 100%; overflow-y: auto; padding-right: 20px; 
+    }
+    h3 { 
+        font-family: var(--serif); font-size: 1.6rem; margin: 40px 0 15px;
+        border-bottom: 2px solid var(--hk-black); display: inline-block;
+    }
+    p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px; text-align: justify; }
     
-    .article-columns { column-count: 2; column-gap: 60px; column-rule: 1px solid #f0f0f0; }
-    h3 { break-inside: avoid; background: var(--highlight); display: inline-block; padding: 0 8px; font-size: 1.6rem; margin: 30px 0 15px 0; font-family: 'Noto Serif TC', serif; }
-    p { font-size: 1.25rem; margin-bottom: 20px; text-align: justify; color: var(--text-main); }
+    strong, b { color: var(--hk-red); font-weight: 700; }
     
-    /* 修正序號顯示問題 */
-    ul, ol { margin-bottom: 30px; padding-left: 25px; break-inside: avoid; }
-    li { font-size: 1.2rem; margin-bottom: 12px; color: #444; border-bottom: 1px dotted #eee; padding-bottom: 8px; }
-    
-    strong, b { color: var(--accent-red); font-weight: 700; }
-    
-    footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 0.85rem; color: #bbb; }
-    
-    @media (max-width: 900px) {
-        .poster-inner { padding: 30px; }
-        .article-columns { column-count: 1; }
-        header h1 { font-size: 2.2rem; }
+    ul, ol { list-style: none; margin-bottom: 40px; }
+    li { 
+        font-size: 1.1rem; padding: 10px 0; border-bottom: 1px solid var(--hk-gray);
+        display: flex; gap: 10px;
+    }
+    li::before { content: "→"; font-weight: 900; color: var(--hk-red); }
+
+    .hk-footer {
+        display: flex; justify-content: space-between; align-items: flex-end;
+        border-top: 1px solid #000; padding-top: 20px;
+    }
+    .hk-logo { font-weight: 900; letter-spacing: 2px; font-size: 1.2rem; }
+    .hk-logo span { color: var(--hk-red); }
+    .hk-scroll-hint { font-size: 0.8rem; letter-spacing: 3px; font-weight: 700; }
+
+    @media (max-width: 1024px) {
+        .hk-grid { grid-template-columns: 1fr; gap: 40px; height: auto; }
+        .hk-container { padding: 30px; overflow-y: auto; }
     }
     """
 
@@ -233,34 +263,30 @@ def mode_render():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yale Research Collection</title>
+    <title>Humankind Research Archive</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
     <style>{style}</style>
 </head>
 <body>
     <div class="swiper">
-        <div class="swiper-wrapper">
-            {all_slides_html}
-        </div>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-wrapper">{all_slides_html}</div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        new Swiper('.swiper', {{
-            pagination: {{ el: '.swiper-pagination', clickable: true }},
+        const swiper = new Swiper('.swiper', {{
             mousewheel: true,
             keyboard: true,
             grabCursor: true,
-            spaceBetween: 30
+            speed: 800
         }});
     </script>
 </body>
-</html>
-    """
+</html>"""
 
-    with open(OUTPUT_HTML, "w", encoding="utf-8") as f: f.write(full_html)
-    print(f"[Render] {OUTPUT_HTML} updated with Yale Horizontal Swiper style.")
+    with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
+        f.write(full_html)
+    print(f"[Render] {OUTPUT_HTML} updated with Humankind Art style.")
     git_push_auto()
 
 # ==========================================
@@ -289,6 +315,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=["collect", "merge", "render"], required=True)
     args = parser.parse_args()
+    
     if args.mode == "collect": mode_collect()
     elif args.mode == "merge": mode_merge()
     elif args.mode == "render": mode_render()

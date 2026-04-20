@@ -4,133 +4,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yale Research Collection</title>
+    <title>Humankind Research Archive</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
     :root {
-        --yale-blue: #00356b;
-        --accent-red: #e60012;
-        --highlight: #fff176;
-        --text-main: #222222;
-        --bg-shade: #f4f4f4;
+        --hk-bg: #f8f8f8; --hk-black: #0a0a0a; --hk-red: #ff3b30; --hk-gray: #e0e0e0;
+        --serif: 'Noto Serif TC', serif; --sans: 'Noto Sans TC', sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body, html { height: 100%; overflow: hidden; background: #1a1a1a; font-family: 'Noto Sans TC', sans-serif; }
+    body, html { height: 100%; overflow: hidden; background: var(--hk-bg); color: var(--hk-black); font-family: var(--sans); }
     
     .swiper { width: 100%; height: 100vh; }
-    .swiper-slide { display: flex; justify-content: center; align-items: center; padding: 20px; }
+    .swiper-slide { background: var(--hk-bg); }
 
-    .poster-inner {
-        background: #fff;
-        width: 100%;
-        max-width: 1300px;
-        height: 92vh;
-        padding: 50px 60px;
-        border-top: 12px solid var(--yale-blue);
-        box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-        position: relative;
-        overflow-y: auto; /* 內部內容過長可滾動 */
+    .hk-container {
+        width: 100%; height: 100%; padding: 60px;
+        display: flex; flex-direction: column; justify-content: space-between;
+        position: relative; overflow: hidden;
     }
-    .yale-top-bar {
-        display: flex; justify-content: space-between; border-bottom: 1px solid #eee;
-        padding-bottom: 15px; margin-bottom: 40px; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;
+
+    .hk-background-text {
+        position: absolute; top: -10%; right: -5%;
+        font-size: 25vw; font-weight: 900; color: rgba(0,0,0,0.03);
+        z-index: 0; pointer-events: none;
     }
-    .yale-brand { color: var(--yale-blue); }
-    header h1 { font-family: 'Noto Serif TC', serif; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.2; color: var(--yale-blue); margin-bottom: 30px; letter-spacing: -1px; }
-    .eng-meta { font-size: 1rem; color: #888; margin-bottom: 10px; font-weight: 300; }
-    .core-box { font-size: 1.3rem; background: var(--bg-shade); padding: 30px; border-left: 8px solid var(--yale-blue); margin-bottom: 50px; line-height: 1.6; }
+
+    .hk-grid {
+        display: grid; grid-template-columns: 1.2fr 1fr;
+        gap: 80px; z-index: 1; height: 75vh;
+    }
+
+    .hk-tag { font-weight: 700; letter-spacing: 5px; margin-bottom: 40px; font-size: 0.9rem; }
+
+    .hk-main-title {
+        font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 5rem);
+        line-height: 1.1; font-weight: 900; letter-spacing: -2px;
+        margin-bottom: 20px;
+    }
+
+    .hk-eng-subtitle {
+        font-size: 1rem; color: #888; text-transform: uppercase;
+        letter-spacing: 2px; margin-bottom: 60px; max-width: 80%;
+    }
+
+    .hk-core-statement { display: flex; gap: 20px; align-items: flex-start; }
+    .hk-label { 
+        background: var(--hk-black); color: #fff; padding: 4px 10px;
+        font-size: 0.7rem; font-weight: 900; transform: rotate(-90deg) translateX(-10px);
+    }
+    .hk-core-statement p { font-size: 1.5rem; font-family: var(--serif); line-height: 1.4; font-weight: 700; }
+
+    .hk-content-scroll { 
+        height: 100%; overflow-y: auto; padding-right: 20px; 
+    }
+    h3 { 
+        font-family: var(--serif); font-size: 1.6rem; margin: 40px 0 15px;
+        border-bottom: 2px solid var(--hk-black); display: inline-block;
+    }
+    p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px; text-align: justify; }
     
-    .article-columns { column-count: 2; column-gap: 60px; column-rule: 1px solid #f0f0f0; }
-    h3 { break-inside: avoid; background: var(--highlight); display: inline-block; padding: 0 8px; font-size: 1.6rem; margin: 30px 0 15px 0; font-family: 'Noto Serif TC', serif; }
-    p { font-size: 1.25rem; margin-bottom: 20px; text-align: justify; color: var(--text-main); }
+    strong, b { color: var(--hk-red); font-weight: 700; }
     
-    /* 修正序號顯示問題 */
-    ul, ol { margin-bottom: 30px; padding-left: 25px; break-inside: avoid; }
-    li { font-size: 1.2rem; margin-bottom: 12px; color: #444; border-bottom: 1px dotted #eee; padding-bottom: 8px; }
-    
-    strong, b { color: var(--accent-red); font-weight: 700; }
-    
-    footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 0.85rem; color: #bbb; }
-    
-    @media (max-width: 900px) {
-        .poster-inner { padding: 30px; }
-        .article-columns { column-count: 1; }
-        header h1 { font-size: 2.2rem; }
+    ul, ol { list-style: none; margin-bottom: 40px; }
+    li { 
+        font-size: 1.1rem; padding: 10px 0; border-bottom: 1px solid var(--hk-gray);
+        display: flex; gap: 10px;
+    }
+    li::before { content: "→"; font-weight: 900; color: var(--hk-red); }
+
+    .hk-footer {
+        display: flex; justify-content: space-between; align-items: flex-end;
+        border-top: 1px solid #000; padding-top: 20px;
+    }
+    .hk-logo { font-weight: 900; letter-spacing: 2px; font-size: 1.2rem; }
+    .hk-logo span { color: var(--hk-red); }
+    .hk-scroll-hint { font-size: 0.8rem; letter-spacing: 3px; font-weight: 700; }
+
+    @media (max-width: 1024px) {
+        .hk-grid { grid-template-columns: 1fr; gap: 40px; height: auto; }
+        .hk-container { padding: 30px; overflow-y: auto; }
     }
     </style>
 </head>
 <body>
     <div class="swiper">
         <div class="swiper-wrapper">
-            
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>研究提出 SimTA 模型，透過深層特徵層級融合與時空注意力機制，大幅提升 SAR 衛星資料對水稻田的分類準確度。
-                </div>
-
-                <div class="article-columns">
-                    <h2>SimTA: 雙極化 SAR 時序水稻田分類模型</h2>
-<p>論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1237<br />
-抓取時間: 2026-04-20 15:06</p>
-<h2>為什麼要研究這個？（研究動機）</h2>
-<p>準確的大規模作物分類對預測產量、監控農業災害和保障全球糧食安全至關重要。合成孔徑雷達（SAR，一種能在陰天或夜晚也能拍攝的地面影像技術）擁有全天候成像能力，在水稻田分類研究中扮演關鍵角色。然而，現有方法主要停留在資料層級融合，未能有效整合雙極化（VV 和 VH）SAR 資料在全水稻生長期中的互補資訊，導致在田界和異質區域出現冗餘或衝突的特徵，增加了分類錯誤。</p>
-<h2>他們做了什麼？（研究方法）</h2>
-<p>研究者設計了一個全新模型，主要做了三件事：<br />
-1. <strong>雙極化特徵融合</strong>：像調酒師結合兩種不同的酒一樣，將 VV 和 VH 兩種極化的 SAR 資料進行深層級融合，並結合「內容指導注意力（CGA）」方法，有效利用雙極化 SAR 資料的互補資訊，實現深度時空動態融合。<br />
-2. <strong>邊緣增強卷积</strong>：設計了一種特殊卷積結構（CDCSE Conv Block），結合標準卷積和中心差分卷積，提高對水稻田邊緣變化的敏感度。<br />
-3. <strong>時空注意力機制</strong>：開發時空注意力（TSA）模組，用大核卷積處理空間特徵，並利用 squeeze-and-excitation 機制捕捉水稻時序的長期依賴關係，讓模型能理解水稻在整個生長期內的變化規律。</p>
-<h2>驚人發現與具體數據（關鍵結果）</h2>
-<p>實驗比較了 SimTA 與其他模型在不同融合方案下的表現，結果顯示：<br />
-- <strong>特徵層級融合</strong> consistently 優於其他融合方式<br />
-- <strong>SimTA 最佳表現</strong>：整體準確率（OA）= 91.1%，F1 分數 = 90.9%，平均交並比（mIoU）= 86.2%<br />
-- <strong>與基準模型 SimVP 相比</strong>：SimTA 將 F1 分數提升 0.8%，mIoU 提升 2.1%<br />
-- <strong>加入 CGA 增強後的 SimTA</strong>：整體準確率達到 91.5%，F1 分數達到 91.4%</p>
-<h2>這對我有什麼意義？（實際應用）</h2>
-<ul>
-<li>農民與農業部門可更精確掌握水稻種植範圍，優化灌溉與施肥計劃</li>
-<li>糧食進口國能更精準評估水稻需求，穩定糧價</li>
-<li>開源資料讓開發中國家也能低成本應用此技術，促進全球糧食公平</li>
-<li>此方法可擴展應用於其他作物（如稻米、玉米），甚至不同地區</li>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">用雷射掃描樹木配對，讓木材收割機在森林中精準定位、不累積誤差</h1>
+                        <p class="hk-eng-subtitle">Lidar-Enabled Tree Map Matching for Real-Time and Drift-Free Harvester Positioning</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>這篇論文提出一個超輕量級的系統，能即時用樹木配對的方式，把收割機雷射掃描的樹木圖，跟事先飛航雷射掃描做的參考圖對齊，讓木材收割機在森林裡精準定位，就算樹木資料有誤差也能穩定運作。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1243</li>
+<li>抓取時間: 2026-04-20 17:30:23</li>
 </ul>
-<hr />
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p>先讓我簡單解釋幾個專業名詞：<br />
+- 木材收割機（harvester）：那種在森林裡工作的機械，一次可以砍掉幾十棵樹。<br />
+- 飛航雷射掃描（ALS）：從飛機上往下發射雷射，繪製森林的 3D 地圖。<br />
+- 行動雷射掃描（MLS）：裝在收割機上的雷射掃描儀，即時拍攝周圍的樹木。<br />
+- 漂移（drift）：隨著時間推移，定位系統會累積誤差，就像你閉著眼睛走路越走越離家越來越遠。</p>
+<p>這項研究想解決的問題是：木材收割機在森林裡作業時，常常被樹冠遮擋，GPS 訊號很弱，定位不準確。如果定位有誤差，收割機可能會砍到不該砍的樹，或者錯過了高價值的樹木，甚至可能因為誤差累積讓整台機械迷失方向。</p>
+<p>為什麼這很重要？因為木材價值在收割機處理的幾秒鐘內就決定了，如果定位不準，砍錯樹或砍錯位置都會造成巨大損失。此外，精細的森林管理需要我們知道每棵樹的品質、健康狀況，這樣才能做出保護生物多樣性、適應氣候變化的聰明決策。</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p>想象一下你玩桌上足球遊戲，你手裡的球只能控制離你比較近的球，而離你太遠的球你就控制不了。研究人員用的就是類似的概念：</p>
+<ol>
+<li>
+<p><strong>模擬測試階段</strong>：<br />
+   - 他們用電腦模擬不同的森林狀況（樹的密度、位置誤差等）<br />
+   - 模擬收割機的移動路徑<br />
+   - 用「樹木特徵描述」來配對樹木：每棵樹都會記錄它周圍其他樹木的位置和角度，就像每個人都有自己的「朋友圈」</p>
+</li>
+<li>
+<p><strong>實際測試階段</strong>：<br />
+   - 在芬蘭的北歐森林進行實際操作<br />
+   - 使用裝在收割機上的雙重雷射掃描儀<br />
+   - 比較模擬結果和實際測量結果</p>
+</li>
+<li>
+<p><strong>超聰明的配對方法</strong>：<br />
+   - 像玩找朋友遊戲：每棵樹都要找到自己的「鄰居」<br />
+   - 使用「隨機加噪聲」技巧：即使樹木位置有點模糊，也能找到正確的配對<br />
+   - 即時更新：每移動一小段距離就重新計算位置</p>
+</li>
+</ol>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<ol>
+<li>
+<p><strong>超強抗干擾能力</strong>：<br />
+   - 即使每棵樹的位置都有約 50 公分（0.5 米）的誤差<br />
+   - 參考地圖本身質量較差（從飛行雷射掃描得到）<br />
+   - 系統仍能成功配對約 85% 的樹木</p>
+</li>
+<li>
+<p><strong>實測誤差控制得超好</strong>：<br />
+   - 經過系統連續校正後，最終定位誤差只有 50 公分（0.5 米）<br />
+   - 這個誤差主要由參考地圖本身的精度限制<br />
+   - 對於森林作業來說，這已經足夠精準</p>
+</li>
+<li>
+<p><strong>快速響應</strong>：<br />
+   - 系統更新速度最快只要 20 毫秒（就是萬分之一秒！）<br />
+   - 即使樹木密度高達每公頃 2000 棵也能即時處理<br />
+   - 記憶體使用量很少，不會拖慢收割機運作</p>
+</li>
+</ol>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<p>這個研究成果可以幫到：<br />
+- 木材工人可以更精準地決定砍哪些樹，避免砍錯<br />
+- 保護珍貴樹種，維持森林生態平衡<br />
+- 減少不必要的木材浪費<br />
+- 開源技術讓開發中國家也能低成本應用<br />
+- 未來可以擴展到其他作物（稻米、玉米等）的管理<br />
+- 不同地區也能根據需要調整使用</p>
+<p>這就像是給了木材收割機一雙「超級眼睛」，讓它在複雜的森林環境中也能看得準、做得精，同時還能保護環境和生物多樣性。</p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>中央印度多元化農業系統中，評估用於季風（Kharif）作物監測的 SAR 衍生物候指標:<br>來自中央印度的見解</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>在季風季節中央印度，用合成孔徑雷達（SAR）監測不同農作物時，棉花最容易被分辨，但穀物與豆類作物因為生长模式相似，很難用單一 SAR 資料區分。
-                </div>
-
-                <div class="article-columns">
-                    <h2>Evaluating SAR-Derived Phenological Metrics for Monsoon (Kharif) Crop Monitoring in Diversified Agricultural Systems: Insights from Central India</h2>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">中央印度多元化農業系統中，評估用於季風（Kharif）作物監測的 SAR 衍生物候指標：來自中央印度的見解</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>在季風季節中央印度，用合成孔徑雷達（SAR）監測不同農作物時，棉花最容易被分辨，但穀物與豆類作物因為生长模式相似，很難用單一 SAR 資料區分。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h2>Evaluating SAR-Derived Phenological Metrics for Monsoon (Kharif) Crop Monitoring in Diversified Agricultural Systems: Insights from Central India</h2>
 <p>中央印度多元化農業系統中，評估用於季風（Kharif）作物監測的 SAR 衍生物候指標：來自中央印度的見解</p>
 <ul>
 <li>論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1238</li>
@@ -219,32 +282,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 </ul>
 <p><strong>總結來說</strong>：這個研究告訴我們，用雷達衛星來監測季風季節的農作物是可行的，特別對於結構特徵明顯的作物（如棉花）效果很好。但是，如果要同時區分很多種生長模式相似的作物，我們可能需要結合多種數據源或是使用更高解析度的衛星資料。</p>
 <hr />
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Spatially Seamless Error Characterization of ERA5, GLDAS, GLEAM, and MERRA2 ET Products Using Quadruple Collocation Analysis and Random Forest</div>
-                    <h1>運用四重共位分析与随机森林模型，對 ERA5、GLDAS、GLEAM 與 MERRA2 蒸散發產品進行空間連續誤差特徵化</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>透過四重共位分析（QCA）驗證了蒸散發（ET）全球產品（ERA5、GLDAS、GLEAM、MERRA2）的誤差，再利用隨機森林填補 QCA 造成的資料缺洞，成功產出空間連續的全球誤差地圖，平均預測誤差僅 0.03 mm/天。
-                </div>
-
-                <div class="article-columns">
-                    <ul>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">運用四重共位分析与随机森林模型，對 ERA5、GLDAS、GLEAM 與 MERRA2 蒸散發產品進行空間連續誤差特徵化</h1>
+                        <p class="hk-eng-subtitle">Spatially Seamless Error Characterization of ERA5, GLDAS, GLEAM, and MERRA2 ET Products Using Quadruple Collocation Analysis and Random Forest</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>透過四重共位分析（QCA）驗證了蒸散發（ET）全球產品（ERA5、GLDAS、GLEAM、MERRA2）的誤差，再利用隨機森林填補 QCA 造成的資料缺洞，成功產出空間連續的全球誤差地圖，平均預測誤差僅 0.03 mm/天。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <ul>
 <li>論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1239</li>
 <li>抓取時間: 2026-04-20 14:21:22</li>
 <li>論文發表: 19 April 2026</li>
@@ -290,32 +352,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 </em>糧食進口國能更精準評估進口需求，避免糧價波動。<br />
 <em>開源資料讓開發中國家也能低成本應用，促進全球糧食公平。<br />
 </em>未來可擴展到其他作物（稻米、玉米等），甚至不同地區。</p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">A Multi-Task Deep Learning Approach for Precipitation Retrieval from Spaceborne Microwave Imagers</div>
-                    <h1>利用載具微波成像儀的離機多任務深度學習方法精準推演降雨量</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>這篇論文用一種改良版的深度學習模型，能更準確地從衛星微波影像中推測降雨量，特別是在大雨時表現更好。
-                </div>
-
-                <div class="article-columns">
-                    <ul>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">利用載具微波成像儀的離機多任務深度學習方法精準推演降雨量</h1>
+                        <p class="hk-eng-subtitle">A Multi-Task Deep Learning Approach for Precipitation Retrieval from Spaceborne Microwave Imagers</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>這篇論文用一種改良版的深度學習模型，能更準確地從衛星微波影像中推測降雨量，特別是在大雨時表現更好。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <ul>
 <li>論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1242</li>
 <li>抓取時間: 2026-04-20 12:14:05</li>
 </ul>
@@ -380,32 +441,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 <li>方法可擴展到其他沙漠城市，甚至應用於其他乾旱地區的土地管理。</li>
 <li>降低對高精度衛星影像的依賴，節省監測成本與時間。</li>
 </ul>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Impact of Climatic Variability and Mining Activities on Net Primary Productivity in the High-Intensity Open-Pit Mining Area</div>
-                    <h1>氣候變異與開採活動對高強度露天採礦區淨主產量影響研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>透過整合衛星資料與氣象數據，發現中國遷安採礦區的主導力量是採礦活動，它讓植物生長能力降低了 5.3 億公克碳每年，遠超過氣候變化的影響。
-                </div>
-
-                <div class="article-columns">
-                    <ul>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">氣候變異與開採活動對高強度露天採礦區淨主產量影響研究</h1>
+                        <p class="hk-eng-subtitle">Impact of Climatic Variability and Mining Activities on Net Primary Productivity in the High-Intensity Open-Pit Mining Area</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>透過整合衛星資料與氣象數據，發現中國遷安採礦區的主導力量是採礦活動，它讓植物生長能力降低了 5.3 億公克碳每年，遠超過氣候變化的影響。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <ul>
 <li>論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1204</li>
 <li>抓取時間: 2026-04-17 01:23:01</li>
 </ul>
@@ -463,32 +523,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 </li>
 </ul>
 <p>總而言之，這就像是在複雜的生態系中找出「誰是主謀」，讓我們能更有針對性地解決問題，而不是一邊倒地認為氣候變遷是萬惡之源。</p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heatwaves Across China's Three Major Urban Agglomerations</div>
-                    <h1>中國三大都市圈對複合乾旱與熱浪的總原生產力反應差異性研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>這篇論文發現中國不同地區（北、東、南）面對乾旱和熱浪時，對農作物光合作用的影響完全相反：北方嚴重缺水，作物生長明顯變差；南方雨水充足，作物反而因為高溫而长得更好。
-                </div>
-
-                <div class="article-columns">
-                    <h3>為什麼要研究這個？（研究動機）</h3>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">中國三大都市圈對複合乾旱與熱浪的總原生產力反應差異性研究</h1>
+                        <p class="hk-eng-subtitle">Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heatwaves Across China's Three Major Urban Agglomerations</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>這篇論文發現中國不同地區（北、東、南）面對乾旱和熱浪時，對農作物光合作用的影響完全相反：北方嚴重缺水，作物生長明顯變差；南方雨水充足，作物反而因為高溫而长得更好。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h3>為什麼要研究這個？（研究動機）</h3>
 <p>這篇文章在講什麼是「複合乾旱與熱浪」——就是同時發生又特別嚴重的「又乾又熱」的天氣。想像一下，天不但很熱，而且土壤也變乾了，這樣植物就更難活下去了。</p>
 <p>研究這個問題超重要，因為：<br />
 - 全球氣候變遷讓這種又乾又熱的天氣越來越常見<br />
@@ -521,32 +580,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 <li><strong>未來發展</strong>：這個方法可以用在其他作物、其他地區，幫助我們更好應對氣候變遷帶來的挑戰</li>
 </ul>
 <p>總結來說：這篇論文告訴我們，面對氣候變遷，不能一概而論，每個地區的優勢和挑戰都不同，要因地制宜地做規劃！</p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>用衛星的光譜儀（HISUI）測量非洲垃圾填埋場的顏色特徵，找到能穩定辨識垃圾的「光譜指紋」，即使在不同地點也能用。
-                </div>
-
-                <div class="article-columns">
-                    <h2>Segment-Based Spectral Characterisation of Municipal Solid Waste in African Landfills Using HISUI Hyperspectral Imagery</h2>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">未命名研究</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>用衛星的光譜儀（HISUI）測量非洲垃圾填埋場的顏色特徵，找到能穩定辨識垃圾的「光譜指紋」，即使在不同地點也能用。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h2>Segment-Based Spectral Characterisation of Municipal Solid Waste in African Landfills Using HISUI Hyperspectral Imagery</h2>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong>垃圾填埋場</strong>（Municipal Solid Waste Landfills）是城市垃圾最終堆放的地方，但非洲許多國家的垃圾處理基礎設施落後於快速的城市化發展，導致大量垃圾無序堆放。</p>
 <p><strong>光譜影像</strong>（Hyperspectral Imagery）是一種能捕捉物體在很寬廣光譜範圍內（400-2500 納米）反射特性的技術，就像給物體做全身檢查一樣，不只是看到顏色，還能看到不同波長的光被吸收或反射的細節。</p>
@@ -595,32 +653,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 <li><strong>氣候變化對策</strong>：垃圾分解會產生甲烷（一種強效溫室氣體），如果能及早發現垃圾場並監控，有助於減緩氣候變化的影響</li>
 <li><strong>促進公平</strong>：先進國家的技術經驗，能幫助資源較少的國家也能做好環境監測</li>
 </ul>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>NASA 研發了一款搭載在高空飛機上的光譜儀（PICARD），並建立了一套完整的實驗室校正方法，讓這台儀器能在 20 公里高空飛行的同時，提供精確可靠的輻射測量數據。
-                </div>
-
-                <div class="article-columns">
-                    <h2>A NIST-Traceable Lab-to-Sky Spectral and Radiometric Calibration for NASA's High-Altitude Airborne Hyperspectral Pushbroom Imager for Cloud and Aerosol Research and Development (PICARD)</h2>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">未命名研究</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>NASA 研發了一款搭載在高空飛機上的光譜儀（PICARD），並建立了一套完整的實驗室校正方法，讓這台儀器能在 20 公里高空飛行的同時，提供精確可靠的輻射測量數據。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h2>A NIST-Traceable Lab-to-Sky Spectral and Radiometric Calibration for NASA's High-Altitude Airborne Hyperspectral Pushbroom Imager for Cloud and Aerosol Research and Development (PICARD)</h2>
 <ul>
 <li>URL: https://www.mdpi.com/2072-4292/18/8/1168</li>
 <li>抓取時間: 2026-04-14 18:25:14</li>
@@ -670,32 +727,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 - <strong>新感測器測試：</strong> 在飛機上進行「虛擬衛星數據」測試，驗證新型感測器設計或數據解譯演算法，在真正發射衛星前就能發現問題。<br />
 - <strong>開源數據共享：</strong> 所有測量數據都免費公開，讓全球科學家（包括開發中國家）都能使用這些高品質數據進行研究。<br />
 - <strong>未來任務基礎：</strong> 為未來可能發射的新型對地觀測衛星提供技術基礎，許多在地面或實驗室開發的校正方法都可以應用到太空任務中。</p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides</div>
-                    <h1>用地形測量改進的地震動模型，用於預測地震誘發的山崩</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>這篇論文用機器學習方法，結合地震資料和地形測量數據，更準確預測山崩發生的風險區域。
-                </div>
-
-                <div class="article-columns">
-                    <ul>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">用地形測量改進的地震動模型，用於預測地震誘發的山崩</h1>
+                        <p class="hk-eng-subtitle">Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>這篇論文用機器學習方法，結合地震資料和地形測量數據，更準確預測山崩發生的風險區域。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <ul>
 <li>URL: https://www.mdpi.com/2072-4292/18/8/1169</li>
 <li>抓取時間: 2026-04-14 18:09:35</li>
 </ul>
@@ -750,32 +806,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 </li>
 </ul>
 <p>這個模型就像是給山區裝了一個「地震預警系統」，但這個系統不是告訴你地震要發生了，而是告訴你如果發生地震，哪些地方的山坡最容易被震垮，讓相關單位可以提前做好準備。</p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>
-                </div>
-
-                <div class="article-columns">
-                    <h1>學術早報摘要</h1>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">未命名研究</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h1>學術早報摘要</h1>
 <h2>論文摘要：Flood Susceptibility Mapping of the Kosi Megafan Using Ensemble Machine Learning and SAR Data</h2>
 <h3>基本信息</h3>
 <ul>
@@ -797,32 +852,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 <p>結合 SAR 數據和集成機器學習可提高洪水易感性製圖的準確性，特別適用於數據匱乏的災害敏感盆地。此研究支持建立該地區韌性和減輕洪水長期影響的努力，並強調需要更好的洪水規劃、風險減緩策略以及社區主導的早期預警系統。</p>
 <h3>結論</h3>
 <p>整合合成雷達數據和集成機器學習方法對於準確且可擴展的洪水易感性製圖至關重要，特別是在尼泊爾和印度邊界的 Kosi 盆地這樣複雜且數據匱乏的區域。</p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Identifying Uniform Layer Thicknesses with GPR Data for PMS Use</div>
-                    <h1>**用雷達波（GPR）資料找出路面上各層厚度一致的路段，用於路面管理系統**</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>這篇論文發展了一種新方法，用雷達掃描資料自動把柏油路分成「厚度一致」的路段，讓交通部門能更有效率地安排保養工程。
-                </div>
-
-                <div class="article-columns">
-                    <h1>今日論文摘要</h1>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">**用雷達波（GPR）資料找出路面上各層厚度一致的路段，用於路面管理系統**</h1>
+                        <p class="hk-eng-subtitle">Identifying Uniform Layer Thicknesses with GPR Data for PMS Use</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>這篇論文發展了一種新方法，用雷達掃描資料自動把柏油路分成「厚度一致」的路段，讓交通部門能更有效率地安排保養工程。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h1>今日論文摘要</h1>
 <ul>
 <li>URL: https://www.mdpi.com/2072-4292/18/8/1155</li>
 <li>抓取時間: 2026-04-14 14:17:01</li>
@@ -864,32 +918,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 <li><strong>對工程人員</strong>：設計修補方案時，不用再鑽取大量樣品，用雷達資料就能估算厚度分布。</li>
 <li><strong>對一般市民</strong>：道路保養得更及時，減少坑洞和事故風險，行車更安全。</li>
 </ul>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>地球觀測數據量爆炸式成長，雲端計算讓研究者能在數據存放的伺服器上直接處理分析，不用下載海量資料，大幅提升植被研究的效率與重複性。
-                </div>
-
-                <div class="article-columns">
-                    <h1>學術早報</h1>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">未命名研究</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>地球觀測數據量爆炸式成長，雲端計算讓研究者能在數據存放的伺服器上直接處理分析，不用下載海量資料，大幅提升植被研究的效率與重複性。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h1>學術早報</h1>
 <h2>Cloud-Native Earth Observation for Quantitative Vegetation Science: Architectures, Workflows, and Scientific Implications</h2>
 <ul>
 <li><strong>文獻名稱:</strong> Cloud-Native Earth Observation for Quantitative Vegetation Science: Architectures, Workflows, and Scientific Implications</li>
@@ -928,32 +981,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 <p>就像從「手寫計算」進化為「使用計算機」一樣，這套方法讓地球科學研究進入新的時代！</p>
 <hr />
 <p><em>學術早報 12.5</em></p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>使用集成機器學習與合成孔徑雷達數據對科西超大扇區洪水易感性繪圖</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>結合雷達與集成機器學習，發現科西河谷約 39% 地區易受洪水侵襲，約 269 萬人口居住在高風險區。
-                </div>
-
-                <div class="article-columns">
-                    <h1>📋 學術早報 - 2026-04-14</h1>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">使用集成機器學習與合成孔徑雷達數據對科西超大扇區洪水易感性繪圖</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>結合雷達與集成機器學習，發現科西河谷約 39% 地區易受洪水侵襲，約 269 萬人口居住在高風險區。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h1>📋 學術早報 - 2026-04-14</h1>
 <h2>1️⃣ 文獻名稱</h2>
 <p><strong>Flood Susceptibility Mapping of the Kosi Megafan Using Ensemble Machine Learning and SAR Data</strong></p>
 <h3>為什麼要研究這個？（研究動機）</h3>
@@ -1042,32 +1094,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 <p>希望這三篇學術論文能用白話文幫你釐清重點！如果有任何問題，隨時找我討論。</p>
 </blockquote>
 <p><strong>2026-04-14 12:55</strong></p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>用影片和廉價 GPS 定位物體位置時，先分別把兩邊的雜訊清理乾淨再合併，可以把定位誤差從 7.86 公尺降到 0.98 公尺。
-                </div>
-
-                <div class="article-columns">
-                    <h1>【學術早報 12.5】2026-04-14</h1>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">未命名研究</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>用影片和廉價 GPS 定位物體位置時，先分別把兩邊的雜訊清理乾淨再合併，可以把定位誤差從 7.86 公尺降到 0.98 公尺。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h1>【學術早報 12.5】2026-04-14</h1>
 <h2>論文 1：Self-Supervised Cascade Denoising Auto-Encoder for Accurate Spatial Positioning of Target by Fusing Uncalibrated Video and Low-Cost GNSS</h2>
 <h3>自我監督聯立降噪編碼器：用未校正影片與低成本的 GNSS 融合實現精確目標空間定位</h3>
 <h3>為什麼要研究這個？（研究動機）</h3>
@@ -1229,32 +1280,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 - 都強調「效率與準確度的平衡」<br />
 - 都提供自動化解決方案，減少人工介入</p>
 <p>這些技術進步對我們日常生活和社會運作都有實質的影響。</p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">### Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>提出一個叫**EA-DBFFN**的雙分支 AI 架構，將「區域一致性」和「邊界精準度」分開處理，用互導機制讓兩者協同工作，在 CrowdAI 數據集上達到 72.9% 的精準度，比競爭方法好 2.3%，且 Invalid Polygon Ratio（無效多邊形比率）降低 66.3%。
-                </div>
-
-                <div class="article-columns">
-                    <h4>用雙分支神經網絡精準勾勒建築物輪廓的 AI 新工具</h4>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">未命名研究</h1>
+                        <p class="hk-eng-subtitle">### Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>提出一個叫**EA-DBFFN**的雙分支 AI 架構，將「區域一致性」和「邊界精準度」分開處理，用互導機制讓兩者協同工作，在 CrowdAI 數據集上達到 72.9% 的精準度，比競爭方法好 2.3%，且 Invalid Polygon Ratio（無效多邊形比率）降低 66.3%。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h4>用雙分支神經網絡精準勾勒建築物輪廓的 AI 新工具</h4>
 <ul>
 <li><strong>URL</strong>: https://www.mdpi.com/2072-4292/18/8/1159</li>
 <li><strong>抓取時間</strong>: 2026-04-14 01:53:58</li>
@@ -1342,32 +1392,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 </ul>
 <p>總的來說，EA-DBFFN 就像是給城市建模加裝了一個「超級自動測量員」，能快速、精確地勾勒出所有建築物的形狀，對於智慧城市、城市規劃、災難管理等應用都是強而力的工具。</p>
 <hr />
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>
-                </div>
-
-                <div class="article-columns">
-                    <h1>學術早報 12.5 - 論文摘要彙總</h1>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">未命名研究</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h1>學術早報 12.5 - 論文摘要彙總</h1>
 <p><strong>日期</strong>: 2026-04-14 01:40<br />
 <strong>來源</strong>: Remote Sensing (MDPI)<br />
 <strong>文章數量</strong>: 3 篇</p>
@@ -1434,32 +1483,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 <p>這些研究突顯了<strong>衛星遙感技術</strong>在應對全球環境挑戰中的關鍵角色，從生態管理到氣候變化應對，提供了寶貴的科學基礎。</p>
 <hr />
 <p><strong>下一步行動</strong>: 執行歸檔合併操作</p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>
-                </div>
-
-                <div class="article-columns">
-                    <h1>今日學術早報摘要</h1>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">未命名研究</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h1>今日學術早報摘要</h1>
 <p><strong>執行時間</strong>: 2026-04-13 15:43 UTC</p>
 <hr />
 <h2>📄 論文 1：洪水風險圖繪製的新方法</h2>
@@ -1508,32 +1556,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 - 集成學習與深度學習模型表現優異<br />
 - 跨區域與跨環境的泛化性已驗證</p>
 <hr />
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>這研究用衛星照片跟地面調查，發現緬甸山區傳統輪歇農耕的休耕期確實有 8 年，植被也能恢復，但農耕地越來越多且往更陡峭的山坡移動，長期下來會導致土壤退化，需要小心維護。
-                </div>
-
-                <div class="article-columns">
-                    <h1>學術早報 12.5 - 摘要大匯總</h1>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">未命名研究</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>這研究用衛星照片跟地面調查，發現緬甸山區傳統輪歇農耕的休耕期確實有 8 年，植被也能恢復，但農耕地越來越多且往更陡峭的山坡移動，長期下來會導致土壤退化，需要小心維護。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h1>學術早報 12.5 - 摘要大匯總</h1>
 <hr />
 <h2>論文一：Evaluation of Land Use Patterns and Vegetation Recovery Status of Shifting Cultivation in Myanmar's Mountainous Regions Using Satellite Imagery and Field Surveys</h2>
 <h3>為什麼要研究這個？（研究動機）</h3>
@@ -1654,32 +1701,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 <hr />
 <p><em>生成時間：2026 年 4 月 13 日 23:15</em><br />
 <em>ResearchMaster 技能執行完成</em></p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>
-                </div>
-
-                <div class="article-columns">
-                    <h1>學術早報 - 2026 年 4 月 13 日</h1>
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">未命名研究</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <h1>學術早報 - 2026 年 4 月 13 日</h1>
 <h2>論文 1: Cloud-Native Earth Observation for Quantitative Vegetation Science</h2>
 <p><strong>URL:</strong> https://www.mdpi.com/2072-4292/18/8/1154<br />
 <strong>Published:</strong> 13 April 2026<br />
@@ -1707,32 +1753,31 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 <p>林冠空隙是理解森林干擾制度和再生過程的重要足跡，但需要運用多種指標沿著時間梯度來更深入地了解動態。本研究檢查了喀爾巴阡山脈三個保護森林的空隙數據，這些數據經過位置和森林類型分層，並在地時空尺度上進行了分析。檢查了多個特徵，包括空隙大小結構、空隙面積比例、空隙幾何形狀以及空隙幾何形狀和大小與空隙形成的關係。結果表明，空隙大小頻率具有重尾右偏分布，並且在大多數情況下在時間上保持相同的比例，即使空隙數量減少。空隙大小的概率分佈不是獨立的功率定律；它也遵循對數正規分布和指數分布。空隙計數和空隙百分比隨著時間減少，但隨著空隙大小的增加。空隙形狀複雜度大約為 2.0，但隨著空隙大小的增加而變得複雜。時空隙動態特徵為四種空隙類型：恢復或關閉的空隙、持續的空隙、擴大的空隙或新的開口，其平衡受干擾嚴重程度的影響。這些發現強調了跨時空尺度綜合空隙指標在闡述未經管理的森林的空隙動態方面的重要性。</p>
 <hr />
 <p><strong>後台歸檔任務已啟動，暫存檔將自動清理。</strong></p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
         </div>
         <div class="swiper-slide">
-            <div class="poster-inner">
-                <div class="yale-top-bar">
-                    <span class="yale-brand">Yale University</span>
-                    <span class="archive-tag">Academic Publication</span>
-                </div>
-                
-                <header>
-                    <div class="eng-meta">Yale Research Archive</div>
-                    <h1>未命名研究</h1>
-                </header>
-                
-                <div class="core-box">
-                    <strong>核心摘要：</strong>
-                </div>
-
-                <div class="article-columns">
-                    <hr />
+            <div class="hk-container">
+                <div class="hk-background-text">RESEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/20 ]</div>
+                        <h1 class="hk-main-title">未命名研究</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-scroll">
+                            <hr />
 <h2>CLEAR: A Cognitive LLM-Empowered Adaptive Restoration Framework for Robust Ship Detection in Complex Maritime Scenarios</h2>
 <ul>
 <li><strong>URL</strong>: https://www.mdpi.com/2072-4292/18/8/1142</li>
@@ -1866,27 +1911,24 @@ VH 偏振則像是從不同角度去看這個「雨傘」，更能反映出作�
 3. <strong>災害預警</strong>：高空濕度變化會影響天氣模式，更好的資料能幫助我們預報颱風、暴雨等極端天氣<br />
 4. <strong>國際合作</strong>：這個資料庫可以與全球的其他氣候觀測網絡對接，共同推動氣候研究</p>
 <p>對於環保團體、氣候政策制定者來說，這樣的資料能提供更科學的依據，讓我們能更有效率地應對氣候變遷。</p>
+                        </div>
+                    </div>
                 </div>
-
-                <footer>
-                    <span>Yale University Urban Planning & Geomatics</span>
-                    <span>Slide Right for Next Paper →</span>
-                </footer>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
             </div>
-        </div>
-        </div>
-        <div class="swiper-pagination"></div>
+        </div></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        new Swiper('.swiper', {
-            pagination: { el: '.swiper-pagination', clickable: true },
+        const swiper = new Swiper('.swiper', {
             mousewheel: true,
             keyboard: true,
             grabCursor: true,
-            spaceBetween: 30
+            speed: 800
         });
     </script>
 </body>
 </html>
-    
