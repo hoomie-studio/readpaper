@@ -128,15 +128,13 @@ def mode_render():
     with open(SUMMARY_FILE, "r", encoding="utf-8") as f:
         full_content = f.read()
 
-    # 依歸檔時間分割內容
     entries = re.split(r"# 歸檔時間[:：]?\s*\d{4}-\d{2}-\d{2}.*?\n", full_content)
     entries = [e.strip() for e in entries if e.strip()]
     if not entries: return
-    entries.reverse() # 最新的排前面
+    entries.reverse() 
     
     all_slides_html = ""
     for entry in entries:
-        # 提取標題與核心內容
         eng_match = re.search(r"(?:#+)\s*文獻名稱\s*\n(.*?)\n", entry)
         chi_match = re.search(r"(?:#+)\s*文獻中文名稱\s*\n(.*?)\n", entry)
         core_match = re.search(r"(?:#+)\s*一句話核心\s*\n(.*?)\n", entry)
@@ -145,7 +143,6 @@ def mode_render():
         chi_title = chi_match.group(1).strip() if chi_match else "未命名研究"
         core_statement = core_match.group(1).strip() if core_match else ""
 
-        # 清除已提取的標題，轉換剩餘內容為 HTML
         md_body = re.sub(r"(?:#+)\s*文獻(中文)?名稱.*?\n(.*?)\n", "", entry)
         md_body = re.sub(r"(?:#+)\s*一句話核心.*?\n(.*?)\n", "", md_body)
         content_html = markdown.markdown(md_body, extensions=['extra', 'nl2br', 'sane_lists'])
@@ -165,7 +162,7 @@ def mode_render():
                         </div>
                     </div>
                     <div class="hk-right-col">
-                        <div class="hk-content-scroll">
+                        <div class="hk-content-wrapper">
                             {content_html}
                         </div>
                     </div>
@@ -186,74 +183,81 @@ def mode_render():
     body, html { height: 100%; overflow: hidden; background: var(--hk-bg); color: var(--hk-black); font-family: var(--sans); }
     
     .swiper { width: 100%; height: 100vh; }
-    .swiper-slide { background: var(--hk-bg); }
+    .swiper-slide { height: 100vh; overflow: hidden; }
 
     .hk-container {
         width: 100%; height: 100%; padding: 60px;
-        display: flex; flex-direction: column; justify-content: space-between;
+        display: flex; flex-direction: column;
         position: relative; overflow: hidden;
     }
 
     .hk-background-text {
-        position: absolute; top: -10%; right: -5%;
+        position: absolute; top: -5%; right: -5%;
         font-size: 25vw; font-weight: 900; color: rgba(0,0,0,0.03);
         z-index: 0; pointer-events: none;
     }
 
     .hk-grid {
         display: grid; grid-template-columns: 1.2fr 1fr;
-        gap: 80px; z-index: 1; height: 75vh;
+        gap: 80px; z-index: 1; 
+        flex-grow: 1; /* 讓中間區域自動填滿 */
+        min-height: 0; /* 關鍵：允許子元素在 flex 容器中縮小/捲動 */
+        margin-bottom: 30px;
     }
 
-    .hk-tag { font-weight: 700; letter-spacing: 5px; margin-bottom: 40px; font-size: 0.9rem; }
-
+    .hk-left-col { display: flex; flex-direction: column; }
+    .hk-tag { font-weight: 700; letter-spacing: 5px; margin-bottom: 20px; font-size: 0.9rem; }
     .hk-main-title {
-        font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 5rem);
-        line-height: 1.1; font-weight: 900; letter-spacing: -2px;
-        margin-bottom: 20px;
+        font-family: var(--serif); font-size: clamp(2rem, 4vw, 4.5rem);
+        line-height: 1.1; font-weight: 900; letter-spacing: -2px; margin-bottom: 15px;
     }
-
-    .hk-eng-subtitle {
-        font-size: 1rem; color: #888; text-transform: uppercase;
-        letter-spacing: 2px; margin-bottom: 60px; max-width: 80%;
-    }
+    .hk-eng-subtitle { font-size: 0.9rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; }
 
     .hk-core-statement { display: flex; gap: 20px; align-items: flex-start; }
     .hk-label { 
         background: var(--hk-black); color: #fff; padding: 4px 10px;
-        font-size: 0.7rem; font-weight: 900; transform: rotate(-90deg) translateX(-10px);
+        font-size: 0.7rem; font-weight: 900; transform: rotate(-90deg) translateX(-5px);
     }
-    .hk-core-statement p { font-size: 1.5rem; font-family: var(--serif); line-height: 1.4; font-weight: 700; }
+    .hk-core-statement p { font-size: 1.3rem; font-family: var(--serif); line-height: 1.4; font-weight: 700; }
 
-    .hk-content-scroll { 
-        height: 100%; overflow-y: auto; padding-right: 20px; 
+    /* 修正捲動區域 */
+    .hk-right-col { 
+        position: relative; 
+        overflow-y: auto; 
+        padding-right: 25px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--hk-black) transparent;
     }
+    .hk-content-wrapper { padding-bottom: 40px; }
+
     h3 { 
-        font-family: var(--serif); font-size: 1.6rem; margin: 40px 0 15px;
+        font-family: var(--serif); font-size: 1.5rem; margin: 30px 0 15px;
         border-bottom: 2px solid var(--hk-black); display: inline-block;
     }
-    p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px; text-align: justify; }
-    
+    p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; text-align: justify; }
     strong, b { color: var(--hk-red); font-weight: 700; }
     
-    ul, ol { list-style: none; margin-bottom: 40px; }
     li { 
-        font-size: 1.1rem; padding: 10px 0; border-bottom: 1px solid var(--hk-gray);
-        display: flex; gap: 10px;
+        font-size: 1.05rem; padding: 12px 0; border-bottom: 1px solid var(--hk-gray);
+        display: flex; gap: 10px; line-height: 1.6;
     }
-    li::before { content: "→"; font-weight: 900; color: var(--hk-red); }
+    li::before { content: "→"; font-weight: 900; color: var(--hk-red); flex-shrink: 0; }
 
     .hk-footer {
+        flex-shrink: 0; /* 確保 footer 不會被壓縮 */
         display: flex; justify-content: space-between; align-items: flex-end;
-        border-top: 1px solid #000; padding-top: 20px;
+        border-top: 1px solid #000; padding-top: 20px; z-index: 2;
+        background: var(--hk-bg);
     }
-    .hk-logo { font-weight: 900; letter-spacing: 2px; font-size: 1.2rem; }
+    .hk-logo { font-weight: 900; letter-spacing: 2px; font-size: 1.1rem; }
     .hk-logo span { color: var(--hk-red); }
     .hk-scroll-hint { font-size: 0.8rem; letter-spacing: 3px; font-weight: 700; }
 
     @media (max-width: 1024px) {
-        .hk-grid { grid-template-columns: 1fr; gap: 40px; height: auto; }
+        .hk-grid { grid-template-columns: 1fr; gap: 30px; }
         .hk-container { padding: 30px; overflow-y: auto; }
+        .hk-right-col { overflow: visible; padding-right: 0; }
+        .swiper-slide { overflow-y: auto; }
     }
     """
 
