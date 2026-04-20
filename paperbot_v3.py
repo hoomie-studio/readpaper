@@ -117,12 +117,15 @@ def git_push_auto():
     try:
         os.chdir(REPO_PATH)
         subprocess.run(["git", "add", "."], check=True)
-        commit_msg = f"🤖 Poster Update: {datetime.now().strftime('%m-%d %H:%M')}"
+        commit_msg = f"Poster Update: {datetime.now().strftime('%m-%d %H:%M')}"
         subprocess.run(["git", "commit", "-m", commit_msg], capture_output=True)
-        subprocess.run(["git", "push", "origin", "main"], check=True)
-        print("✅ [Git Push] 網頁已更新並推送到遠端！")
+        
+        # 動態獲取當前分支名稱，避免寫死 main
+        branch = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True).stdout.strip()
+        subprocess.run(["git", "push", "origin", branch], check=True)
+        print("[OK] [Git Push] 網頁已更新並推送到遠端！")
     except Exception as e:
-        print(f"❌ [Git] 同步失敗: {e}")
+        print(f"[ERROR] [Git] 同步失敗: {e}")
 
 def mode_render():
     if not os.path.exists(SUMMARY_FILE):
@@ -132,8 +135,11 @@ def mode_render():
     with open(SUMMARY_FILE, "r", encoding="utf-8") as f:
         full_content = f.read()
 
-    entries = full_content.split("# 歸檔時間:")[1:] 
-    if not entries: return
+    # 使用寬鬆匹配分割區塊，支援有無冒號的情況
+    entries = re.split(r"# 歸檔時間[:：]?\s*", full_content)[1:] 
+    if not entries: 
+        print("[!] 摘要檔中無有效歸檔內容。")
+        return
     
     all_slides_html = ""
     for entry in reversed(entries):
@@ -141,16 +147,18 @@ def mode_render():
         lines = raw_text.split('\n')
         archive_time = lines[0].strip() if lines else "Unknown"
 
-        eng_match = re.search(r"## 文獻名稱\n(.*?)\n", raw_text)
-        chi_match = re.search(r"## 文獻中文名稱\n(.*?)\n", raw_text)
-        core_match = re.search(r"### 一句話核心\n(.*?)\n", raw_text)
+        # 優化正則表達式：支援標題後方的多餘空格 (\s*)
+        eng_match = re.search(r"## 文獻名稱\s*\n(.*?)\n", raw_text, re.S)
+        chi_match = re.search(r"## 文獻中文名稱\s*\n(.*?)\n", raw_text, re.S)
+        core_match = re.search(r"### 一句話核心\s*\n(.*?)\n", raw_text, re.S)
         
-        eng_title = eng_match.group(1) if eng_match else "RESEARCH"
-        chi_title = chi_match.group(1) if chi_match else "未命名研究"
-        core_statement = core_match.group(1) if core_match else ""
+        eng_title = eng_match.group(1).strip() if eng_match else "RESEARCH"
+        chi_title = chi_match.group(1).strip() if chi_match else "未命名研究"
+        core_statement = core_match.group(1).strip() if core_match else ""
 
-        md_body = re.sub(r"## 文獻(中文)?名稱.*?\n", "", raw_text)
-        md_body = re.sub(r"### 一句話核心.*?\n", "", md_body)
+        # 清理本文，移除已擷取的標題部分
+        md_body = re.sub(r"## 文獻(中文)?名稱.*?\n", "", raw_text, flags=re.S)
+        md_body = re.sub(r"### 一句話核心.*?\n", "", md_body, flags=re.S)
         
         content_html = markdown.markdown(md_body, extensions=['extra', 'nl2br'])
         content_html = content_html.replace('<strong>', '<strong class="red">').replace('<b>', '<strong class="red">')
@@ -178,7 +186,6 @@ def mode_render():
         </div>
         """
 
-    # 此處省略部分重複的 CSS style 以保持簡潔，邏輯與 v2 相同
     style = """
     :root { --bg: #f0f0f0; --card: #ffffff; --text: #1a1a1a; --accent: #e60012; --highlight: #fff176; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -254,7 +261,7 @@ def mode_merge():
         
         titles = re.findall(r'## (.*?)\n', content_to_merge)
         for title in titles:
-            pattern = rf"(## {re.escape(title)}.*?)\[PENDING\]"
+            pattern = rf"(## {re.escape(title)}.*?)\\[PENDING\\]"
             history = re.sub(pattern, r"\1[已完成摘要]", history, flags=re.DOTALL)
         
         with open(HISTORY_FILE, "w", encoding="utf-8") as hf:
@@ -265,8 +272,6 @@ def mode_merge():
             os.remove(f)
             
     print("[OK] 摘要已歸檔至 paper_summary.md。")
-    
-    # --- 整合點：合併完後直接觸發渲染網頁 ---
     print("[*] 偵測到合併動作，自動啟動網頁渲染...")
     mode_render()
 
