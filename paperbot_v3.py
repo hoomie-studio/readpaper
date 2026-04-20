@@ -7,7 +7,7 @@ import subprocess
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 
-# 強制控制台輸出為 UTF-8，解決 Windows 環境下可能的編碼報錯
+# 強制控制台輸出為 UTF-8
 if sys.platform.startswith('win'):
     import io
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -29,273 +29,112 @@ def ensure_directory_exists():
     if not os.path.exists(BASE_PATH):
         os.makedirs(BASE_PATH)
 
-def get_read_history():
-    if not os.path.exists(HISTORY_FILE): return set()
-    with open(HISTORY_FILE, "r", encoding="utf-8") as f:
-        content = f.read()
-        return set(re.findall(r'https://www.mdpi.com/\d+-\d+/\d+/\d+/\d+', content))
+def reformat_markdown_by_keywords(raw_text):
+    """
+    使用正則表達式抓取關鍵字並強制重構格式
+    """
+    # 定義抓取模式
+    patterns = {
+        "title_en": r"(?:文獻名稱|##)\s*(.*?)\n",
+        "title_cn": r"文獻中文名稱\s*[:：]\s*(.*?)\n",
+        "url": r"論文來源URL\s*[:：]\s*(.*?)\n",
+        "core": r"一句話核心\s*[:：]?\s*(.*?)(?=\n(?:##|###|為什麼要研究這個|他們做了什麼|驚人發現|這對我有什麼意義)|$)",
+        "why": r"為什麼要研究這個？\s*（研究動機）\s*[:：]?\s*(.*?)(?=\n(?:##|###|他們做了什麼|驚人發現|這對我有什麼意義)|$)",
+        "how": r"他們做了什麼？\s*（研究方法）\s*[:：]?\s*(.*?)(?=\n(?:##|###|驚人發現|這對我有什麼意義)|$)",
+        "discovery": r"驚人發現與具體數據\s*[:：]?\s*(.*?)(?=\n(?:##|###|這對我有什麼意義)|$)",
+        "value": r"這對我有什麼意義？\s*（應用價值）\s*[:：]?\s*(.*?)(?=\n(?:##|###)|$)"
+    }
 
-# ==========================================
-# 自動化發布：Git Push (解決 master/main 分支衝突)
-# ==========================================
+    data = {}
+    for key, p in patterns.items():
+        match = re.search(p, raw_text, re.S | re.I)
+        data[key] = match.group(1).strip() if match else "資訊未擷取"
+
+    # 強制重構為標準 Markdown 格式，確保存入檔案時擁有正確的 MD 符號
+    new_md = f"## {data['title_en']}\n\n"
+    new_md += f"## 文獻中文名稱：{data['title_cn']}\n\n"
+    new_md += f"- 論文來源URL: {data['url']}\n"
+    new_md += f"- 抓取時間: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
+    new_md += f"### 一句話核心\n{data['core']}\n\n"
+    new_md += f"### 為什麼要研究這個？（研究動機）\n{data['why']}\n\n"
+    new_md += f"### 他們做了什麼？（研究方法）\n{data['how']}\n\n"
+    new_md += f"### 驚人發現與具體數據\n{data['discovery']}\n\n"
+    new_md += f"### 這對我有什麼意義？（應用價值）\n{data['value']}\n"
+    
+    return new_md
+
 def git_push_auto():
     try:
         os.chdir(REPO_PATH)
-        if not os.path.exists(".git"):
-            subprocess.run(["git", "init"], check=True)
-
-        # 檢查遠端倉庫設定
-        remote_check = subprocess.run(["git", "remote"], capture_output=True, text=True)
-        if "origin" not in remote_check.stdout:
-            subprocess.run(["git", "remote", "add", "origin", GITHUB_REMOTE_URL], check=True)
-        
-        # 強制將分支重新命名為 main 以符合現代 GitHub 規範
-        subprocess.run(["git", "branch", "-M", "main"], check=True)
-        
-        # 檢查檔案變動狀態
-        status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
-        if not status.stdout.strip():
-            print("[Git] No changes to commit.")
-            return
-
         subprocess.run(["git", "add", "."], check=True)
-        commit_msg = f"Auto-Update: {datetime.now().strftime('%m-%d %H:%M')}"
-        subprocess.run(["git", "commit", "-m", commit_msg], check=True)
-        
-        print("[Git] Pushing to origin main...")
-        result = subprocess.run(["git", "push", "-u", "origin", "main"], capture_output=True, text=True)
-        
-        if result.returncode == 0:
-            print("[Git] Push Success!")
-        else:
-            print(f"[Git Error] Push failed: {result.stderr}")
-            
+        subprocess.run(["git", "commit", "-m", f"Auto-Update: {datetime.now().strftime('%m-%d %H:%M')}"], check=True)
+        # 先拉取遠端變更，解決 push rejected 問題
+        subprocess.run(["git", "pull", "origin", "main", "--rebase"], check=True)
+        subprocess.run(["git", "push", "origin", "main"], check=True)
+        print("[Git] Push success.")
     except Exception as e:
-        print(f"[Git Error] Sync failed: {str(e)}")
+        print(f"[Git Error] Push failed: {e}")
 
-# ==========================================
-# 模式 1：採集 (Collect)
-# ==========================================
-def mode_collect():
-    ensure_directory_exists()
-    read_history = get_read_history()
-    new_papers = []
-
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True) 
-        context = browser.new_context(viewport={'width': 1280, 'height': 800})
-        page = context.new_page()
-        print(f"[*] Scanning: {JOURNAL_URL}")
-        
-        try:
-            page.goto(JOURNAL_URL, wait_until="domcontentloaded", timeout=60000)
-            page.wait_for_selector("a.title-link", timeout=30000)
-            elements = page.query_selector_all("a.title-link")
-            
-            for el in elements:
-                if len(new_papers) >= MAX_ARTICLES: break
-                title = el.inner_text().strip()
-                href = el.get_attribute("href")
-                full_url = "https://www.mdpi.com" + href
-
-                if full_url in read_history: continue
-
-                new_papers.append({
-                    "title": title, "url": full_url, 
-                    "fetch_time": datetime.now().strftime('%Y-%m-%d %H:%M')
-                })
-
-            if new_papers:
-                with open(TEMP_TASK, "w", encoding="utf-8") as tf:
-                    for p_item in new_papers:
-                        tf.write(f"## {p_item['title']}\n- URL: {p_item['url']}\n- [PENDING]\n")
-                print(f"[OK] Task created: {TEMP_TASK}")
-            else:
-                print("[!] No new papers.")
-        except Exception as e:
-            print(f"[Error] Collect: {e}")
-        finally:
-            browser.close()
-
-# ==========================================
-# 模式 2：渲染 (Render) - Humankind 藝術風格
-# ==========================================
 def mode_render():
     if not os.path.exists(SUMMARY_FILE):
         print("[!] Summary file not found.")
         return
-    
+
     with open(SUMMARY_FILE, "r", encoding="utf-8") as f:
-        full_content = f.read()
+        content = f.read()
 
-    entries = re.split(r"# 歸檔時間[:：]?\s*\d{4}-\d{2}-\d{2}.*?\n", full_content)
-    entries = [e.strip() for e in entries if e.strip()]
-    if not entries: return
-    entries.reverse() 
-    
-    all_slides_html = ""
-    for entry in entries:
-        eng_match = re.search(r"(?:#+)\s*文獻名稱\s*\n(.*?)\n", entry)
-        chi_match = re.search(r"(?:#+)\s*文獻中文名稱\s*\n(.*?)\n", entry)
-        core_match = re.search(r"(?:#+)\s*一句話核心\s*\n(.*?)\n", entry)
+    # 以分隔線或歸檔標記切分
+    articles = re.split(r'\n---\n|# 歸檔時間:', content)
+    slides_html = ""
+
+    for art in articles:
+        if len(art.strip()) < 50: continue
         
-        eng_title = eng_match.group(1).strip() if eng_match else "RESEARCH PAPER"
-        chi_title = chi_match.group(1).strip() if chi_match else "未命名研究"
-        core_statement = core_match.group(1).strip() if core_match else ""
-
-        md_body = re.sub(r"(?:#+)\s*文獻(中文)?名稱.*?\n(.*?)\n", "", entry)
-        md_body = re.sub(r"(?:#+)\s*一句話核心.*?\n(.*?)\n", "", md_body)
-        content_html = markdown.markdown(md_body, extensions=['extra', 'nl2br', 'sane_lists'])
-
-        all_slides_html += f"""
-        <div class="swiper-slide">
-            <div class="hk-container">
-                <div class="hk-background-text">RESEARCH</div>
-                <div class="hk-grid">
-                    <div class="hk-left-col">
-                        <div class="hk-tag">[ {datetime.now().strftime('%m/%d')} ]</div>
-                        <h1 class="hk-main-title">{chi_title}</h1>
-                        <p class="hk-eng-subtitle">{eng_title}</p>
-                        <div class="hk-core-statement">
-                            <span class="hk-label">CORE</span>
-                            <p>{core_statement}</p>
-                        </div>
-                    </div>
-                    <div class="hk-right-col">
-                        <div class="hk-content-wrapper">
-                            {content_html}
-                        </div>
-                    </div>
-                </div>
-                <div class="hk-footer">
-                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
-                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
-                </div>
-            </div>
-        </div>"""
-
-    style = """
-    :root {
-        --hk-bg: #f8f8f8; --hk-black: #0a0a0a; --hk-red: #ff3b30; --hk-gray: #e0e0e0;
-        --serif: 'Noto Serif TC', serif; --sans: 'Noto Sans TC', sans-serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body, html { height: 100%; overflow: hidden; background: var(--hk-bg); color: var(--hk-black); font-family: var(--sans); }
-    
-    .swiper { width: 100%; height: 100vh; }
-    .swiper-slide { height: 100vh; overflow: hidden; }
-
-    .hk-container {
-        width: 100%; height: 100%; padding: 60px;
-        display: flex; flex-direction: column;
-        position: relative; overflow: hidden;
-    }
-
-    .hk-background-text {
-        position: absolute; top: -5%; right: -5%;
-        font-size: 25vw; font-weight: 900; color: rgba(0,0,0,0.03);
-        z-index: 0; pointer-events: none;
-    }
-
-    .hk-grid {
-        display: grid; grid-template-columns: 1.2fr 1fr;
-        gap: 80px; z-index: 1; 
-        flex-grow: 1; /* 讓中間區域自動填滿 */
-        min-height: 0; /* 關鍵：允許子元素在 flex 容器中縮小/捲動 */
-        margin-bottom: 30px;
-    }
-
-    .hk-left-col { display: flex; flex-direction: column; }
-    .hk-tag { font-weight: 700; letter-spacing: 5px; margin-bottom: 20px; font-size: 0.9rem; }
-    .hk-main-title {
-        font-family: var(--serif); font-size: clamp(2rem, 4vw, 4.5rem);
-        line-height: 1.1; font-weight: 900; letter-spacing: -2px; margin-bottom: 15px;
-    }
-    .hk-eng-subtitle { font-size: 0.9rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; }
-
-    .hk-core-statement { display: flex; gap: 20px; align-items: flex-start; }
-    .hk-label { 
-        background: var(--hk-black); color: #fff; padding: 4px 10px;
-        font-size: 0.7rem; font-weight: 900; transform: rotate(-90deg) translateX(-5px);
-    }
-    .hk-core-statement p { font-size: 1.3rem; font-family: var(--serif); line-height: 1.4; font-weight: 700; }
-
-    /* 修正捲動區域 */
-    .hk-right-col { 
-        position: relative; 
-        overflow-y: auto; 
-        padding-right: 25px;
-        scrollbar-width: thin;
-        scrollbar-color: var(--hk-black) transparent;
-    }
-    .hk-content-wrapper { padding-bottom: 40px; }
-
-    h3 { 
-        font-family: var(--serif); font-size: 1.5rem; margin: 30px 0 15px;
-        border-bottom: 2px solid var(--hk-black); display: inline-block;
-    }
-    p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; text-align: justify; }
-    strong, b { color: var(--hk-red); font-weight: 700; }
-    
-    li { 
-        font-size: 1.05rem; padding: 12px 0; border-bottom: 1px solid var(--hk-gray);
-        display: flex; gap: 10px; line-height: 1.6;
-    }
-    li::before { content: "→"; font-weight: 900; color: var(--hk-red); flex-shrink: 0; }
-
-    .hk-footer {
-        flex-shrink: 0; /* 確保 footer 不會被壓縮 */
-        display: flex; justify-content: space-between; align-items: flex-end;
-        border-top: 1px solid #000; padding-top: 20px; z-index: 2;
-        background: var(--hk-bg);
-    }
-    .hk-logo { font-weight: 900; letter-spacing: 2px; font-size: 1.1rem; }
-    .hk-logo span { color: var(--hk-red); }
-    .hk-scroll-hint { font-size: 0.8rem; letter-spacing: 3px; font-weight: 700; }
-
-    @media (max-width: 1024px) {
-        .hk-grid { grid-template-columns: 1fr; gap: 30px; }
-        .hk-container { padding: 30px; overflow-y: auto; }
-        .hk-right-col { overflow: visible; padding-right: 0; }
-        .swiper-slide { overflow-y: auto; }
-    }
-    """
+        # 轉換為 HTML
+        art_html = markdown.markdown(art, extensions=['tables', 'fenced_code'])
+        slides_html += f'<div class="swiper-slide"><div class="card">{art_html}</div></div>'
 
     full_html = f"""
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Humankind Research Archive</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>{style}</style>
-</head>
-<body>
-    <div class="swiper">
-        <div class="swiper-wrapper">{all_slides_html}</div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper('.swiper', {{
-            mousewheel: true,
-            keyboard: true,
-            grabCursor: true,
-            speed: 800
-        }});
-    </script>
-</body>
-</html>"""
+    <!DOCTYPE html>
+    <html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Humankind Paper Gallery</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <style>
+            :root {{ --bg: #050505; --text: #ffffff; --accent: #00d4ff; }}
+            body {{ background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; overflow: hidden; }}
+            .swiper {{ width: 100vw; height: 100vh; }}
+            .swiper-slide {{ display: flex; align-items: center; justify-content: center; padding: 5vw; box-sizing: border-box; }}
+            .card {{ max-width: 900px; width: 100%; max-height: 85vh; overflow-y: auto; background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }}
+            h2 {{ color: var(--accent); font-size: 2rem; margin-bottom: 0.5em; }}
+            h3 {{ color: #ff9f43; margin-top: 1.5em; border-left: 4px solid #ff9f43; padding-left: 15px; background: rgba(255,159,67,0.05); padding-top: 5px; padding-bottom: 5px; }}
+            p, li {{ line-height: 1.7; opacity: 0.85; font-size: 1.05rem; }}
+            table {{ width: 100%; border-collapse: collapse; margin: 1.5em 0; background: rgba(0,0,0,0.2); }}
+            th, td {{ border: 1px solid rgba(255,255,255,0.1); padding: 12px; text-align: left; }}
+            th {{ background: rgba(0,212,255,0.1); color: var(--accent); }}
+            .card::-webkit-scrollbar {{ width: 6px; }}
+            .card::-webkit-scrollbar-thumb {{ background: var(--accent); border-radius: 10px; }}
+        </style>
+    </head>
+    <body>
+        <div class="swiper"><div class="swiper-wrapper">{slides_html}</div></div>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script>
+            const swiper = new Swiper('.swiper', {{
+                mousewheel: true, keyboard: true, grabCursor: true, speed: 800,
+                freeMode: false, centeredSlides: true
+            }});
+        </script>
+    </body>
+    </html>"""
 
     with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
         f.write(full_html)
-    print(f"[Render] {OUTPUT_HTML} updated with Humankind Art style.")
+    print(f"[Render] {OUTPUT_HTML} updated with Humankind style.")
     git_push_auto()
 
-# ==========================================
-# 模式 3：合併 (Merge)
-# ==========================================
 def mode_merge():
     target_file = TEMP_RESULT if os.path.exists(TEMP_RESULT) else TEMP_TASK
     if not os.path.exists(target_file):
@@ -303,11 +142,14 @@ def mode_merge():
         return
 
     with open(target_file, "r", encoding="utf-8") as f:
-        content = f.read()
+        raw_content = f.read()
+
+    # 核心修改：先解析並強制重構格式
+    formatted_content = reformat_markdown_by_keywords(raw_content)
 
     with open(SUMMARY_FILE, "a", encoding="utf-8") as sf:
-        sf.write(f"\n\n# 歸檔時間: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-        sf.write(content)
+        sf.write(f"\n\n---\n# 歸檔時間: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        sf.write(formatted_content)
 
     for f in [TEMP_TASK, TEMP_RESULT]:
         if os.path.exists(f): os.remove(f)
@@ -317,11 +159,12 @@ def mode_merge():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=["collect", "merge", "render"], required=True)
+    parser.add_argument("--mode", choices=["merge", "render"], default="merge")
     args = parser.parse_args()
-    
-    if args.mode == "collect": mode_collect()
-    elif args.mode == "merge": mode_merge()
-    elif args.mode == "render": mode_render()
 
+    ensure_directory_exists()
+    if args.mode == "merge":
+        mode_merge()
+    elif args.mode == "render":
+        mode_render()
        # python paperbot_v3.py --mode render
