@@ -1,44 +1,79 @@
-<!DOCTYPE html><html lang="zh-TW"><head><meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&family=Inter:wght@400;700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-    :root { --bg: #f0f2f5; --card: #ffffff; --accent: #e60012; --hl: #fff176; }
+
+    <!DOCTYPE html>
+    <html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Academic Poster Archive</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&family=Inter:wght@400;700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+        <style>
+    :root { --bg: #f0f0f0; --card: #ffffff; --text: #1a1a1a; --accent: #e60012; --highlight: #fff176; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body, html { height: 100%; overflow: hidden; background: var(--bg); font-family: 'Inter', 'Noto Sans TC', sans-serif; }
     .swiper { width: 100%; height: 100%; }
     .swiper-slide { display: flex; justify-content: center; align-items: center; padding: 20px; }
-    .poster-card {
-        background: var(--card); width: 100%; max-width: 800px; height: 90vh;
-        display: flex; flex-direction: column; padding: 40px;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.15); border-radius: 8px; border-top: 6px solid var(--accent);
-    }
-    .meta-header { display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 25px; font-size: 0.8rem; font-weight: 800; color: #999; }
-    .scroll-content { flex: 1; overflow-y: auto; padding-right: 10px; }
-    .eng-title { font-size: 0.9rem; color: #888; border-left: 4px solid var(--accent); padding-left: 10px; margin-bottom: 10px; }
-    h1 { font-family: 'Noto Serif TC', serif; font-size: 2.2rem; line-height: 1.2; font-weight: 900; margin-bottom: 30px; }
-    .core-statement { font-size: 1.3rem; background: #fff9f9; padding: 25px; border-left: 8px solid #000; margin-bottom: 40px; line-height: 1.6; }
+    .poster-card { background: var(--card); width: 100%; max-width: 800px; height: 90vh; display: flex; flex-direction: column; padding: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.2); border-radius: 4px; }
+    .meta-header { display: flex; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; font-size: 0.8rem; font-weight: 800; }
+    .scroll-content { flex: 1; overflow-y: auto; padding-right: 15px; }
+    .eng-title { font-size: 0.9rem; color: #888; border-left: 5px solid var(--accent); padding-left: 12px; margin-bottom: 15px; }
+    h1 { font-family: 'Noto Serif TC', serif; font-size: clamp(1.8rem, 6vw, 3rem); line-height: 1.2; font-weight: 900; margin-bottom: 30px; }
+    .core-statement { font-size: 1.3rem; background: #f8f8f8; padding: 25px; border-left: 8px solid #000; margin-bottom: 40px; line-height: 1.6; }
     .red { color: var(--accent) !important; font-weight: 900; }
-    main h3 { background: var(--hl); display: inline-block; padding: 0 8px; font-size: 1.5rem; margin: 35px 0 15px; }
-    main p, main li { font-size: 1.3rem; margin-bottom: 20px; line-height: 1.8; color: #333; }
-    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 0.8rem; color: #ccc; }
-    </style></head><body><div class="swiper"><div class="swiper-wrapper">
+    main h3 { background: var(--highlight); display: inline-block; padding: 0 8px; font-size: 1.6rem; margin: 30px 0 15px; }
+    main p, main li { font-size: 1.3rem; margin-bottom: 20px; line-height: 1.8; text-align: justify; }
+    footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 0.8rem; color: #bbb; }
+    </style>
+    </head>
+    <body>
+        <div class="swiper">
+            <div class="swiper-wrapper">
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-20 12:57:32</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
-                        <h1>Academic Paper</h1>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
+                        <div class="core-statement"></div>
+                    </header>
+                    <main><p>2026-04-20 12:57:32</p>
+<h1>今日待處理論文任務</h1>
+<h2>Classifying Desert Urban Landscapes with Multi-Spectral Analysis Using Landsat 8–9 Imagery</h2>
+<ul>
+<li>URL: https://www.mdpi.com/2072-4292/18/8/1241</li>
+<li>Published: 19 April 2026</li>
+<li>Fetch: 2026-04-20 12:57:18</li>
+<li>摘要內容: [PENDING]</li>
+</ul></main>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        
+        <div class="swiper-slide">
+            <div class="poster-card">
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-20 12:20:22</div>
+                </div>
+                <div class="scroll-content">
+                    <header>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
                         <div class="core-statement">這篇論文用一種改良版的深度學習模型，能更準確地從衛星微波影像中推測降雨量，特別是在大雨時表現更好。</div>
                     </header>
-                    <main><p>2026-04-20 12:20:22</p>
-<h2>文獻名稱</h2>
-<p>A Multi-Task Deep Learning Approach for Precipitation Retrieval from Spaceborne Microwave Imagers</p>
-<h2>文獻中文名稱</h2>
+                    <main><p>2026-04-20 12:20:22<br />
+A Multi-Task Deep Learning Approach for Precipitation Retrieval from Spaceborne Microwave Imagers</p>
 <p>利用載具微波成像儀的離機多任務深度學習方法精準推演降雨量<br />
 - 論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1242<br />
 - 抓取時間: 2026-04-20 12:14:05</p>
-<h3>一句話核心</h3>
 <p>這篇論文用一種改良版的深度學習模型，能更準確地從衛星微波影像中推測降雨量，特別是在大雨時表現更好。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>太空衛星上的微波成像儀（想像成一個會發射微波波束的「太空天氣探測器」）很重要，因為它能覆蓋很廣的區域，而且對降雨非常敏感。但傳統方法有個缺點：下大雨時，推測出的降雨量經常會偏小，可能會低估達 10 毫米每小時甚至更多！這就像是你用一把尺子量身高，結果每次測到高个子都自動扣掉 5 公分。</p>
@@ -72,29 +107,33 @@
 * 未來擴展：這個方法可以套用到更多作物、更多地區，甚至是其他類型的衛星資料</p>
 <hr />
 <p>執行時間: 2026-04-20 12:14:05 ~ 2026-04-20 12:16:00</p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-17 01:28:57</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
-                        <h1>Academic Paper</h1>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
                         <div class="core-statement">透過整合衛星資料與氣象數據，發現中國遷安採礦區的主導力量是採礦活動，它讓植物生長能力降低了 5.3 億公克碳每年，遠超過氣候變化的影響。</div>
                     </header>
-                    <main><p>2026-04-17 01:28:57</p>
-<h2>文獻名稱</h2>
-<p>Impact of Climatic Variability and Mining Activities on Net Primary Productivity in the High-Intensity Open-Pit Mining Area</p>
-<h2>文獻中文名稱</h2>
+                    <main><p>2026-04-17 01:28:57<br />
+Impact of Climatic Variability and Mining Activities on Net Primary Productivity in the High-Intensity Open-Pit Mining Area</p>
 <p>氣候變異與開採活動對高強度露天採礦區淨主產量影響研究</p>
 <ul>
 <li>論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1204</li>
 <li>抓取時間: 2026-04-17 01:23:01</li>
 </ul>
-<h3>一句話核心</h3>
 <p>透過整合衛星資料與氣象數據，發現中國遷安採礦區的主導力量是採礦活動，它讓植物生長能力降低了 5.3 億公克碳每年，遠超過氣候變化的影響。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">淨主產量（NPP，Net Primary Productivity）</strong>是什麼？簡單說就是植物透過光合作用累積的有機碳量，代表植物長得好不好、生態系健康嗎的關鍵指標。</p>
@@ -150,23 +189,29 @@
 </li>
 </ul>
 <p>總而言之，這就像是在複雜的生態系中找出「誰是主謀」，讓我們能更有針對性地解決問題，而不是一邊倒地認為氣候變遷是萬惡之源。</p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 22:44:57</div>
+                </div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heatwaves Across China's Three Major Urban Agglomerations</div>
                         <h1>中國三大都市圈對複合乾旱與熱浪的總原生產力反應差異性研究</h1>
                         <div class="core-statement">這篇論文發現中國不同地區（北、東、南）面對乾旱和熱浪時，對農作物光合作用的影響完全相反：北方嚴重缺水，作物生長明顯變差；南方雨水充足，作物反而因為高溫而长得更好。</div>
                     </header>
-                    <main><p>2026-04-14 22:44:57</p>
-<h2>文獻中文名稱</h2>
+                    <main><p>2026-04-14 22:44:57<br />
+Divergent Sensitivity of Gross Primary Productivity to Compound Drought and Heatwaves Across China's Three Major Urban Agglomerations</p>
 <p>中國三大都市圈對複合乾旱與熱浪的總原生產力反應差異性研究</p>
-<h3>一句話核心</h3>
 <p>這篇論文發現中國不同地區（北、東、南）面對乾旱和熱浪時，對農作物光合作用的影響完全相反：北方嚴重缺水，作物生長明顯變差；南方雨水充足，作物反而因為高溫而长得更好。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>這篇文章在講什麼是「複合乾旱與熱浪」——就是同時發生又特別嚴重的「又乾又熱」的天氣。想像一下，天不但很熱，而且土壤也變乾了，這樣植物就更難活下去了。</p>
@@ -201,22 +246,28 @@
 <li><strong class="red">未來發展</strong>：這個方法可以用在其他作物、其他地區，幫助我們更好應對氣候變遷帶來的挑戰</li>
 </ul>
 <p>總結來說：這篇論文告訴我們，面對氣候變遷，不能一概而論，每個地區的優勢和挑戰都不同，要因地制宜地做規劃！</p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 19:34:04</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
-                        <h1>Academic Paper</h1>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
                         <div class="core-statement">用衛星的光譜儀（HISUI）測量非洲垃圾填埋場的顏色特徵，找到能穩定辨識垃圾的「光譜指紋」，即使在不同地點也能用。</div>
                     </header>
                     <main><p>2026-04-14 19:34:04</p>
 <h2>Segment-Based Spectral Characterisation of Municipal Solid Waste in African Landfills Using HISUI Hyperspectral Imagery</h2>
-<h3>一句話核心</h3>
 <p>用衛星的光譜儀（HISUI）測量非洲垃圾填埋場的顏色特徵，找到能穩定辨識垃圾的「光譜指紋」，即使在不同地點也能用。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">垃圾填埋場</strong>（Municipal Solid Waste Landfills）是城市垃圾最終堆放的地方，但非洲許多國家的垃圾處理基礎設施落後於快速的城市化發展，導致大量垃圾無序堆放。</p>
@@ -266,27 +317,33 @@
 <li><strong class="red">氣候變化對策</strong>：垃圾分解會產生甲烷（一種強效溫室氣體），如果能及早發現垃圾場並監控，有助於減緩氣候變化的影響</li>
 <li><strong class="red">促進公平</strong>：先進國家的技術經驗，能幫助資源較少的國家也能做好環境監測</li>
 </ul></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 18:34:42</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
-                        <h1>Academic Paper</h1>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
                         <div class="core-statement">NASA 研發了一款搭載在高空飛機上的光譜儀（PICARD），並建立了一套完整的實驗室校正方法，讓這台儀器能在 20 公里高空飛行的同時，提供精確可靠的輻射測量數據。</div>
                     </header>
                     <main><p>2026-04-14 18:34:42</p>
 <h2>A NIST-Traceable Lab-to-Sky Spectral and Radiometric Calibration for NASA's High-Altitude Airborne Hyperspectral Pushbroom Imager for Cloud and Aerosol Research and Development (PICARD)</h2>
 <ul>
 <li>URL: https://www.mdpi.com/2072-4292/18/8/1168</li>
-<li>抓取時間: 2026-04-14 18:25:14</li>
+<li>抓取時間: 2026-04-14 18:25:14<br />
+NASA 研發了一款搭載在高空飛機上的光譜儀（PICARD），並建立了一套完整的實驗室校正方法，讓這台儀器能在 20 公里高空飛行的同時，提供精確可靠的輻射測量數據。</li>
 </ul>
-<h3>一句話核心</h3>
-<p>NASA 研發了一款搭載在高空飛機上的光譜儀（PICARD），並建立了一套完整的實驗室校正方法，讓這台儀器能在 20 公里高空飛行的同時，提供精確可靠的輻射測量數據。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">關鍵詞解釋：</strong><br />
 - <strong class="red">光譜儀（spectrometer）：</strong> 一種能把光拆分成不同顏色（波長）並測量每個顏色強度的儀器，就像用一個超級精準的棱鏡把白光拆成彩虹一樣。<br />
@@ -332,28 +389,34 @@
 - <strong class="red">新感測器測試：</strong> 在飛機上進行「虛擬衛星數據」測試，驗證新型感測器設計或數據解譯演算法，在真正發射衛星前就能發現問題。<br />
 - <strong class="red">開源數據共享：</strong> 所有測量數據都免費公開，讓全球科學家（包括開發中國家）都能使用這些高品質數據進行研究。<br />
 - <strong class="red">未來任務基礎：</strong> 為未來可能發射的新型對地觀測衛星提供技術基礎，許多在地面或實驗室開發的校正方法都可以應用到太空任務中。</p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 18:18:12</div>
+                </div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides</div>
                         <h1>用地形測量改進的地震動模型，用於預測地震誘發的山崩</h1>
                         <div class="core-statement">這篇論文用機器學習方法，結合地震資料和地形測量數據，更準確預測山崩發生的風險區域。</div>
                     </header>
-                    <main><p>2026-04-14 18:18:12</p>
-<h2>文獻中文名稱</h2>
+                    <main><p>2026-04-14 18:18:12<br />
+Geomorphometry-Informed Ground-Motion Modeling for Earthquake-Induced Landslides</p>
 <p>用地形測量改進的地震動模型，用於預測地震誘發的山崩</p>
 <ul>
 <li>URL: https://www.mdpi.com/2072-4292/18/8/1169</li>
-<li>抓取時間: 2026-04-14 18:09:35</li>
+<li>抓取時間: 2026-04-14 18:09:35<br />
+這篇論文用機器學習方法，結合地震資料和地形測量數據，更準確預測山崩發生的風險區域。</li>
 </ul>
-<h3>一句話核心</h3>
-<p>這篇論文用機器學習方法，結合地震資料和地形測量數據，更準確預測山崩發生的風險區域。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>在陡峭的山區，地震時最容易發生山崩，這類災害造成的損失很大。山崩是不是發生，取決於兩個因素：一是地震時的震動強度，二是當地的地質條件。然而，以往的地震動預測模型大多只考慮簡單的地層指標（例如：VS30，代表地表下 30 公尺的平均剪切波速度），卻忽略了複雜的地形地貌。在陡峭的山區，地形本身就會放大或減弱地震波，例如山脊、山谷、坡度的曲率等都會影響震動強度。因此，需要發展一種能考慮地形地貌影響的新模型，來更準確預測哪些地方容易發生山崩。</p>
 <h3>他們做了什麼？（研究方法）</h3>
@@ -405,17 +468,24 @@
 </li>
 </ul>
 <p>這個模型就像是給山區裝了一個「地震預警系統」，但這個系統不是告訴你地震要發生了，而是告訴你如果發生地震，哪些地方的山坡最容易被震垮，讓相關單位可以提前做好準備。</p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 14:43:22</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
-                        <h1>Academic Paper</h1>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
                         <div class="core-statement"></div>
                     </header>
                     <main><p>2026-04-14 14:43:22</p>
@@ -441,13 +511,20 @@
 <p>結合 SAR 數據和集成機器學習可提高洪水易感性製圖的準確性，特別適用於數據匱乏的災害敏感盆地。此研究支持建立該地區韌性和減輕洪水長期影響的努力，並強調需要更好的洪水規劃、風險減緩策略以及社區主導的早期預警系統。</p>
 <h3>結論</h3>
 <p>整合合成雷達數據和集成機器學習方法對於準確且可擴展的洪水易感性製圖至關重要，特別是在尼泊爾和印度邊界的 Kosi 盆地這樣複雜且數據匱乏的區域。</p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 14:31:03</div>
+                </div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">Identifying Uniform Layer Thicknesses with GPR Data for PMS Use</div>
@@ -456,13 +533,12 @@
                     </header>
                     <main><p>2026-04-14 14:31:03</p>
 <h1>今日論文摘要</h1>
-<h2>文獻中文名稱</h2>
+<p>Identifying Uniform Layer Thicknesses with GPR Data for PMS Use</p>
 <p><strong class="red">用雷達波（GPR）資料找出路面上各層厚度一致的路段，用於路面管理系統</strong></p>
 <ul>
 <li>URL: https://www.mdpi.com/2072-4292/18/8/1155</li>
 <li>抓取時間: 2026-04-14 14:17:01</li>
 </ul>
-<h3>一句話核心</h3>
 <p>這篇論文發展了一種新方法，用雷達掃描資料自動把柏油路分成「厚度一致」的路段，讓交通部門能更有效率地安排保養工程。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>想像一下，你負責管理全州的公路。每條路上都有好多層：上層是柏油、中間有碎石層、底下還有更堅硬的結構層。每一層的厚度都不一樣，而且有些地方厚、有些地方薄，像皮膚上有斑點一樣。</p>
@@ -501,17 +577,24 @@
 <li><strong class="red">對工程人員</strong>：設計修補方案時，不用再鑽取大量樣品，用雷達資料就能估算厚度分布。</li>
 <li><strong class="red">對一般市民</strong>：道路保養得更及時，減少坑洞和事故風險，行車更安全。</li>
 </ul></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 13:46:10</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
-                        <h1>Academic Paper</h1>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
                         <div class="core-statement">地球觀測數據量爆炸式成長，雲端計算讓研究者能在數據存放的伺服器上直接處理分析，不用下載海量資料，大幅提升植被研究的效率與重複性。</div>
                     </header>
                     <main><p>2026-04-14 13:46:10</p>
@@ -523,7 +606,6 @@
 <li><strong class="red">URL:</strong> https://www.mdpi.com/2072-4292/18/8/1154</li>
 <li><strong class="red">抓取時間:</strong> 2026-04-14 13:37:32</li>
 </ul>
-<h3>一句話核心</h3>
 <p>地球觀測數據量爆炸式成長，雲端計算讓研究者能在數據存放的伺服器上直接處理分析，不用下載海量資料，大幅提升植被研究的效率與重複性。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>以前我們做植被研究時，必須把衛星拍攝的地球照片（remote sensing）全部下載到電腦上再慢慢處理。問題是：<br />
@@ -556,16 +638,23 @@
 <p>就像從「手寫計算」進化為「使用計算機」一樣，這套方法讓地球科學研究進入新的時代！</p>
 <hr />
 <p><em>學術早報 12.5</em></p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 13:03:13</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
+                        <div class="eng-title">RESEARCH</div>
                         <h1>使用集成機器學習與合成孔徑雷達數據對科西超大扇區洪水易感性繪圖</h1>
                         <div class="core-statement">結合雷達與集成機器學習，發現科西河谷約 39% 地區易受洪水侵襲，約 269 萬人口居住在高風險區。</div>
                     </header>
@@ -573,9 +662,7 @@
 <h1>📋 學術早報 - 2026-04-14</h1>
 <h2>1️⃣ 文獻名稱</h2>
 <p><strong class="red">Flood Susceptibility Mapping of the Kosi Megafan Using Ensemble Machine Learning and SAR Data</strong></p>
-<h3>文獻中文名稱</h3>
-<p>使用集成機器學習與合成孔徑雷達數據對科西超大扇區洪水易感性繪圖</p>
-<h3>一句話核心</h3>
+<h1>使用集成機器學習與合成孔徑雷達數據對科西超大扇區洪水易感性繪圖</h1>
 <p>結合雷達與集成機器學習，發現科西河谷約 39% 地區易受洪水侵襲，約 269 萬人口居住在高風險區。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>洪水（flood）就像大自然的「大洗澡」，每年影響全球數億人，加上氣候變遷、都市化讓情況更糟。科西河（Kosi River）流經尼泊爾與印度，地形複雜、氣候多變，加上人口密集，一旦洪水洶湧而來，就會造成大災難。過去 1954 年到 2014 年間，僅尼泊爾就有 6500 人因洪水喪生、350 萬人生計受創。2008 年 8 月，堤防因為維護不善被冲破，洪水改道肆虐。研究團隊想回答：<strong class="red">到底哪些地方最容易淹水？多少人在危險區？我們該怎麼防護？</strong></p>
@@ -601,9 +688,7 @@
 <hr />
 <h2>2️⃣ 文獻名稱</h2>
 <p><strong class="red">A Framework for Accurate Annual Regional Crop Yield Prediction</strong></p>
-<h3>文獻中文名稱</h3>
-<p>準確預測年度區域作物產量的框架</p>
-<h3>一句話核心</h3>
+<h1>準確預測年度區域作物產量的框架</h1>
 <p>使用開源資料與 LSTM 神經網路，能準確預測小麥產量，發現生長期（4-6 月）的植被指數（EVI）與產量高度相關。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>氣候變遷加上地緣政治不穩，讓食物安全變得越來越艱難。糧食生產與分配必須穩定，尤其小麥（winter barley）這類主食。然而自 1990 年代起，全球小麥產量開始停滯，部分原因是肥料政策、水資源匱乏、高溫熱浪等。為了確保糧食安全，決策者需要：<strong class="red">準確預測未來產量，才能提前安排種子、肥料、灌溉與運輸</strong>。但過去的方法需要大量地面測量（ground truth），成本太高。研究團隊想問：<strong class="red">能不能只用開源資料、不用下田測量，就準確預測產量？</strong></p>
@@ -630,9 +715,7 @@
 <hr />
 <h2>3️⃣ 文獻名稱</h2>
 <p><strong class="red">Segment-Based Spectral Characterisation of Municipal Solid Waste in African Landfills Using HISUI Hyperspectral Imagery</strong></p>
-<h3>文獻中文名稱</h3>
-<p>使用 HISUI 高解析度光譜影像對非洲垃圾填埋場進行分段式光譜特徵分析</p>
-<h3>一句話核心</h3>
+<h1>使用 HISUI 高解析度光譜影像對非洲垃圾填埋場進行分段式光譜特徵分析</h1>
 <p>透過太空光譜儀（HISUI）分析非洲 8 個國家的 7 個垃圾場，發現垃圾在「短波紅外線」波段（1538-1750 nm）有獨特光譜指紋，可自動化識別。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>非洲都市化快速，但垃圾處理基礎建設追不上。垃圾場（landfill）經常沒有監測，導致污染地下水、土壤，甚至引發疾病。過去想用衛星監測垃圾，但光譜特徵在不同垃圾場變化太大，難以通用。研究團隊想問：<strong class="red">有沒有辦法找到一種「光譜指紋」，不管在非洲哪裡，都能識別垃圾填埋場？</strong></p>
@@ -671,24 +754,30 @@
 <p>希望這三篇學術論文能用白話文幫你釐清重點！如果有任何問題，隨時找我討論。</p>
 </blockquote>
 <p><strong class="red">2026-04-14 12:55</strong></p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 10:04:41</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
-                        <h1>Academic Paper</h1>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
                         <div class="core-statement">用影片和廉價 GPS 定位物體位置時，先分別把兩邊的雜訊清理乾淨再合併，可以把定位誤差從 7.86 公尺降到 0.98 公尺。</div>
                     </header>
                     <main><p>2026-04-14 10:04:41</p>
 <h1>【學術早報 12.5】2026-04-14</h1>
 <h2>論文 1：Self-Supervised Cascade Denoising Auto-Encoder for Accurate Spatial Positioning of Target by Fusing Uncalibrated Video and Low-Cost GNSS</h2>
 <h3>自我監督聯立降噪編碼器：用未校正影片與低成本的 GNSS 融合實現精確目標空間定位</h3>
-<h3>一句話核心</h3>
 <p>用影片和廉價 GPS 定位物體位置時，先分別把兩邊的雜訊清理乾淨再合併，可以把定位誤差從 7.86 公尺降到 0.98 公尺。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>想像一下你在用攝影機監控無人機，或者用低價的導航設備（GNSS）來定位車輛。這兩種方式都有缺點：<br />
@@ -732,7 +821,6 @@
 <hr />
 <h2>論文 2：Investigating the Spatiotemporal Variations in Glacier Elevation Changes over the Southeastern Tibetan Plateau Using Multisource Satellite Data</h2>
 <h3>用多衛星資料調查西藏東南部高原冰川厚度的時間與空間變化</h3>
-<h3>一句話核心</h3>
 <p>科學家整合了多顆衛星資料，發現西藏東南部高原的冰川過去 23 年間平均每年縮減 0.71 公尺，而且 2011-2022 年間融化速度比之前加快了 31.4%！</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>青藏高原被稱為「世界屋頂」和「第三極」，上面的冰川就像天然的水塔，為下游數億人口提供淡水和灌溉用水。</p>
@@ -771,7 +859,6 @@
 <hr />
 <h2>論文 3：Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction</h2>
 <h3>邊緣注視雙分支框場網路：高精準度的建築物多邊形提取</h3>
-<h3>一句話核心</h3>
 <p>新的建築輪廓提取方法同時專注「內部區域一致性和邊緣精準度」，在複雜的都市環境中也能準確勾勒出建築物的輪廓，準確度比現有的方法高出 2.3%！</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p>在城市規劃、土地管理、災害救援等應用中，我們需要知道哪裡有建築物、建築物長什麼樣子。</p>
@@ -857,26 +944,33 @@
 - 都強調「效率與準確度的平衡」<br />
 - 都提供自動化解決方案，減少人工介入</p>
 <p>這些技術進步對我們日常生活和社會運作都有實質的影響。</p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 02:21:33</div>
+                </div>
                 <div class="scroll-content">
                     <header>
                         <div class="eng-title">### Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction</div>
-                        <h1>### Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction</h1>
+                        <h1>未命名研究</h1>
                         <div class="core-statement">提出一個叫**EA-DBFFN**的雙分支 AI 架構，將「區域一致性」和「邊界精準度」分開處理，用互導機制讓兩者協同工作，在 CrowdAI 數據集上達到 72.9% 的精準度，比競爭方法好 2.3%，且 Invalid Polygon Ratio（無效多邊形比率）降低 66.3%。</div>
                     </header>
                     <main><p>2026-04-14 02:21:33</p>
+<h3>Edge-Attentive Dual-Branch Frame Field Network for High-Precision Building Polygon Extraction</h3>
 <h4>用雙分支神經網絡精準勾勒建築物輪廓的 AI 新工具</h4>
 <ul>
 <li><strong class="red">URL</strong>: https://www.mdpi.com/2072-4292/18/8/1159</li>
 <li><strong class="red">抓取時間</strong>: 2026-04-14 01:53:58</li>
 </ul>
-<h3>一句話核心</h3>
 <p>提出一個叫<strong class="red">EA-DBFFN</strong>的雙分支 AI 架構，將「區域一致性」和「邊界精準度」分開處理，用互導機制讓兩者協同工作，在 CrowdAI 數據集上達到 72.9% 的精準度，比競爭方法好 2.3%，且 Invalid Polygon Ratio（無效多邊形比率）降低 66.3%。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">名詞小百科</strong>：</p>
@@ -969,17 +1063,24 @@
 </ul>
 <p>總的來說，EA-DBFFN 就像是給城市建模加裝了一個「超級自動測量員」，能快速、精確地勾勒出所有建築物的形狀，對於智慧城市、城市規劃、災難管理等應用都是強而力的工具。</p>
 <hr /></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 01:48:52</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
-                        <h1>Academic Paper</h1>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
                         <div class="core-statement"></div>
                     </header>
                     <main><p>2026-04-14 01:48:52</p>
@@ -1050,17 +1151,24 @@
 <p>這些研究突顯了<strong class="red">衛星遙感技術</strong>在應對全球環境挑戰中的關鍵角色，從生態管理到氣候變化應對，提供了寶貴的科學基礎。</p>
 <hr />
 <p><strong class="red">下一步行動</strong>: 執行歸檔合併操作</p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-14 00:05:32</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
-                        <h1>Academic Paper</h1>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
                         <div class="core-statement"></div>
                     </header>
                     <main><p>2026-04-14 00:05:32</p>
@@ -1113,24 +1221,30 @@
 - 集成學習與深度學習模型表現優異<br />
 - 跨區域與跨環境的泛化性已驗證</p>
 <hr /></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-13 23:30:46</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
-                        <h1>Academic Paper</h1>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
                         <div class="core-statement">這研究用衛星照片跟地面調查，發現緬甸山區傳統輪歇農耕的休耕期確實有 8 年，植被也能恢復，但農耕地越來越多且往更陡峭的山坡移動，長期下來會導致土壤退化，需要小心維護。</div>
                     </header>
                     <main><p>2026-04-13 23:30:46</p>
 <h1>學術早報 12.5 - 摘要大匯總</h1>
 <hr />
 <h2>論文一：Evaluation of Land Use Patterns and Vegetation Recovery Status of Shifting Cultivation in Myanmar's Mountainous Regions Using Satellite Imagery and Field Surveys</h2>
-<h3>一句話核心</h3>
 <p>這研究用衛星照片跟地面調查，發現緬甸山區傳統輪歇農耕的休耕期確實有 8 年，植被也能恢復，但農耕地越來越多且往更陡峭的山坡移動，長期下來會導致土壤退化，需要小心維護。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">輪歇農耕（shifting cultivation）</strong> 是一種很古老的耕作方式，農民先在一片土地上種植幾年，等土壤變肥力不足後就停止耕作，讓大自然重新長出植物恢復地力，過一段時間再去另一塊地繼續種植。這種方式在過去能跟大自然保持平衡，但現在因為人越來越多、生活變得更複雜，傳統的平衡被打破了。</p>
@@ -1160,7 +1274,6 @@
 </ul>
 <hr />
 <h2>論文二：Microphysical Characteristics of a Squall Line Modulated by the Northeast China Cold Vortex Using Polarimetric Radar and Disdrometer Observations</h2>
-<h3>一句話核心</h3>
 <p>中國東北的暴雨常受冷渦影響，這研究用雷達跟降雨計發現，這種冷渦帶來的暴雨中雨滴較大但較稀疏，跟梅雨區的雨滴不同，而且雷達能看到暴雨內部複雜的冰晶生長過程。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">氣旋（cold vortex）</strong> 是一種大範圍的低壓系統，會帶來強降雨。中國東北的暴雨很常見，但為什麼有時雨特別大？裡面的雨滴是什麼形狀、大小？這些細節過去了解不夠清楚。</p>
@@ -1190,7 +1303,6 @@
 </ul>
 <hr />
 <h2>論文三：Validation of Long-Term Methane (CH4) Satellite Measurements from the AIRS Spectrometer and Correction of Their Temporal Drift</h2>
-<h3>一句話核心</h3>
 <p>這研究發現氣象衛星測量甲烷濃度時有逐漸偏離的趨勢（每年約偏離 7.6 萬 ppm），作者提出一種新方法來修正，讓衛星資料跟地面觀測站更吻合，能更準確計算甲烷排放趨勢。</p>
 <h3>為什麼要研究這個？（研究動機）</h3>
 <p><strong class="red">甲烷（CH4）</strong> 是第二重要的溫室氣體（僅次於二氧化碳），但每顆分子的溫室效應是二氧化碳的<strong class="red">28-32 倍</strong>。了解甲烷的排放量非常重要，因為它能加速全球暖化。</p>
@@ -1254,17 +1366,24 @@
 <hr />
 <p><em>生成時間：2026 年 4 月 13 日 23:15</em><br />
 <em>ResearchMaster 技能執行完成</em></p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
         </div>
+        
         <div class="swiper-slide">
             <div class="poster-card">
-                <div class="meta-header"><div>ACADEMIC POSTER</div><div>2026/0420</div></div>
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-13 17:29:33</div>
+                </div>
                 <div class="scroll-content">
                     <header>
-                        <div class="eng-title">Academic Paper</div>
-                        <h1>Academic Paper</h1>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
                         <div class="core-statement"></div>
                     </header>
                     <main><p>2026-04-13 17:29:33</p>
@@ -1296,10 +1415,27 @@
 <p>林冠空隙是理解森林干擾制度和再生過程的重要足跡，但需要運用多種指標沿著時間梯度來更深入地了解動態。本研究檢查了喀爾巴阡山脈三個保護森林的空隙數據，這些數據經過位置和森林類型分層，並在地時空尺度上進行了分析。檢查了多個特徵，包括空隙大小結構、空隙面積比例、空隙幾何形狀以及空隙幾何形狀和大小與空隙形成的關係。結果表明，空隙大小頻率具有重尾右偏分布，並且在大多數情況下在時間上保持相同的比例，即使空隙數量減少。空隙大小的概率分佈不是獨立的功率定律；它也遵循對數正規分布和指數分布。空隙計數和空隙百分比隨著時間減少，但隨著空隙大小的增加。空隙形狀複雜度大約為 2.0，但隨著空隙大小的增加而變得複雜。時空隙動態特徵為四種空隙類型：恢復或關閉的空隙、持續的空隙、擴大的空隙或新的開口，其平衡受干擾嚴重程度的影響。這些發現強調了跨時空尺度綜合空隙指標在闡述未經管理的森林的空隙動態方面的重要性。</p>
 <hr />
 <p><strong class="red">後台歸檔任務已啟動，暫存檔將自動清理。</strong></p></main>
-                    <footer><div>Slide to View More</div><div>(c) Hoomie Studio</div></footer>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
                 </div>
             </div>
-        </div></div><div class="swiper-pagination"></div></div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>const swiper = new Swiper('.swiper', { direction: 'horizontal', pagination: { el: '.swiper-pagination', clickable: true }, grabCursor: true, mousewheel: { forceToAxis: true } });</script>
-    </body></html>
+        </div>
+        </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script>
+            const swiper = new Swiper('.swiper', {
+                direction: 'horizontal',
+                loop: false,
+                pagination: { el: '.swiper-pagination', clickable: true },
+                mousewheel: { forceToAxis: true },
+                grabCursor: true,
+                keyboard: true
+            });
+        </script>
+    </body>
+    </html>
+    
