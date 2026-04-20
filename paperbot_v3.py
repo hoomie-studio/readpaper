@@ -28,7 +28,7 @@ def get_read_history():
         return set()
     with open(HISTORY_FILE, "r", encoding="utf-8") as f:
         content = f.read()
-        return set(re.findall(r'https://www.mdpi.com/\d+-\d+/\d+/\d+/\d+', content))
+        return set(re.findall(r'https://www\.mdpi\.com/\d+-\d+/\d+/\d+/\d+', content))
 
 # ====================== 模式 1：採集論文 ======================
 def mode_collect():
@@ -90,7 +90,6 @@ def mode_collect():
                 time.sleep(2)
 
             if new_papers:
-                # 寫入歷史檔案
                 with open(HISTORY_FILE, "a", encoding="utf-8") as hf:
                     for p in new_papers:
                         hf.write(f"\n---\n## {p['title']}\n")
@@ -99,7 +98,6 @@ def mode_collect():
                         hf.write(f"- Fetch: {p['fetch_time']}\n")
                         hf.write(f"- Status: [PENDING]\n")
 
-                # 寫入 temp_task.md 給 LLM 處理
                 with open(TEMP_TASK, "w", encoding="utf-8") as tf:
                     tf.write("# 今日待處理論文任務\n\n")
                     for p in new_papers:
@@ -118,9 +116,9 @@ def mode_collect():
         finally:
             browser.close()
 
-# ====================== 模式 2：優化後的 Render ======================
+# ====================== 模式 2：優化後的 Render（重點加強） ======================
 def mode_render():
-    """優化後的 render 函數 - 更穩健解析各種 LLM 輸出格式"""
+    """優化版 render：更穩健解析各種 LLM 輸出的 Markdown 格式"""
     if not os.path.exists(SUMMARY_FILE):
         print("[!] Summary file not found.")
         return
@@ -128,6 +126,7 @@ def mode_render():
     with open(SUMMARY_FILE, "r", encoding="utf-8") as f:
         full_content = f.read()
 
+    # 按歸檔時間切割每一篇
     entries = full_content.split("# 歸檔時間:")[1:]
     if not entries:
         print("[!] 沒有找到可渲染的條目")
@@ -142,14 +141,14 @@ def mode_render():
         archive_time = raw_text.split('\n')[0].strip()
 
         # 穩健提取各區塊
-        def extract_section(start_keyword, end_keywords=None):
-            if end_keywords is None:
-                end_keywords = ["為什麼要研究這個", "他們做了什麼", "驚人發現", "這對我有什麼意義"]
-            pattern = rf"(?:^|\n)(?:##|###)\s*{start_keyword}.*?(?=\n(?:##|###)\s*(?:{'|'.join(end_keywords)}|$))"
+        def extract_section(start_kw, end_kws=None):
+            if end_kws is None:
+                end_kws = ["為什麼要研究這個", "他們做了什麼", "驚人發現", "這對我有什麼意義"]
+            pattern = rf"(?:^|\n)(?:##|###)\s*{start_kw}.*?(?=\n(?:##|###)\s*(?:{'|'.join(end_kws)}|$))"
             match = re.search(pattern, raw_text, re.DOTALL | re.IGNORECASE)
             if match:
                 text = match.group(0)
-                text = re.sub(rf"^.*{start_keyword}.*?\n", "", text, flags=re.IGNORECASE)
+                text = re.sub(rf"^.*{start_kw}.*?\n", "", text, flags=re.IGNORECASE)
                 return text.strip()
             return ""
 
@@ -159,7 +158,7 @@ def mode_render():
 
         # 提取主體內容
         md_body = raw_text
-        for kw in ["文獻名稱", "文獻中文名稱", "一句話核心"]:
+        for kw in ["文獻名稱", "文獻中文名稱", "一句話核心", "論文來源 URL", "抓取時間"]:
             md_body = re.sub(rf".*?{kw}.*?\n", "", md_body, flags=re.DOTALL | re.IGNORECASE, count=1)
 
         # 清理雜訊
@@ -192,23 +191,23 @@ def mode_render():
         </div>
         """
 
-    # Swiper HTML（保持你原本風格）
+    # Swiper 樣式（現代雜誌風）
     style = """
-    :root { --bg: #f0f0f0; --card: #ffffff; --text: #1a1a1a; --accent: #e60012; --highlight: #fff176; }
+    :root { --bg: #f8f5f0; --card: #ffffff; --text: #1a1a1a; --accent: #2EB98F; --highlight: #fff8e1; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body, html { height: 100%; overflow: hidden; background: var(--bg); font-family: 'Inter', 'Noto Sans TC', sans-serif; }
+    body, html { height: 100%; overflow: hidden; background: var(--bg); font-family: 'Noto Sans TC', system-ui, sans-serif; }
     .swiper { width: 100%; height: 100%; }
-    .swiper-slide { display: flex; justify-content: center; align-items: center; padding: 20px; }
-    .poster-card { background: var(--card); width: 100%; max-width: 800px; height: 90vh; display: flex; flex-direction: column; padding: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.2); border-radius: 4px; }
-    .meta-header { display: flex; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; font-size: 0.8rem; font-weight: 800; }
-    .scroll-content { flex: 1; overflow-y: auto; padding-right: 15px; }
-    .eng-title { font-size: 0.9rem; color: #888; border-left: 5px solid var(--accent); padding-left: 12px; margin-bottom: 15px; }
-    h1 { font-family: 'Noto Serif TC', serif; font-size: clamp(1.8rem, 6vw, 3rem); line-height: 1.2; font-weight: 900; margin-bottom: 30px; }
-    .core-statement { font-size: 1.3rem; background: #f8f8f8; padding: 25px; border-left: 8px solid #000; margin-bottom: 40px; line-height: 1.6; }
-    .red { color: var(--accent) !important; font-weight: 900; }
-    main h3 { background: var(--highlight); display: inline-block; padding: 0 8px; font-size: 1.6rem; margin: 30px 0 15px; }
-    main p, main li { font-size: 1.3rem; margin-bottom: 20px; line-height: 1.8; text-align: justify; }
-    footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 0.8rem; color: #bbb; }
+    .swiper-slide { display: flex; justify-content: center; align-items: center; padding: 30px; }
+    .poster-card { background: var(--card); width: 100%; max-width: 820px; height: 92vh; display: flex; flex-direction: column; padding: 45px; box-shadow: 0 25px 60px rgba(0,0,0,0.12); border-radius: 16px; }
+    .meta-header { display: flex; justify-content: space-between; border-bottom: 2px solid #ddd; padding-bottom: 12px; margin-bottom: 25px; font-size: 0.85rem; color: #666; }
+    .scroll-content { flex: 1; overflow-y: auto; padding-right: 20px; }
+    .eng-title { font-size: 0.95rem; color: #888; border-left: 5px solid var(--accent); padding-left: 14px; margin-bottom: 12px; }
+    h1 { font-size: clamp(1.9rem, 5.5vw, 2.8rem); line-height: 1.25; font-weight: 700; margin-bottom: 28px; color: #1f1f1f; }
+    .core-statement { font-size: 1.25rem; background: #f8f9f5; padding: 28px; border-left: 7px solid var(--accent); margin-bottom: 40px; line-height: 1.65; color: #333; }
+    .red { color: #e60012 !important; font-weight: 700; }
+    main h3 { background: var(--highlight); display: inline-block; padding: 4px 12px; font-size: 1.45rem; margin: 32px 0 16px; border-radius: 4px; }
+    main p, main li { font-size: 1.22rem; margin-bottom: 18px; line-height: 1.75; text-align: justify; }
+    footer { margin-top: 45px; padding-top: 18px; border-top: 1px solid #eee; display: flex; justify-content: space-between; font-size: 0.85rem; color: #999; }
     """
 
     full_html = f"""
@@ -219,7 +218,7 @@ def mode_render():
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Academic Poster Archive</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&family=Inter:wght@400;700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
         <style>{style}</style>
     </head>
     <body>
