@@ -32,6 +32,54 @@
             <div class="poster-card">
                 <div class="meta-header">
                     <div>RESEARCH POSTER // ISSUE 0420</div>
+                    <div class="archive-info">2026-04-20 15:11:22</div>
+                </div>
+                <div class="scroll-content">
+                    <header>
+                        <div class="eng-title">RESEARCH</div>
+                        <h1>未命名研究</h1>
+                        <div class="core-statement"></div>
+                    </header>
+                    <main><p>2026-04-20 15:11:22</p>
+<h1>SimTA: 雙極化 SAR 時序水稻田分類模型</h1>
+<p>論文來源 URL: https://www.mdpi.com/2072-4292/18/8/1237<br />
+抓取時間: 2026-04-20 15:06</p>
+<h2>一句話核心</h2>
+<p>研究提出 SimTA 模型，透過深層特徵層級融合與時空注意力機制，大幅提升 SAR 衛星資料對水稻田的分類準確度。</p>
+<h2>為什麼要研究這個？（研究動機）</h2>
+<p>準確的大規模作物分類對預測產量、監控農業災害和保障全球糧食安全至關重要。合成孔徑雷達（SAR，一種能在陰天或夜晚也能拍攝的地面影像技術）擁有全天候成像能力，在水稻田分類研究中扮演關鍵角色。然而，現有方法主要停留在資料層級融合，未能有效整合雙極化（VV 和 VH）SAR 資料在全水稻生長期中的互補資訊，導致在田界和異質區域出現冗餘或衝突的特徵，增加了分類錯誤。</p>
+<h2>他們做了什麼？（研究方法）</h2>
+<p>研究者設計了一個全新模型，主要做了三件事：<br />
+1. <strong class="red">雙極化特徵融合</strong>：像調酒師結合兩種不同的酒一樣，將 VV 和 VH 兩種極化的 SAR 資料進行深層級融合，並結合「內容指導注意力（CGA）」方法，有效利用雙極化 SAR 資料的互補資訊，實現深度時空動態融合。<br />
+2. <strong class="red">邊緣增強卷积</strong>：設計了一種特殊卷積結構（CDCSE Conv Block），結合標準卷積和中心差分卷積，提高對水稻田邊緣變化的敏感度。<br />
+3. <strong class="red">時空注意力機制</strong>：開發時空注意力（TSA）模組，用大核卷積處理空間特徵，並利用 squeeze-and-excitation 機制捕捉水稻時序的長期依賴關係，讓模型能理解水稻在整個生長期內的變化規律。</p>
+<h2>驚人發現與具體數據（關鍵結果）</h2>
+<p>實驗比較了 SimTA 與其他模型在不同融合方案下的表現，結果顯示：<br />
+- <strong class="red">特徵層級融合</strong> consistently 優於其他融合方式<br />
+- <strong class="red">SimTA 最佳表現</strong>：整體準確率（OA）= 91.1%，F1 分數 = 90.9%，平均交並比（mIoU）= 86.2%<br />
+- <strong class="red">與基準模型 SimVP 相比</strong>：SimTA 將 F1 分數提升 0.8%，mIoU 提升 2.1%<br />
+- <strong class="red">加入 CGA 增強後的 SimTA</strong>：整體準確率達到 91.5%，F1 分數達到 91.4%</p>
+<h2>這對我有什麼意義？（實際應用）</h2>
+<ul>
+<li>農民與農業部門可更精確掌握水稻種植範圍，優化灌溉與施肥計劃</li>
+<li>糧食進口國能更精準評估水稻需求，穩定糧價</li>
+<li>開源資料讓開發中國家也能低成本應用此技術，促進全球糧食公平</li>
+<li>此方法可擴展應用於其他作物（如稻米、玉米），甚至不同地區</li>
+</ul>
+<hr />
+<p>執行時間: 2026-04-20 15:06</p></main>
+                    <footer>
+                        <div>Hoomie Studio / Academic Flip</div>
+                        <div>Slide to Next →</div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        
+        <div class="swiper-slide">
+            <div class="poster-card">
+                <div class="meta-header">
+                    <div>RESEARCH POSTER // ISSUE 0420</div>
                     <div class="archive-info">2026-04-20 15:04:53</div>
                 </div>
                 <div class="scroll-content">
