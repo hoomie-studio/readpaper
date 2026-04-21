@@ -100,7 +100,7 @@ def mode_collect():
             browser.close()
 
 # ==========================================
-# 模式 2：渲染 (Render) - 優化視覺負擔
+# 模式 2：渲染 (Render) - 改回清楚紅字模式
 # ==========================================
 def mode_render():
     if not os.path.exists(SUMMARY_FILE): return
@@ -151,35 +151,35 @@ def mode_render():
             </div>
         </div>"""
 
-    # --- CSS 更新：減少紅字、箭頭改圓點 ---
+    # --- CSS 更新：改回紅字強調 ---
     style = """
-    :root { --hk-bg: #f8f8f8; --hk-black: #0a0a0a; --hk-red: #ff3b30; --hk-gray: #d0d0d0; --serif: 'Noto Serif TC', serif; --sans: 'Noto Sans TC', sans-serif; }
+    :root { --hk-bg: #f8f8f8; --hk-black: #0a0a0a; --hk-red: #e63946; --hk-gray: #e0e0e0; --serif: 'Noto Serif TC', serif; --sans: 'Noto Sans TC', sans-serif; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body, html { height: 100%; overflow: hidden; background: var(--hk-bg); color: var(--hk-black); font-family: var(--sans); }
     .swiper { width: 100%; height: 100vh; }
     .hk-container { width: 100%; height: 100%; padding: 60px; display: flex; flex-direction: column; position: relative; z-index: 1; }
-    .hk-background-text { position: absolute; top: -5%; right: -5%; font-size: 25vw; font-weight: 900; color: rgba(0,0,0,0.02); z-index: 0; pointer-events: none; }
+    .hk-background-text { position: absolute; top: -5%; right: -5%; font-size: 25vw; font-weight: 900; color: rgba(0,0,0,0.03); z-index: 0; pointer-events: none; }
     .hk-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; z-index: 1; flex-grow: 1; min-height: 0; margin-bottom: 30px; }
     .hk-main-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 4rem); line-height: 1.15; font-weight: 900; letter-spacing: -1px; margin-bottom: 15px; }
-    .hk-eng-subtitle { font-size: 0.85rem; color: #777; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px; }
+    .hk-eng-subtitle { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px; }
     .hk-core-statement { display: flex; gap: 20px; align-items: flex-start; }
     .hk-label { background: var(--hk-black); color: #fff; padding: 4px 10px; font-size: 0.7rem; font-weight: 900; transform: rotate(-90deg) translateX(-5px); }
-    .hk-core-statement p { font-size: 1.25rem; font-family: var(--serif); line-height: 1.5; font-weight: 700; color: #333; }
-    .hk-right-col { position: relative; overflow-y: auto; padding-right: 25px; scrollbar-width: thin; }
-    h3 { font-family: var(--serif); font-size: 1.4rem; margin: 35px 0 15px; border-bottom: 2px solid var(--hk-black); display: inline-block; }
-    p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; text-align: justify; color: #444; }
+    .hk-core-statement p { font-size: 1.3rem; font-family: var(--serif); line-height: 1.4; font-weight: 700; color: var(--hk-black); }
+    .hk-right-col { position: relative; overflow-y: auto; padding-right: 25px; scrollbar-width: thin; scrollbar-color: var(--hk-black) transparent; }
+    h3 { font-family: var(--serif); font-size: 1.5rem; margin: 35px 0 15px; border-bottom: 2px solid var(--hk-black); display: inline-block; }
+    p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; text-align: justify; }
     
-    /* 減少紅字：改為加粗深灰，僅特定強烈強調才用紅 */
-    strong, b { color: #222; font-weight: 800; border-bottom: 1px solid var(--hk-gray); } 
+    /* 改回紅字：強調標記一眼看出重點 */
+    strong, b { color: var(--hk-red); font-weight: 700; } 
     
-    /* 箭頭改為簡潔圓點，減少視覺干擾 */
-    li { font-size: 1.05rem; padding: 10px 0; border-bottom: 1px solid #eee; display: flex; gap: 12px; line-height: 1.6; color: #444; }
-    li::before { content: '•'; font-weight: 900; color: var(--hk-black); flex-shrink: 0; font-size: 1.2rem; }
+    /* 列表樣式：保留箭頭感但優化粗細 */
+    li { font-size: 1.05rem; padding: 12px 0; border-bottom: 1px solid var(--hk-gray); display: flex; gap: 10px; line-height: 1.6; }
+    li::before { content: '→'; font-weight: 900; color: var(--hk-red); flex-shrink: 0; }
     
-    .hk-footer { flex-shrink: 0; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #ddd; padding-top: 20px; z-index: 2; }
-    .hk-logo { font-weight: 900; letter-spacing: 2px; font-size: 1rem; }
+    .hk-footer { flex-shrink: 0; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #000; padding-top: 20px; z-index: 2; background: var(--hk-bg); }
+    .hk-logo { font-weight: 900; letter-spacing: 2px; font-size: 1.1rem; }
     .hk-logo span { color: var(--hk-red); }
-    .hk-scroll-hint { font-size: 0.75rem; letter-spacing: 2px; font-weight: 700; color: #999; }
+    .hk-scroll-hint { font-size: 0.8rem; letter-spacing: 3px; font-weight: 700; }
     """
     
     full_html = f"""<!DOCTYPE html><html lang="zh-TW"><head><meta charset="UTF-8">
@@ -191,7 +191,7 @@ def mode_render():
 
     with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
         f.write(full_html)
-    print(f"[Render] {OUTPUT_HTML} 更新成功。")
+    print(f"[Render] {OUTPUT_HTML} 更新成功（已恢復紅字強調模式）。")
     git_push_auto()
 
 def mode_merge():
