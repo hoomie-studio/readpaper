@@ -145,7 +145,7 @@ def mode_render():
     /* 背景文字：回到右上方，增加不透明度 */
     .hk-background-text { 
         position: absolute; 
-        top: 15%; 
+        top: 5%; 
         right: 5%; 
         font-size: 23vw; 
         font-weight: 900; 
