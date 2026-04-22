@@ -146,7 +146,7 @@ def mode_render():
     .hk-background-text { 
         position: absolute; 
         top: -10%; 
-        right: -10%; 
+        right: 10%; 
         font-size: 22vw; 
         font-weight: 900; 
         color: rgba(0,0,0,0.05); /* 調高不透明度 (從0.02 -> 0.05) */
