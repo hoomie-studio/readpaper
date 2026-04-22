@@ -147,7 +147,7 @@ def mode_render():
         position: absolute; 
         top: 5%; 
         right: 5%; 
-        font-size: 23vw; 
+        font-size: 22vw; 
         font-weight: 900; 
         color: rgba(0,0,0,0.03); /* 調高不透明度 (從0.02 -> 0.05) */
         z-index: 0; 
