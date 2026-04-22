@@ -47,6 +47,58 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/22 ]</div>
+                        <h1 class="hk-main-title">SemGeoFrame：基於地表語義資訊的空中載具視覺配準框架</h1>
+                        <p class="hk-eng-subtitle">SemGeoFrame: A Visual Matching Framework for Aircraft Based on Surface Semantic Information</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>這篇論文提出了一個新的視覺配準框架，讓無人機（UAV）在無法使用 GPS 的複雜環境中，依然能透過辨識地面地物的語義資訊（比如哪裡是道路、哪裡是建築物）來精準定位自己。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/9/1267</li>
+<li>抓取時間：2026-04-22 20:29:10</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p>GPS 在許多情況下會被干擾或失效，例如：<br />
+- 城市高樓林立形成的「GPS 陰影區」<br />
+- 戰區或敏感區域的電子干擾<br />
+- 密林、隧道等遮蔽環境</p>
+<p>在這些 GPS 無法使用的情況下，無人機要如何知道自己在哪裡、往哪個方向飛？傳統方法是用光學影像特徵配準，但當兩張照片（不同位置拍攝）的拍攝條件差異太大時（比如光照、角度、季節變化），這些特徵可能無法對應上，導致定位失敗。因此，研究者想到：「如果我們不只是找相似的小點，而是理解畫面中的物體是甚麼（語義資訊），是不是會更穩？」例如，一張圖中的「道路」，另一張圖中同樣的位置也應該是「道路」，即使光影條件不同，這個「語義」應該是一致的。</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p>想像你在玩拼圖，但這兩塊拼圖來自不同角度拍攝的照片，而且表面還沾了一些水垢、灰塵。<br />
+傳統方法是找兩塊拼圖上「看起來很像」的小花紋，但光線不同時，同樣的花紋可能看起來完全不一樣。<br />
+這項研究的突破在於：<br />
+1.  <strong>語義先驗（Semantic Prior）</strong>：他們先對圖片進行語義分割（例如把圖片中的天空、道路、樹木、建築標記出來），建立一個「語義知識庫」。<br />
+2.  <strong>一致性篩選機制</strong>：他們使用一種叫做 Jensen–Shannon divergence 的方法（可以簡單理解為「語義相似度計數器」），來排除那些語義不一致的錯誤配準點。例如，如果左圖的某個點是「樹葉」，右圖對應的點不應該配準到「路面」。<br />
+3.  <strong>信心引導的抽樣策略</strong>：不是隨機選點來配準，而是根據「信心度」（哪些點配準得比較準）來決定哪裡需要更多注意力，避免只在某些區域過度集中。<br />
+4.  <strong>三重約束優化</strong>：同時考慮幾何、語義和信心度三個面向，來求得一個最穩健的變換矩陣（homography matrix，簡單說就是把左圖轉變成右圖的「變換公式」）。</p>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<p>根據摘要中的實驗結果：<br />
+1.  這個框架在多種不同環境（多語義類別、複雜光照）的數據集上，都顯著提升了匹配準確率和穩健性。<br />
+2.  它是一個「插拔式設計」，意味著可以直接套用在現有的主流匹配演算法（如 ORB、SuperPoint、LoFTR）上，不需要重新訓練或大幅修改這些演算法，就能讓它們在異質影像（不同光源、角度、季節）的配準能力大幅提升。<br />
+3.  特別是在「異質影像」配準的挑戰下，傳統方法常常失敗，但 SemGeoFrame 透過語義資訊的輔助，成功克服了這些困難。</p>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<ul>
+<li>無人機在 GPS 失效（如城市、戰區、密林）時仍能精準導航。</li>
+<li>可應用於搜尋與救援（災後通訊中斷），讓無人機自動建立環境 3D 模型。</li>
+<li>國防、偵察領域：在干擾環境下，無人機仍能有效識別目標、追蹤移動物體。</li>
+<li>未來可擴展到其他作物（稻米、玉米等），甚至不同地區。</li>
+</ul></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/22 ]</div>
                         <h1 class="hk-main-title">面向海上搜救任務的海浪雜訊環境下實時 Transformer 偵測器與基準</h1>
                         <p class="hk-eng-subtitle">A Deployment-Oriented Real-Time Transformer Detector and Benchmark for Maritime Search and Rescue Under Severe Sea Clutter</p>
                         <div class="hk-core-statement">
