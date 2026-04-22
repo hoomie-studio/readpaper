@@ -145,11 +145,11 @@ def mode_render():
     /* 背景文字：回到右上方，增加不透明度 */
     .hk-background-text { 
         position: absolute; 
-        top: -5%; 
-        right: -5%; 
-        font-size: 25vw; 
+        top: 5%; 
+        right: 5%; 
+        font-size: 20vw; 
         font-weight: 900; 
-        color: rgba(0,0,0,0.05); /* 調高不透明度 (從0.02 -> 0.05) */
+        color: rgba(0,0,0,0.03); /* 調高不透明度 (從0.02 -> 0.05) */
         z-index: 0; 
         pointer-events: none; 
         white-space: nowrap;
