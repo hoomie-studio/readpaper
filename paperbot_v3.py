@@ -149,7 +149,7 @@ def mode_render():
         right: 5%; 
         font-size: 22vw; 
         font-weight: 900; 
-        color: rgba(0,0,0,0.03); /* 調高不透明度 (從0.02 -> 0.05) */
+        color: rgba(0,0,0,0.1); /* 調高不透明度 (從0.02 -> 0.05) */
         z-index: 0; 
         pointer-events: none; 
         white-space: nowrap;
