@@ -142,6 +142,18 @@ def mode_render():
     .swiper { width: 100%; height: 100vh; }
     .hk-container { width: 100%; height: 100%; padding: 60px; display: flex; flex-direction: column; position: relative; z-index: 1; }
     
+    /* 背景文字：回到右上方，增加不透明度 */
+    .hk-background-text { 
+        position: absolute; 
+        top: 5%; 
+        right: 5%; 
+        font-size: 22vw; 
+        font-weight: 900; 
+        color: rgba(0,0,0,0.03); /* 調高不透明度 (從0.02 -> 0.05) */
+        z-index: 0; 
+        pointer-events: none; 
+        white-space: nowrap;
+    }
     
     .hk-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; z-index: 1; flex-grow: 1; min-height: 0; margin-bottom: 30px; }
     .hk-main-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 4rem); line-height: 1.15; font-weight: 900; letter-spacing: -1px; margin-bottom: 15px; }
