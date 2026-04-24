@@ -210,4 +210,4 @@ if __name__ == "__main__":
     elif args.mode == "merge": mode_merge()
     elif args.mode == "render": mode_render()
 
-       # python paperbot_v3.py --mode render
+       # python paperbot_v3.py --mode merge
