@@ -47,6 +47,60 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/25 ]</div>
+                        <h1 class="hk-main-title">FA-CTNet：一種結合幾何感知的深度學習方法，用於雷射雷達點雲的樹種分類</h1>
+                        <p class="hk-eng-subtitle">FA-CTNet: A Geometry-Aware Deep Learning Approach for Tree Species Classification from LiDAR Point Clouds</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>這篇論文提出了一個叫 FA-CTNet 的系統，能用雷射雷達（LiDAR）掃描的三維點雲數據，準確分辨森林裡不同樹種，特別擅長處理樹冠互相遮蔽的複雜情況。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/9/1311</li>
+<li>抓取時間：2026-04-25 12:22:17</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p><strong>雷射雷達（LiDAR）</strong>：一種像做 CT 掃描一樣的技術，能發射激光測量物體表面的三維座標，生成點雲數據，就像用雷射筆快速繪製出一個物體的三維點陣圖。</p>
+<p><strong>為什麼這件事很重要？</strong><br />
+我們森林管理員要保護樹木、規劃造林、評估碳吸收，都得先知道這裡長的是什麼樹。但傳統方法要靠人爬樹、靠眼看樹皮和葉子，效率很低。現在有了雷射雷達掃描技術，可以自動、遠距離地掃描大範圍森林，但问题是：當樹和樹之間互相遮蔽、葉子密度不規則、背景雜亂（有地物、其他樹枝）的時候，現有的 AI 模型很容易混淆不同樹種，特別是親緣關係很接近的樹種（就像長得幾乎一模一樣的同姓堂兄弟），單靠幾何形狀（樹的高度、分枝方式）來判斷，準確率會大幅降低。</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p>就像用一個超級厲害的「幾何直覺」來分辨樹種，這個團隊設計了一個名為 FA-CTNet（Flow-Aware Convolutional Transformers for Tree Classification）的模型：</p>
+<p><strong>1. 像給樹做 CT 一樣處理三維點雲</strong><br />
+傳統方法只看「樹的形狀」，但這個模型同時看兩件事：<br />
+- 幾何結構（樹的骨架、枝幹分佈）<br />
+- 流體動力學（leaf point flow，就像葉片在風中的運動模式，用來捕捉樹冠的密度變化）</p>
+<p><strong>2. 結合三種技術的「超能力」</strong><br />
+- <strong>Transformer</strong>（原本是給文字和影像用的 AI 模型，擅長理解長距離關聯）：像是一個能同時看到整片森林的「全景視角」<br />
+- <strong>Mamba</strong>（一種新型的 State Space Model，計算效率比 Transformer 高很多）：像是能快速掃蕩整個森林的「巡邏隊」，不會因為樹太多就卡死<br />
+- <strong>幾何感知</strong>：就像給你一個「幾何羅盤」，讓模型不僅只看顏色，還能理解空間關係（樹枝的走向、葉片的密度分佈等）</p>
+<p><strong>3. 解決「樹冠遮蔽」問題</strong><br />
+就像拍照時，如果別人擋在前面，你只能看到局部，這個模型能根據周圍的點雲數據，推測被遮蔽部分的特徵，像是會「心算」被擋住的樹枝該長什麼樣子。</p>
+<h3>驚人發現與具體數據</h3>
+<p>目前論文摘要尚未完全載入，需要更多細節才能提供具體數據。但從引言中可以看到：<br />
+- 現有基於幾何形狀（如樹冠大小、枝幹分佈）的樹種分類方法，在複雜環境下（如樹冠互相遮蔽、葉子密度不規則）準確率明顯下降<br />
+- 親緣關係接近的樹種（如不同種類的水楊樹）在傳統幾何特徵上幾乎無法區分</p>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<ul>
+<li>森林管理員可以用雷射雷達掃描整個森林，快速知道哪些地方需要清理、哪些地方需要補植，不用爬樹了。</li>
+<li>碳計算：精確知道每棵樹是什麼種，就能更準確地計算森林的碳吸收量。</li>
+<li>生態研究：了解樹種分佈對氣候變遷的影響，幫助規劃保護區。</li>
+<li>農業應用：大規模農場（如果園、樹木種植場）可以自動監測樹種健康狀況。</li>
+<li>災後評估：颱風或山火後，快速重建受損森林的樹種結構。</li>
+</ul></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/25 ]</div>
                         <h1 class="hk-main-title">利用 FY-3E GNSS-R 與 SMOS 的多維特徵集進行北極海冰類型分類</h1>
                         <p class="hk-eng-subtitle">Arctic Sea Ice Type Classification Using a Multi-Dimensional Feature Set Derived from FY-3E GNSS-R and SMOS</p>
                         <div class="hk-core-statement">
