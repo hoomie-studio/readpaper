@@ -47,6 +47,61 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/25 ]</div>
+                        <h1 class="hk-main-title">無瓶頸雙路通道聚合網路：用于紅外影像條紋去噪</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>這篇論文提出一種特殊的深度學習網路結構，專門解決紅外熱感相機常見的條紋雜訊問題，同時保留影像的細微熱影像細節。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><h1>BCDA-Net: A Bottleneck-Free Channel Dual-Path Aggregation Network for Infrared Image Destriping</h1>
+<ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/9/1321</li>
+<li>抓取時間: 2026-04-25 21:27:16</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p>紅外熱感陣列（IRFPA）是紅外熱感影像的感光元件。由於製造過程中的物理不均勻性，這些元件在成像時會產生特有的「條紋雜訊」——就像電視上偶爾出現的橫向掃描線一樣，會干擾觀測。</p>
+<p>這項研究想解決的問題：<br />
+* 紅外影像中的條紋雜訊會嚴重降低影像品質<br />
+* 傳統的去噪方法容易把有用的細微細節也一起「抹掉」<br />
+* 如何在去除雜訊的同時，保留重要的熱影像細節（例如建築物、植被的溫度差異）</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p>研究者設計了一個像「感知─重建」循環處理流程的網路：</p>
+<p><strong>感知階段（像是一個仔細的檢查員）：</strong><br />
+* 把訊號分成兩條通道處理：一條專注捕捉細微的溫度變化（高頻紋理），另一條提取整體的溫度分佈特徵<br />
+* 用特殊的注意力機制掃視整張影像，找出哪裡有條紋雜訊</p>
+<p><strong>重建階段（像是一個修復師）：</strong><br />
+* 根據感知階段找到的雜訊位置，精準地移除問題區域<br />
+* 使用「瓶頸無阻」的設計，確保低解析度的雜訊不會在修復過程中造成新的偽影<br />
+* 逐步重建清晰影像的細節</p>
+<h3>驚人發現與具體數據</h3>
+<p>（摘要中未提供具體數字，論文宣稱）<br />
+* 在客觀數值評估和主觀視覺品質上，都優於現有的最尖銳技術（state-of-the-art）<br />
+* 最大程度地保留了影像細節，同時有效去除條紋雜訊<br />
+* 客觀測試指標與視覺觀察結果均顯示優異表現</p>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<ul>
+<li><strong>軍事偵察與監視系統</strong>：提升紅外偵察影像品質</li>
+<li><strong>氣象衛星</strong>：改善大氣層溫度的測量精度</li>
+<li><strong>火災偵測系統</strong>：在濃煙或惡劣天氣下更準確辨識熱源</li>
+<li><strong>建築能源檢測</strong>：找出建築物的隔熱漏洞或漏水問題</li>
+<li><strong>醫療熱感成像</strong>：提升體溫分佈影像的診斷準確度</li>
+</ul></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/25 ]</div>
                         <h1 class="hk-main-title">利用無人機 RGB 影像與點雲體素化融合估算油菜地上生物量</h1>
                         <p class="hk-eng-subtitle">RESEARCH PAPER</p>
                         <div class="hk-core-statement">
