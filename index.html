@@ -46,7 +46,56 @@
                 <div class="hk-background-text">SEARCH</div>
                 <div class="hk-grid">
                     <div class="hk-left-col">
-                        <div class="hk-tag">[ 04/24 ]</div>
+                        <div class="hk-tag">[ 04/25 ]</div>
+                        <h1 class="hk-main-title">STAR-Net：結合全域與局部資訊的雙編碼器農地地表判讀網路</h1>
+                        <p class="hk-eng-subtitle">STAR-Net: Dual-Encoder Network with Global-Local Fusion for Agricultural Land Cover Parsing</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>這篇研究提出一個更會同時看「整體格局」和「局部細節」的影像判讀模型，讓高解析農地遙測圖更準確分出農田、森林、裸地等地表類型。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><ul>
+<li>論文來源URL: https://www.mdpi.com/2072-4292/18/9/1314</li>
+<li>抓取時間: 2026-04-25 09:57:50</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p>語意分割（把影像中每個像素都分到正確類別的技術）是農地監測的重要工具，因為它能幫忙看清楚哪裡是耕地、哪裡是森林、哪裡是裸地。高解析遙測影像（從衛星或空拍取得的高細節地表影像）雖然資訊很多，但中國農地常常分布零碎、地塊很小、地形複雜，邊界也不清楚，導致傳統方法很容易看錯。</p>
+<p>這項研究想解決的痛點很實際，就像你要從高空照片裡分辨很多形狀不規則、彼此靠很近的小田地，如果模型只看大方向，會漏掉細節；如果只盯局部，又會搞不清整體脈絡。所以研究者想做一個能同時兼顧全局和細節的模型，讓農地保護、土地調查和動態監測更可靠。</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p>研究者設計了一個叫 STAR-Net 的模型。你可以把它想成兩位一起看圖的專家：</p>
+<ol>
+<li>一位擅長先看全景，快速掌握整張圖的大格局，知道森林、農地、道路大概怎麼分布。</li>
+<li>另一位擅長盯細節，注意邊界、紋理和小塊區域，避免把零碎農地看漏。</li>
+</ol>
+<p>接著，他們把這兩位專家的觀察整合起來，像是把「空拍總覽」和「放大鏡細看」合成一份更完整的判讀報告。後面解碼器（把特徵還原成分類結果的部分）又加入多尺度聚合設計，像是同時用不同倍率地圖交叉比對，讓模型更能分辨大小不同的地物。</p>
+<p>最後，他們用 LoveDA 資料集來測試這套方法，和目前先進模型做比較。</p>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<ol>
+<li>在裸地類別上，STAR-Net 的 IoU（交並比，衡量分割準確度的常用指標）提升了 9.88%，代表模型對裸地辨識明顯更準。</li>
+<li>在森林類別上，IoU 提升了 7.05%，表示它更能正確抓出森林範圍，不容易和其他地表混淆。</li>
+<li>整體平均表現 mIoU（各類別平均交並比）比當時最先進模型再提升 0.46%，雖然總幅度不算巨大，但在競爭激烈的語意分割任務中，這代表整體判讀能力又往前推進了一步，而且作者說它在所有目標類別中拿到最多項領先指標。</li>
+</ol>
+<h3>這對我有什麼意義？（實際應用50字內）</h3>
+<ul>
+<li>幫政府更準確監測耕地變化，支援農地保護與土地管理。</li>
+<li>提升農業遙測判讀效率，減少人工標註與巡查負擔。</li>
+<li>未來可延伸到森林監測、國土規劃與災後地表分析。</li>
+</ul></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/25 ]</div>
                         <h1 class="hk-main-title">結合海底坡度效應與輻射傳輸約束的衛星水深反演：一種結合 ICESat-2 與 Sentinel-2 資料的物理解知神經網路方法</h1>
                         <p class="hk-eng-subtitle">Physics-Informed Neural Network for Bathymetry Inversion Coupling Seafloor Slope Effects and Radiative Transfer Constraints Using ICESat-2 and Sentinel-2 Data</p>
                         <div class="hk-core-statement">
