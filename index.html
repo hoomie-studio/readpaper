@@ -47,6 +47,100 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/25 ]</div>
+                        <h1 class="hk-main-title">用集學提升預測加溫度的模型準確度</h1>
+                        <p class="hk-eng-subtitle">Global Ensemble Learning-Based Refined Models for VMF1-FC Forecasted Weighted Mean Temperature</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>研究者用三套強化學習模型（XTm、LTm、CTm）大幅改进了預測大氣加溫度的準確度，平均誤差從 1.76K 降到 1.45K，提升了約 18% 的準確度。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/9/1315</li>
+<li>抓取時間：2026-04-25 16:08:58</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p>首先來簡單解釋幾個重要名詞：</p>
+<ul>
+<li><strong>加溫（Tm）</strong>：大氣中溫度的平均值，是轉換 GNSS（全球導航衛星系統，像 GPS）訊號成可用水氣量（PWV）的關鍵參數。</li>
+<li><strong>GNSS 氣象</strong>：利用 GPS 訊號測量大氣水氣的技術，可用來預報天氣。</li>
+<li><strong>VMF1-FC</strong>：一種由維也納大學開發的氣象預測模型，可預測大氣加溫。</li>
+<li><strong>GPT3</strong>：另一個常用的全球加溫模型。</li>
+</ul>
+<p>這項研究想解決什麼問題？<br />
+GNSS 氣象應用需要準確的加溫資料來換算水氣量，但現有模型（VMF1-FC 和 GPT3）都有明顯偏差：VMF1-FC 傾向高估溫度，GPT3 則低估。這些錯誤會影響天氣預報和氣候研究的準確性。</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p>研究者像修補一件衣服一樣處理這個問題：</p>
+<ol>
+<li>
+<p><strong>先用「參考資料」校準</strong>：他們收集了全球 319 個觀測站的實際溫度資料（這就像是衣服的原始樣式）。</p>
+</li>
+<li>
+<p><strong>找出原有模型的「問題」</strong>：發現 VMF1-FC 有 +0.75K 的正偏差（太暖），GPT3 有 -0.60K 的負偏差（太冷）。</p>
+</li>
+<li>
+<p><strong>開發三套新模型</strong>：</p>
+</li>
+<li><strong>XTm</strong>：用 XGBoost（一種梯度提升機器學習方法，就像逐步改進的學習過程）</li>
+<li><strong>LTm</strong>：用 LightGBM（更快、更高效的梯度提升方法）</li>
+<li>
+<p><strong>CTm</strong>：用 CatBoost（特別擅長處理複雜數據分佈的方法）</p>
+</li>
+<li>
+<p><strong>教這些模型「補差」</strong>：把原本的 VMF1-FC 預測值當作輸入，用實際觀測值教導模型如何修正偏差。</p>
+</li>
+<li>
+<p><strong>嚴謹測試</strong>：用 2019-2021 年的資料訓練模型，再用 2022 年的資料測試，確保模型不會過度適應訓練資料。</p>
+</li>
+</ol>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<ol>
+<li>
+<p><strong>幾乎完全消除偏差</strong>：三套新模型的偏差都接近 0（XTm：0K、LTm：0K、CTm：-0.03K），相比原始模型的偏差分別下降了 99.9%、99.7% 和 95.5%！</p>
+</li>
+<li>
+<p><strong>全球都能用</strong>：</p>
+</li>
+<li>無論你在赤道還是極地</li>
+<li>不論你在地面還是高海拔地區</li>
+<li>
+<p>不管四季如何變化<br />
+   新模型在各個地區和季節都有穩定表現。</p>
+</li>
+<li>
+<p><strong>誤率大幅降低</strong>：</p>
+</li>
+<li>新模型的 RMSE（均方根誤差）只有 1.45-1.46K</li>
+<li>相比 VMF1-FC（1.76K）和 GPT3（4.24K）</li>
+<li>
+<p>準確度提升達 18-65%</p>
+</li>
+<li>
+<p><strong>特別穩定</strong>：不像 GPT3 在冬季誤差較大，新模型在四季都保持一致的準確度。</p>
+</li>
+</ol>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<ul>
+<li>✈️ <strong>天氣預報更準</strong>：能更可靠地預測大氣水氣，提升短天候預報品質</li>
+<li>🛰️ <strong>衛星導航更精準</strong>：GNSS 測量的天氣資料更可靠</li>
+<li>🌍 <strong>氣候研究更可靠</strong>：長期的氣候數據分析不會受模型偏差影響</li>
+<li>⏱️ <strong>實時應用</strong>：可用於即時的大氣水氣監測，對防洪、抗旱等災害預警很有幫助</li>
+</ul>
+<p>簡單來說，這個研究讓我們能更準確地「看見」大氣中的水氣，就像有了更好的氣象顯微鏡一樣！</p></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/25 ]</div>
                         <h1 class="hk-main-title">透過遙感技術與光學參數修正，分析封凍期與非封凍期對水生植物初級生產力影響因素</h1>
                         <p class="hk-eng-subtitle">Analysis of Influencing Factors on Phytoplankton Primary Productivity Across Ice-Free and Ice-Covered Seasons Through Remote Sensing and Optical Parameter Correction</p>
                         <div class="hk-core-statement">
