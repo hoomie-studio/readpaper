@@ -47,6 +47,76 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/26 ]</div>
+                        <h1 class="hk-main-title">ATCFNet：一種輕量級的跨層級注意力引導高分辨率遙感影像變更檢測網路</h1>
+                        <p class="hk-eng-subtitle">ATCFNet: A Lightweight Cross-Level Attention-Guided High-Resolution Remote Sensing Image Change Detection Network</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>ATCFNet 是一種輕量級的 AI 網路，能從衛星照片中精準發現地表變化（如新建房屋、植被消失），特別適合在無人機或衛星這類資源受限的設備上即時運作。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/9/1306</li>
+<li>抓取時間：2026-04-26 06:31:41</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p>遙感影像變更檢測（Remote Sensing Change Detection）是用來自動判斷地球表面什麼地方發生改變的技術，例如哪裡蓋了新房子、森林是否被砍伐。</p>
+<p>但過去的方法都有一個大問題：它們需要大量的記憶體和運算力，就像用一台超級電腦來處理手機的作業，效率很低。</p>
+<p>這在現實中是個大問題：<br />
+- 無人機要即時拍攝並分析影像，但機上的晶片算力有限<br />
+- 衛星要在太空即時處理資料再傳回地球，需要快速又省資源的演算法</p>
+<p>所以這群研究者要開發一個「又輕又快」的 AI 模型，能在低算力的設備上運作，同時還能精準地找出變化。</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p>這群研究者設計了一個叫 ATCFNet 的三階段系統，就像一個精明的檢查員：</p>
+<p><strong>階段 1：細節補強（Adj Feature Aggregation Module）</strong><br />
+- 淺層神經網路負責捕捉細微的邊緣和形狀（就像人的眼睛先看到細節）<br />
+- 但淺層網路的資訊不夠完整，所以需要把它和後面的深層資訊「側向融合」（lateral three-stage fusion）<br />
+- 簡單說：就是讓淺層的細節和深層的語意互相補充，避免只看局部而忽略整體</p>
+<p><strong>階段 2：跨層級注意力優化（Temporal Attention Cross Module）</strong><br />
+- 用類似 CBAM 的注意力機制（Convolutional Block Attention Module），同時關注「高階語意」和「低階細節」<br />
+- 就像檢查員同時看整體地圖（高階）和街道路線（低階），然後用注意力機制（Temporal Attention Cross Module）把兩者的資訊融合</p>
+<p><strong>階段 3：高效引導模組（Efficient Guidance Module）</strong><br />
+- 用輕量級的自注意力機制（lightweight self-attention）找出影像的長距離依賴關係<br />
+- 利用共享的變更先驗（shared change priors）來「抑制」變化區域內的空洞<br />
+- 就像檢查員用經驗法則（共享先驗）來避免誤判或遺漏小區域</p>
+<p>整個系統就像一個經驗豐富的檢查員：先用直覺看細節，再結合整體判斷，最後用經驗法則排除干擾。</p>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<p>ATCFNet 在三個公開數據集上表現出色：</p>
+<ul>
+<li><strong>LEVIR-CD 數據集</strong>：F1 分數 91.46%（非常高！）</li>
+<li><strong>HRCUS 數據集</strong>：F1 分數 77.05%</li>
+<li><strong>SYSU-ChangeDet 數據集</strong>：F1 分數 83.53%</li>
+</ul>
+<p>最關鍵的數據：<br />
+- 僅用 <strong>3.71 百萬（3.71M）</strong> 個參數——對比其他方法动辄數千萬甚至上億<br />
+- 運算成本僅 <strong>30 億（3.0B）</strong> 浮點運算（FLOPs）<br />
+- 在 18 種現有方法中，ATCFNet 在大多數指標上都表現最佳</p>
+<p>特別值得稱道的能力：<br />
+- <strong>邊界完整性</strong>：變化區域的邊緣不會模糊或呈鋸齒狀，能清晰顯示哪裡有改變<br />
+- <strong>小目標檢測</strong>：在高分辨率的城市場景中，即使是很小的變化也能被準確找出<br />
+- <strong>適合邊際設備</strong>：能在無人機、衛星等資源受限的設備上即時運作</p>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<ul>
+<li>無人機巡檢時能即時分析影像，不用等傳回地球處理</li>
+<li>衛星可以在軌道上直接處理影像，節省頻寬</li>
+<li>城規單位能快速發現非法建築或森林砍伐</li>
+<li>農業監測可以即時發現作物生長異常</li>
+<li>災難救援時能迅速找出受災範圍</li>
+</ul></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/26 ]</div>
                         <h1 class="hk-main-title">情景適應性可視性級別檢索：透過多源協同增強物理可追蹤性與場景解耦，基於樹狀路由 TabPFN 框架</h1>
                         <p class="hk-eng-subtitle">Scenario-Adaptive Visibility Level Retrieval via Multi-Source Synergy: Enhancing Physical Traceability and Scene Decoupling Within a Tree-Routed TabPFN Framework</p>
                         <div class="hk-core-statement">
