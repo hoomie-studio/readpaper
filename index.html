@@ -47,6 +47,55 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/26 ]</div>
+                        <h1 class="hk-main-title">抗雲層干擾的全端基礎模型樹葉面積指數（LAI）檢索框架</h1>
+                        <p class="hk-eng-subtitle">An End-to-End Foundation Model-Based Framework for Robust LAI Retrieval Under Cloud Cover</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>透過細調 Prithvi 基礎模型，直接從有雲層干擾的衛星影像中精確提取樹葉面積指數，比傳統多階段方法準確度更高且更能應對多變天候。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><h1>學術早報 12.5</h1>
+<ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/9/1308</li>
+<li>抓取時間: 2026-04-26 04:16:57</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p><strong>樹葉面積指數（LAI）</strong> 就是衡量植物葉片覆蓋程度的重要指標——簡單說，就是樹葉總面積和地面投影面積的比例。這個數據對於農業監測、氣候研究非常重要。</p>
+<p>然而，我們常用的光學遙感衛星（如 Landsat 和 Sentinel-2）很容易受到<strong>雲層</strong>的影響。當天空有雲時，衛星就看不清楚地面，導致產生的 LAI 數據出現大片空缺，就像你想看電視卻被雲擋住了鏡頭一樣。這會造成監測斷層，讓農業預測或生態分析變得不準確。</p>
+<p>這項研究就是想解決這個問題：如何在有雲的天候下，仍然能獲得連續、準確的 LAI 數據，讓農業和氣候科學家能更可靠地監控植物生長狀況。</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p>以前的方法是「分步走」：先處理雲干擾、再提取植被訊號、最後計算 LAI。但每一步都會累積錯誤，就像接力賽中每一棒都可能掉球。</p>
+<p>這群研究者換了個思路：直接訓練一個<strong>全端模型（end-to-end model）</strong>，讓它一次同時處理雲層和植被訊號，直接輸出 LAI 結果。這就像訓練一個全能學生，考試時題目不管有沒有雲遮眼，他都能直接給出正確答案，而不需要先「看清題目」再「解題」再「檢查答案」的複雜過程。</p>
+<p>他們使用的是 <strong>Prithvi</strong> 這個基礎模型（可以想像成一個在各種衛星影像上受過訓練的 AI 大腦），經過特別調整，能夠同時理解「哪裡有雲」和「植被在哪裡」，最後直接算出準確的 LAI 值。</p>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<ol>
+<li><strong>準確度大幅提升</strong>：他們的模型達成相關係數 R² 為 0.78，這意味著模型預測的 LAI 值和實際值有高達 78% 的關聯度。</li>
+<li><strong>降低誤差</strong>：均方根誤差（RMSE）僅為 0.57，表示預測值和真實值之間的平均差異很小。</li>
+<li><strong>雲層耐受力表現特殊</strong>：模型的準確度與平均雲覆蓋率呈現「U 型曲線」——當雲覆蓋在 50-60% 時表現最好！這表示模型有某種程度的「自我調節能力」，即使在嚴重大氣干擾下仍能保持穩定表現。這就像一個運動員，適度挑戰反而能激發潛能。</li>
+</ol>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<ul>
+<li>讓農業監測系統即使在多雲地區也能持續運作</li>
+<li>協助糧食進口國精準評估作物狀況，避免因天候不佳造成糧價波動</li>
+<li>可擴展到其他作物類型和不同地區應用</li>
+<li>為氣候變遷研究提供更可靠的地表數據</li>
+<li>節省資源：無需依賴無雲的天候條件，減少數據空缺帶來的重製成本</li>
+</ul></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/26 ]</div>
                         <h1 class="hk-main-title">FDWD-Net：特徵解耦與窗口差異化網路用於遙感影像超解析度重建</h1>
                         <p class="hk-eng-subtitle">FDWD-Net: Feature-Decoupled and Window-Differentiated Network for Remote Sensing Image Super-Resolution</p>
                         <div class="hk-core-statement">
