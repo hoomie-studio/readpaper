@@ -47,6 +47,66 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/26 ]</div>
+                        <h1 class="hk-main-title">情景適應性可視性級別檢索：透過多源協同增強物理可追蹤性與場景解耦，基於樹狀路由 TabPFN 框架</h1>
+                        <p class="hk-eng-subtitle">Scenario-Adaptive Visibility Level Retrieval via Multi-Source Synergy: Enhancing Physical Traceability and Scene Decoupling Within a Tree-Routed TabPFN Framework</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>為了提升道路運輸安全，研究團隊提出一種整合衛星遙感與地面氣象數據的 AI 模型，精確判斷霧、霾等天氣狀況下的能見度。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/9/1307</li>
+<li>抓取時間：2026-04-26 05:23:59</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p>能見度（Visibility）指人眼能看清物体的最遠距離，是判斷霧、霾等天氣的關鍵指標。<br />
+- 霧（Fog）：能見度低於 1 公里<br />
+- 輕霧（Mist）：能見度 1-10 公里<br />
+- 輕煙（Light haze）：能見度 10-20 公里<br />
+- 輕霾（Light haze）：能見度 20-100 公里</p>
+<p>這項研究想解決的問題：<br />
+- 傳統氣象預測模型在複雜天氣下容易失效，特別是在山區或過渡性天氣區域<br />
+- 現有全球 AI 模型缺乏「物理可追蹤性」，也就是無法解釋預測結果的科學依據<br />
+- 不同天氣情況下氣象特徵差異很大（heterogeneity），單一模型難以精準應對</p>
+<p>為什麼重要？<br />
+能見度準確預測能避免交通事故，保障公路、鐵路、航空運輸安全，特別是高速公路和機場周圍區域。</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p>想像你在解決複雜的拼圖：<br />
+1. <strong>蒐集多源數據</strong>：結合衛星（風雲四號 FY-4）的多光譜影像，還有地面的氣象站數據（溫度、濕度等）<br />
+2. <strong>場景分解（Divide-and-Conquer）</strong>：就像將大難題拆成小題一樣，他們用隨機樹（ExtraTrees）算法，把複雜的天氣情況分成許多相似的子類別<br />
+3. <strong>專精 AI 推理</strong>：每個子類別請專精的 TabPFN（一種小型化、訓練好的 AI 模型）來處理，這樣比請一個「萬能型大模型」來做更精準<br />
+4. <strong>物理一致性驗證</strong>：檢查模型預測結果是否有氣象學上的依據，比如上層水汽對能見度的影響是否合理</p>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<ol>
+<li><strong>精度超越基線</strong>：TabPFN-ET（他們提出的模型）的總體準確率達到 0.681，比傳統模型（如 SAINT）在其他指標上都表現更好</li>
+<li><strong>關鍵氣象因子</strong>：</li>
+<li><strong>FY-4 衛星第 09 通道</strong>：主要感應上空的水汽含量，反映大氣穩定度（上層）</li>
+<li><strong>地表相對濕度</strong>：影響近地面熱力條件，是微觀氣象约束<br />
+   這兩個因子就像是大氣穩定度的「上下層夾層」，共同決定能見度</li>
+<li><strong>跨區域測試</strong>：在江蘇地區進行測試，顯示模型有一定程度的「遷移性」（在不同地區仍能使用）</li>
+</ol>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<ul>
+<li>高速公路、機場可部署類似系統，即時提供霧天預警</li>
+<li>可擴展到其他地區、不同作物（如稻米、玉米等需濕度數據的農作物）</li>
+<li>未來可用於智慧交通系統、航空航管、電力輸送（霧會影響高壓線效率）</li>
+<li>幫助氣象部門更精準發布大霧預報，減少民眾出行的困擾</li>
+</ul></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/26 ]</div>
                         <h1 class="hk-main-title">抗雲層干擾的全端基礎模型樹葉面積指數（LAI）檢索框架</h1>
                         <p class="hk-eng-subtitle">An End-to-End Foundation Model-Based Framework for Robust LAI Retrieval Under Cloud Cover</p>
                         <div class="hk-core-statement">
