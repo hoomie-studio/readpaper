@@ -47,6 +47,85 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/25 ]</div>
+                        <h1 class="hk-main-title">利用無人機 RGB 影像與點雲體素化融合估算油菜地上生物量</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>透過無人機拍攝的圖片轉成三維點雲後，搭配不同的植被指標，快速又準確地計算油菜長到地上部分的生物量（乾物質總量）。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><h1>學術早報 12.5 - 論文摘要</h1>
+<h2>Estimating Aboveground Biomass of Oilseed Rape by Fusing Point Cloud Voxelization and Vegetation Indices Derived from UAV RGB Imagery</h2>
+<ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/9/1323</li>
+<li>抓取時間: 2026-04-25 19:17:02</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p><strong>什麼是地上生物量？</strong><br />
+地上生物量（Aboveground Biomass, AGB）指的是植物地上部分所有組織的乾物質總量，包含莖、葉、莢等。想像一下，把一株油菜從田裡拔起來，去掉水分後的重量，就是它的地上生物量。在農業上，這是很重要的指標，因為它直接反映作物的生長狀況和最終產量潛力。</p>
+<p><strong>為什麼要用無人機來測？</strong><br />
+傳統測量生物量需要砍掉作物來稱重，這會毀掉作物。用無人機從空中拍攝照片，既能看到作物長得怎麼樣，又不會傷害它們。特別適合用來做田間的生長監測。</p>
+<p><strong>為什麼要研究這個問題？</strong><br />
+- 農民需要隨時了解作物生長狀況，以便及時調整水肥管理<br />
+- 糧食安全需求增加，需要更精準的產量預測<br />
+- 傳統方法耗時耗力，無法大規模應用於現代精準農業<br />
+- 需要低成本、非破壞性的監測方式</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p>想像你在玩《Minecraft》遊戲，但用的是真實的田地：</p>
+<ol>
+<li>
+<p><strong>拍攝照片</strong>：先用無人機在空中繞著油萊田飛，從不同角度拍攝照片（紅綠藍三原色 RGB 影像）</p>
+</li>
+<li>
+<p><strong>建立三維模型</strong>：把照片處理成三維點雲，就像用無數個小點拼出一塊地的立體地圖</p>
+</li>
+<li>
+<p><strong>像切豆腐一樣切割點雲</strong>：這裡用到一個叫「體素化（voxelization）」的技巧，想像把點雲像切豆腐一樣切成小方塊。他們用了 4 種不同的切法，方塊越小（0.03m、0.05m、0.07m、0.1m），細節越清楚，但計算越慢</p>
+</li>
+<li>
+<p><strong>挑選最好的指標</strong>：測試了 20 種不同的植被指標（就是計算照片中植物和背景哪個亮的公式），找出最能反映生物量的</p>
+</li>
+<li>
+<p><strong>像調酒師一樣混合</strong>：把體素化（立體結構資訊）和植被指標（植物健康狀況）兩個資訊來源結合起來，創造出新的指標</p>
+</li>
+<li>
+<p><strong>實地驗證</strong>：在不同生長階段（出苗、抽苔、開花、結莢、成熟期）都做了實驗，確保方法在不同階段都準</p>
+</li>
+</ol>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<ol>
+<li>
+<p><strong>高度準確的預測</strong>：用這個新方法算出來的生物量，和實際测量的數據相關係數超過 0.80（滿分 1 的話 0.8 已經很不錯了）。這表示預測值和實際值非常接近，無論在哪個生長階段、用哪種體素切割方式都這麼準。</p>
+</li>
+<li>
+<p><strong>最佳組合大公開</strong>：在測試的 20 種指標中，「藍綠比（BGI）」這個指標表現最好。它就像一個聰明的調酒師，用藍色和綠色這兩種顏色資訊就能把生物量估算得準。配合無人機 45 度角拍攝，用 0.1m 的體素大小，效果最平衡（既準又快）。</p>
+</li>
+<li>
+<p><strong>速度大提升</strong>：用較大的體素大小（0.1m）處理數據時，計算時間大幅減少，但準確度一點也沒打折。這就像是用大網捕魚，雖然會漏掉一些小鱼，但能抓到大部分，而且捕得更快。</p>
+</li>
+</ol>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<ul>
+<li>農民可以隨時用無人機監控作物生長，不用等到收成才曉得長得好不好</li>
+<li>精準農業：根據實際生長狀況調整施肥和灌溉，省錢又環保</li>
+<li>快速篩選：找出哪種監測方式最經濟實用，讓小農也能負擔得起</li>
+<li>未來可以擴展到其它作物（如稻米、玉米等）和其他地區</li>
+</ul></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/25 ]</div>
                         <h1 class="hk-main-title">衛星觀測到全球沿海海域「海洋熱浪 + 藻華」複合事件的加速發生</h1>
                         <p class="hk-eng-subtitle">Satellite-Observed Acceleration in the Occurrence of Compound Marine Heatwave and Phytoplankton Bloom Events in the Global Coastal Ocean</p>
                         <div class="hk-core-statement">
