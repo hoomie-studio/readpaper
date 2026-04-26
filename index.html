@@ -47,6 +47,86 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/26 ]</div>
+                        <h1 class="hk-main-title">**TCSNet：透過譜空特徵融合打造對薄雲敏感的超分光遙感影像網路**</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>提出一套專門針對薄雲偵測的 AI 網路架構，透過結合卷積神經網路（CNN）的局部特徵與 Transformer 的全局譜段關聯，成功大幅提高薄雲的偵測召回率。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><h1>學術早報 12.5 - 論文摘要</h1>
+<hr />
+<h2>TCSNet: A Thin-Cloud-Sensitive Network for Hyperspectral Remote Sensing Images via Spectral-Spatial Feature Fusion</h2>
+<ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/9/1326</li>
+<li>抓取時間: 2026-04-26 18:02</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p><strong>薄雲</strong>是什麼？就像天空中的輕薄紗幔，這種雲層薄到足以讓地面的光線穿透，但會嚴重干擾衛星影像對地面物質的真實反射數據（超分光影像），導致我們難以準確分析地物成分。</p>
+<p><strong>現狀問題</strong>：<br />
+目前的雲層偵測技術大多「只看畫面、不看光譜」，就像一個人只注意你穿著什麼顏色的衣服，卻忽略你衣服材質的透光性，結果常常把這種半透明的薄雲當作地面來分析，造成誤判。</p>
+<p><strong>重要性</strong>：<br />
+- 精準去除薄雲干擾，才能讓衛星影像真正反映地面真實狀況<br />
+- 對於農業監測、災害評估、氣候研究等應用至關重要<br />
+- 薄雲偵測長期以來都是遙感領域的難題</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p>想像一下，要辨識這層薄薄的雲，需要同時看兩個東西：<br />
+1. <strong>畫面局部細節</strong>（CNN 的工作）：就像仔細檢查這塊區域的光譜特性是否異常，辨識單一位置的雲痕跡<br />
+2. <strong>整幅影像的譜段關聯</strong>（Transformer 的工作）：就像同時看整張地圖，了解各個區域的光譜模式如何互動，捕捉長距離的光譜相似性</p>
+<p><strong>組合拳設計</strong>：<br />
+- 用雙分支架構：一個分支專注「局部畫面」（CNN），一個分支專注「全域光譜模式」（Transformer）<br />
+- 在每個層次都有一個「融合門控」系統，就像調酒師同時混合兩種酒液，只取精華<br />
+- 最後用注意力機制（Attention）讓系統同時關注重要通道、明顯區域和雲的邊緣</p>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<p>實驗使用<strong>高分五號（Gaofen-5 01）超分光衛星</strong>的數據測試，結果相當亮眼：</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>TCSNet 表現</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>總體雲層偵測召回率</td>
+<td><strong>92.98%</strong></td>
+</tr>
+<tr>
+<td>薄雲偵測召回率</td>
+<td><strong>85.59%</strong></td>
+</tr>
+<tr>
+<td>厚雲偵測召回率</td>
+<td><strong>99.75%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>重點</strong>：薄雲的偵測召回率（85.59%）是目前方法中最優異的，而厚雲幾乎全中（99.75%）。</p>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<ul>
+<li><strong>農業與糧食安全</strong>：在雲層干擾下精準監測作物生長狀況</li>
+<li><strong>氣象預報</strong>：改善對薄雲的偵測，提升天氣預報準確度</li>
+<li><strong>災害應變</strong>：在複雜雲況下仍能準確辨識受災區域</li>
+<li><strong>環境監測</strong>：更準確地追蹤空氣污染、水質變化等</li>
+</ul>
+<p><em>未來可擴展到其他作物（稻米、玉米等），甚至不同地區。</em></p>
+<hr />
+<p><em>生成於 2026-04-26 18:02 | TCSNet 摘要 | 處理時間：約 1 分鐘</em></p></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/26 ]</div>
                         <h1 class="hk-main-title">使用遙感與機器學習繪製吽牙柏森林的空間分佈與近期變化</h1>
                         <p class="hk-eng-subtitle">RESEARCH PAPER</p>
                         <div class="hk-core-statement">
