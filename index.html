@@ -47,6 +47,162 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/27 ]</div>
+                        <h1 class="hk-main-title">利用 EnMAP 高解析光譜時間序列的雙流 2D 與 3D-SE-ResNet 架構進行作物分類</h1>
+                        <p class="hk-eng-subtitle">RESEARCH PAPER</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>這篇論文證明，即使只有三張稀疏的衛星圖片，透過特殊的 AI 架構，也能精準辨識出匈牙利農田上的多種作物。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><h1>學術早報摘要</h1>
+<h2>Dual-Stream 2D and 3D-SE-ResNet Architectures for Crop Mapping Using EnMAP Hyperspectral Time-Series</h2>
+<ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/6/884</li>
+<li>抓取時間: 2026-04-27 05:57:40</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p><strong>專業名詞解釋：</strong><br />
+- <strong>EnMAP</strong>：德國發射的遙感衛星，可以捕捉 224 條連續的光譜波段（像是給地球拍超詳細的「光譜照片」），空間解析度 30 公尺。<br />
+- <strong>光譜紅外波段 (SWIR)</strong>：衛星感測器對植物水分、葉片結構敏感的光譜區域。<br />
+- <strong>稀疏時間序列</strong>：衛星不像 Sentinel-2 每天掃過全球，EnMAP 是「點對點」任務型衛星，資料時間點少且不連續，常遇到雲層覆蓋。</p>
+<p><strong>研究痛點：</strong><br />
+衛星資料對農業監測超級重要，但問題有二：<br />
+1. 傳統衛星（如 Sentinel-2）光譜細節不夠，分不清葉子顏色、水分微差的不同作物。<br />
+2. EnMAP 雖有超豐富的光譜資料，但資料「稀疏」（時間點少、不連續），要處理多張時間點的影像做分類很困難。</p>
+<p>這項研究想解決的問題：<br />
+- 如何在只有少數時間點（例如只抓住秋天、冬天、夏天各一張）的資料下，依然精準辨識不同作物？<br />
+- 怎麼用 AI 把光譜資料（每個像素有 219 條光譜）和空間資料（田地的紋理、行列）結合起來，發揮最大效能？</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p><strong>生活化的比喻：</strong><br />
+想像你是一組農耕專家，要在一堆混在一起的玉米、大麥、小麥、大豆中分辨出不同作物。但這些作物在光譜上（就像它們的聲音）非常相似，你只能靠它們的外形（紋理）和高度（結構）來分辨。</p>
+<p>研究團隊用了三招：</p>
+<ol>
+<li>
+<p><strong>隨機樹 (RF)</strong>：像是讓一組專家用常識分類，把每個時間點的光譜串起來做判斷。簡單、快速，但面對複雜作物會出错。</p>
+</li>
+<li>
+<p><strong>單維度卷積神經網路 (1D-CNN)</strong>：這模型只專注於光譜，像是只聽聲音來辨別作物。雖然能抓光譜特徵，但沒有空間上下文的支援，容易在早期生長期（植被少、背景雜訊多）搞混。</p>
+</li>
+<li>
+<p><strong>雙流空間 – 光譜 2D 卷積神經網路 (DSS-2D)</strong>：這模型同時處理「空間紋理」（作物排列的紋理、行列）和「光譜訊號」（植物化學成分），像是同時聽聲音、看姿勢，兩手並用。</p>
+</li>
+<li>
+<p><strong>3D 卷積 + 注意力機制 (3D-SE-ResNet)</strong>：這模型把三張不同時間點的影像當做一個 4D 的立體資料（時間 × 高度 × 寬度 × 光譜），同時看「現在跟過去」的變化。另外，它用「注意力機制」（SE blocks）自動決定哪些光譜波段最重要，哪些可以忽略。</p>
+</li>
+</ol>
+<p><strong>實驗設計：</strong><br />
+- 研究區域：匈牙利東南部 Mezőhegyes 地區，擁有匈牙利最大的連續農地。<br />
+- 作物種類：大麥、小麥、高粱、向日葵、大豆、玉米等。<br />
+- 時間點：2025 年 11 月 21 日（冬季作物早期）、3 月 13 日（冬季作物生長旺盛期）、8 月 10 日（夏季作物成熟期）。<br />
+- 訓練資料：106 塊農田，總共 5739 公頃。<br />
+- 驗證方式：嚴格的「田塊級空間交叉驗證」（同一農田的像素全放在一起驗證，避免資料外洩）。</p>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<p><strong>單點分類表現（一次影像就能判斷作物）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>時間點</th>
+<th>模型</th>
+<th>整體準確率 (OA)</th>
+<th>關鍵發現</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>11 月（早期生長期）</strong></td>
+<td>隨機樹 (RF)</td>
+<td>84.8% 召回率</td>
+<td>光譜資料在早期作物上很弱，容易搞混。</td>
+</tr>
+<tr>
+<td></td>
+<td>1D-CNN</td>
+<td>74.8% 召回率</td>
+<td>光譜不夠，空間資訊不足，表現不佳。</td>
+</tr>
+<tr>
+<td></td>
+<td>DSS-2D</td>
+<td>97.2% 整體準確率</td>
+<td><strong>雙流架構發揮關鍵</strong>！靠空間紋理抓出作物行列，小麥召回率提升到 86.1%，玉米雜訊率僅 0.5%。</td>
+</tr>
+<tr>
+<td><strong>3 月（作物生長期）</strong></td>
+<td>隨機樹 (RF)</td>
+<td>83.6% 召回率</td>
+<td>大麥和小麥的光譜太像，容易混淆。</td>
+</tr>
+<tr>
+<td></td>
+<td>1D-CNN</td>
+<td>像素雜訊明顯</td>
+<td>光譜 alone 無法分辨相似作物。</td>
+</tr>
+<tr>
+<td></td>
+<td>DSS-2D</td>
+<td>99.2% 整體準確率</td>
+<td><strong>完美分辨</strong>！大麥召回率 96.3%，雜訊率 0%，兩者的紋理差異被成功利用。</td>
+</tr>
+<tr>
+<td><strong>8 月（作物成熟期）</strong></td>
+<td>隨機樹 (RF)</td>
+<td>玉米雜訊率 12.3%</td>
+<td>不同玉米品種（鮮食、飼料、雜交種）的光譜極度相似，RF 很難分辨。</td>
+</tr>
+<tr>
+<td></td>
+<td>1D-CNN</td>
+<td>表現中等</td>
+<td>光譜 alone 還是會出错。</td>
+</tr>
+<tr>
+<td></td>
+<td>DSS-2D</td>
+<td>98.9% 整體準確率，玉米雜訊率 1.9%</td>
+<td><strong>六倍於 RF</strong> 的準確度提升！靠紋理差異（株高、排列密度、散葉分佈）成功區分相似作物。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>多時間點分類表現（三張照片結合）：</strong></p>
+<ul>
+<li><strong>3D-SE-ResNet</strong>（加入注意力機制）整體準確率 <strong>92.9%</strong>，比單純堆疊三張照片的隨機樹模型（84.5%）高出 <strong>8.4%</strong>。</li>
+<li><strong>雜訊率大幅降低</strong>：</li>
+<li>大豆雜訊率從 17.9%（隨機樹）降到 <strong>2.8%</strong>（3D-SE-ResNet）。</li>
+<li>大麥召回率從 78.6%（隨機樹）提升到 <strong>98.4%</strong>。</li>
+<li><strong>注意力機制的作用</strong>：在資料較少的情況下（只用 25% 訓練資料），3D-SE-ResNet 仍能達到 <strong>84.6%</strong> 的準確率，與完整資料的隨機樹模型不相上下。顯示 SE blocks 能有效處理不確定性。</li>
+</ul>
+<p><strong>光譜重要性的變化（模型怎麼「看」農田）：</strong><br />
+- <strong>11 月（土壤主導）</strong>：長波紅外光譜（SWIR II &amp; III）最重要，占比 <strong>41%</strong>，因為早期作物稀疏，土壤訊號主導。<br />
+- <strong>3 月（葉片生長期）</strong>：可見光（VIS, 34.6%）與近紅外（NIR, 26.1%）占比 <strong>60.7%</strong>，因為葉片濃密、葉綠素多。<br />
+- <strong>8 月（作物成熟）</strong>：SWIR I 占比提升，追蹤植物水分、乾物質變化；SWIR III 降到最低 <strong>7.7%</strong>，因為此時植物水分充足，不需擔心土壤雜訊。</p>
+<p><strong>計算效率：</strong><br />
+- DSS-2D 訓練時間 <strong>3.26 秒</strong>，推論時間 <strong>0.09 秒</strong>。<br />
+- 3D-SE-ResNet 訓練時間 <strong>4.76 秒（每 10 個 epoch）</strong>，推論時間 <strong>0.12 秒</strong>。<br />
+- 雖然比 RF（訓練 0.14 秒）慢，但多出的時間換來了大幅提升的準確性。</p>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<ul>
+<li><strong>糧食進口國能更精準評估進口需求</strong>，避免糧價波動。</li>
+<li><strong>早期農田監測</strong>：即使只有少數時間點，也能掌握作物狀況，協助農民及時應對災害、調整農藥施肥。</li>
+<li><strong>雙譜分類</strong>（同時利用光譜 + 空間）可擴展到其他衛星任務（如 WorldView、PlanetScope 等），提升農業監測效率。</li>
+<li><strong>注意力機制</strong>的應用讓模型在資料稀少的情況下依然可靠，對開發中國家或偏遠地區尤其重要。</li>
+<li><strong>未來可擴展到其他作物（稻米、玉米等）</strong>，甚至不同地區，建立全球農業遙感監測系統。</li>
+</ul></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/27 ]</div>
                         <h1 class="hk-main-title">超越準確度：衛星水質監測的轉移性限制、驗證膨脹與不確定性缺口——系統性量化綜合與操作框架</h1>
                         <p class="hk-eng-subtitle">Beyond Accuracy: Transferability Limits, Validation Inflation, and Uncertainty Gaps in Satellite-Based Water Quality Monitoring—A Systematic Quantitative Synthesis and Operational Framework</p>
                         <div class="hk-core-statement">
