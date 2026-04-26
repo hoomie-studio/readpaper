@@ -47,6 +47,72 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/27 ]</div>
+                        <h1 class="hk-main-title">可見光與近紅外光譜結合機器學習，預測安第斯高地與雨林農業生態系的土壤肥力指標與施肥建議</h1>
+                        <p class="hk-eng-subtitle">Vis-NIR Spectroscopy and Machine Learning for Prediction of Soil Fertility Indicators and Fertilizer Recommendation in Andean Highland and Rainforest Agroecosystems</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>研究人員用光譜儀掃土壤，再搭配 AI 演算法，成功預測土壤中許多重要養分（如有機質、鈣、氮），甚至能直接給出施肥建議，特別適合缺乏實驗室設備的偏鄉地區。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/9/1331</li>
+<li>抓取時間：2026-04-27 02:04:35</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<ul>
+<li><strong>土壤肥力</strong>（土壤肥力，指土壤提供植物生長所需養分的健康程度）：土壤就像農田的食堂，裡面需要有氮、磷、鉀等營養物質，植物才能長得好。</li>
+<li><strong>光譜儀</strong>（光譜儀，一種測量物體反射光線特性的儀器，不同物質會反射不同波長的光）：可以用光線「看」出土壤裡有什麼養分。</li>
+<li><strong>偏鄉農業</strong>：許多偏鄉地區（特別是南美洲高海拔山區與雨林）缺乏專業土壤實驗室，農民要等很久的報告才能知道該怎麼施肥，常常因為施肥不當造成浪費或土壤退化。</li>
+<li><strong>快速診斷需求</strong>：如果能用便宜、快速的方式知道土壤狀況，就能立即做出正確決策。</li>
+</ul>
+<h3>他們做了什麼？（研究方法）</h3>
+<ul>
+<li><strong>採樣</strong>：從安第斯山區高海拔農業地帶與亞馬遜雨林農業地帶兩處，一共收集了 297 個土壤樣本。</li>
+<li><strong>光譜掃描</strong>：使用手持式光譜儀，測量每個樣本在 350 到 2500 奈米波長範圍內的光線反射情況。這就像是用「光譜筆」畫出土壤的光譜指紋。</li>
+<li><strong>資料處理</strong>：對原始光譜資料做幾個標準處理：</li>
+<li><strong>Savitzky-Golay 平滑</strong>（平滑，就是把曲線磨圓潤一些，減少雜訊）</li>
+<li><strong>一階微分</strong>（微分，就是計算斜率，能強調特徵峰值）</li>
+<li><strong>光譜深度分析</strong>（測量特定光波被吸收的程度）</li>
+<li><strong>訓練 AI 模型</strong>：用幾種常見機器學習演算法建立預測模型：</li>
+<li><strong>偏最小二乘法回歸</strong>（PLSR，一種統計回歸方法）</li>
+<li><strong>隨機森林</strong>（Random Forest，用大量決策樹組成的集合模型）</li>
+<li><strong>支援向量機</strong>（Support Vector Machines，一種分類與回歸演算法）</li>
+<li><strong>神經網絡</strong>（人工神經網絡，模仿人類大腦結構的計算模型）</li>
+<li><strong>驗證效果</strong>：將預測結果跟實際實驗室測量值比對，看預測準確度。</li>
+</ul>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<ol>
+<li><strong>有機質預測表現最佳</strong>（在高海拔地區）：在高海拔地區土壤中，有機質的預測準確度 R² &gt; 0.70（R² 越高越準確，0.7 算是挺好的了）。</li>
+<li><strong>鈣預測在雨林地區表現好</strong>：在亞馬遜雨林地區的土壤中，鈣（Ca）的預測準確度 R² &gt; 0.70。</li>
+<li><strong>pH 值與土壤質地表現中等</strong>：土壤酸鹼度（pH）與砂質、黏土比例（質地分數）的預測準確度 R² 介於 0.42 到 0.67 之間。</li>
+<li><strong>磷、鉀、鈉預測較差</strong>：這些元素在光譜中的特徵較弱，預測準確度不理想。</li>
+<li><strong>氮肥建議最準確</strong>：氮素施肥建議在兩個地區都表現最好，預測值跟實際值吻合度很高。</li>
+<li><strong>鉀、鈣施肥建議低估</strong>：在高海拔地區，鉀（K₂O）與鈣（CaO）的施肥建議都偏低，這代表「光譜預測的數值」跟「實際農業需求」之間有落差，不能直接拿來用。</li>
+<li><strong>結論</strong>：雖然不是所有養分都能精準預測，但整體來說這是一種快速、便宜、可持續的土壤分析方式，特別是適合那些沒有專業實驗室的偏鄉地區。</li>
+</ol>
+<h3>這對我有什麼意義？（實際應用 50 字內）</h3>
+<ul>
+<li>*偏鄉地區可用光譜儀快速評估土壤，減少對大型實驗室的依賴。</li>
+<li>農民可立即獲得施肥建議，避免浪費肥料與過度施肥造成的環境問題。</li>
+<li>未來可擴展到其他作物（如稻米、玉米）或不同地區，建立區域校正資料集。</li>
+<li>結合中紅外光譜技術可改善預測表現。</li>
+<li>為永續農業與糧食安全提供新工具，特別適合開發中國家應用。</li>
+</ul></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/27 ]</div>
                         <h1 class="hk-main-title">利用變分隨機有限集方法，在強烈混響下實現高度魯棒的主動聲納多目標追蹤</h1>
                         <p class="hk-eng-subtitle">RESEARCH PAPER</p>
                         <div class="hk-core-statement">
