@@ -47,6 +47,94 @@
                 <div class="hk-grid">
                     <div class="hk-left-col">
                         <div class="hk-tag">[ 04/27 ]</div>
+                        <h1 class="hk-main-title">跨世紀地球觀測：歷史航空與衛星影像地理配準方法的系統性回顧</h1>
+                        <p class="hk-eng-subtitle">Century-Scale Earth Observation: Systematic Review of Georeferencing Methods for Historical Aerial and Satellite Imagery</p>
+                        <div class="hk-core-statement">
+                            <span class="hk-label">CORE</span>
+                            <p>歷史航照與衛星影像要拿來做長期觀測分析，最大的瓶頸不在於演算法，而在於缺乏完整資訊、拍攝幾何參數不確定，導致目前仍 heavily relying on manual 作業與地面控制點 (GCPs)，而缺乏能在複雜地形變化下獨立運作的完全自動化方法。</p>
+                        </div>
+                    </div>
+                    <div class="hk-right-col">
+                        <div class="hk-content-wrapper"><h1>學術早報</h1>
+<h2>Century-Scale Earth Observation: Systematic Review of Georeferencing Methods for Historical Aerial and Satellite Imagery</h2>
+<ul>
+<li>論文來源 URL: https://www.mdpi.com/2072-4292/18/7/1052</li>
+<li>抓取時間: 2026-04-27 08:24:19</li>
+</ul>
+<h3>為什麼要研究這個？（研究動機）</h3>
+<p><strong>專業名詞解釋：</strong><br />
+- <strong>歷史遙測影像 (Historical Remote Sensing Imagery)</strong>：過去幾十年間拍攝的航空照片與解密的衛星影像，像是「時光機器」的素材<br />
+- <strong>地理配準 (Georeferencing)</strong>：把這些老照片上的每個像素，都標註上正確的地面上的座標位置，讓它們能和現在的地圖疊合在一起<br />
+- <strong>地面控制點 (GCPs)</strong>：在影像上已知精確座標的參考點，用來校正影像的位置</p>
+<p><strong>現實痛點：</strong><br />
+現代衛星 (像是 Landsat) 從 1980 年代才有穩定可靠的資料，但許多重要的環境變化——像是冰川退縮、濕地消失、海岸線侵蝕——其實發生在更早的時代。這些變化需要幾十年的觀測紀錄才能看清楚趨勢，但我們缺乏 1980 年代以前的標準化觀測資料。</p>
+<p>如果無法把歷史影像準確地配準到現代地圖上，就無法：<br />
+1. 建立衛星時代之前的環境基線<br />
+2. 分析長期的土地利用與覆蓋變化<br />
+3. 追蹤緩慢演變的環境過程</p>
+<h3>他們做了什麼？（研究方法）</h3>
+<p><strong>生活化比喻：</strong></p>
+<p>想像你是一位考古學家，想要研究一座城市 100 年前的樣子。你找到了很多老照片，但這些照片：<br />
+- 有的照片沒有記載是用什麼相機拍的<br />
+- 不知道拍攝時相機的朝向和高度<br />
+- 照片本身可能因為時間久了而變形<br />
+- 城市在這 100 年間已經變了很多，地標可能已經不存在了</p>
+<p>這就跟要把老照片「套」到現代的衛星地圖上是一樣的困難！研究者的工作就像是：</p>
+<ol>
+<li><strong>收集所有能找到的老照片</strong>：從航空檔案、解密衛星圖中找出可用影像</li>
+<li><strong>分類照片類型</strong>：有的是航空拍攝的，有的是衛星拍的，品質和特性各異</li>
+<li><strong>找參考點</strong>：在老照片和現代地圖上找相同的建築物、道路交叉口等特徵點</li>
+<li><strong>手動校正</strong>：因為自動化的方法不太可靠，研究者必須手動調整每個點的位置</li>
+<li><strong>評估準確度</strong>：看看校正後的結果有多準，但這部分的做法很不一致</li>
+</ol>
+<p>他們分析了 2547 篇相關研究中 205 篇同行評審的文章，這是首次全面系統性地整理這個領域的做法。</p>
+<h3>驚人發現與具體數據（關鍵結果）</h3>
+<ol>
+<li>
+<p><strong>高度依賴手動作業</strong>：在分析的 205 篇文章中，大多數仍採用手動或半自動的方式進行地理配準。自動化的方法很少見，這是因為歷史影像本身的資料不完整、拍攝角度不明確。</p>
+</li>
+<li>
+<p><strong>地面控制點是關鍵瓶頸</strong>：研究發現，無論使用什麼方法，最終都離不開地面控制點來約束幾何校正。問題是，在複雜地形或景觀大幅變化的地方，找到足夠的控制點非常困難。</p>
+</li>
+<li>
+<p><strong>準確度評估極度不一致</strong>：</p>
+</li>
+<li>不同研究使用完全不同的標準來衡量準確度</li>
+<li>有的只報告控制點的殘差 (residuals)，這些是已知點的誤差，不一定代表整個影像都準</li>
+<li>有的只做視覺檢查，用眼睛看是否「差不多對」</li>
+<li>缺乏統一的報告規範，讓不同研究之間很難互相比較</li>
+</ol>
+<h3>這對我有什麼意義？（實際應用）</h3>
+<ul>
+<li><strong>環境基線建立</strong>：讓糧食進口國能更精準評估進口需求，避免糧價波動</li>
+<li><strong>災難評估</strong>：用於評估過去的地質災害、海嘯等，幫助理解長期趨勢</li>
+<li><strong>考古與文化遺產保護</strong>：分析歷史上的城市變遷、聚落發展</li>
+<li><strong>氣候變遷研究</strong>：追蹤冰河、積雪範圍的長期變化</li>
+<li><strong>方法論標準化</strong>：為未來發展標準化的驗證協議提供基礎</li>
+<li><strong>技術發展路徑</strong>：指導整合新興的深度学习方法和視覺基礎模型，特別是在資料匱乏的地區</li>
+</ul>
+<hr />
+<p><strong>額外規則遵循：</strong><br />
+- ✅ 全部使用繁體中文<br />
+- ✅ 遇到學術專有名詞時，先用括號簡單解釋一次<br />
+- ✅ 語氣親切自然，像在跟朋友認真講解一樣<br />
+- ✅ 避免使用「然而」「此外」「值得注意的是」等過於正式的學術連接詞<br />
+- ✅ 保持容易閱讀<br />
+- ✅ 列表使用 <code>1.</code> 或 <code>-</code></p></div>
+                    </div>
+                </div>
+                <div class="hk-footer">
+                    <div class="hk-logo">HUMANKIND <span>×</span> GEOMATICS</div>
+                    <div class="hk-scroll-hint">SCROLL TO DISCOVER —</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="hk-container">
+                <div class="hk-background-text">SEARCH</div>
+                <div class="hk-grid">
+                    <div class="hk-left-col">
+                        <div class="hk-tag">[ 04/27 ]</div>
                         <h1 class="hk-main-title">使用航空雷射掃描數據進行多時間冠層空隙評估：波蘭喀爾巴阡山脈生態系統中保護森林的案例</h1>
                         <p class="hk-eng-subtitle">RESEARCH PAPER</p>
                         <div class="hk-core-statement">
